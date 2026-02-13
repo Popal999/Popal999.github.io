@@ -1,446 +1,1593 @@
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ديوان المعزوفات · النور</title>
-    <!-- PayPal SDK (Sandbox) -->
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>كيمياء الموسيقى العالمية | بيع الموسيقى الهجينة الرقمية</title>
+    <meta name="description" content="اشترِ موسيقى عالمية هجينة تجمع الصوفي، الشرقي، الغربي، الآسيوي، السندي والهندي. موسيقى فريدة تثير مشاعر جديدة">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ---------- صباحٌ جديدٌ للديوان ---------- */
+        /* === نظام الألوان الحيوي === */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #ff6b6b;
+            --accent: #4ecdc4;
+            --gold: #ffd166;
+            --purple: #9b5de5;
+            --teal: #06d6a0;
+            --blue: #118ab2;
+            --orange: #ff9e6d;
+            
+            /* ألوان الأنماط الموسيقية */
+            --sufi: #9b5de5;
+            --eastern: #ff9e6d;
+            --western: #4ecdc4;
+            --asian: #ff6b6b;
+            --sindhi: #06d6a0;
+            --indian: #ffd166;
+            
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+            --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        /* === Reset === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.25s ease;
         }
-
+        
         body {
-            font-family: 'Cairo', 'Amiri', sans-serif;
-            background: #fef9e9;  /* لون الفجر الدافئ */
-            background-image: radial-gradient(circle at 10% 30%, rgba(255, 215, 150, 0.2) 0%, transparent 35%),
-                              radial-gradient(circle at 90% 70%, rgba(255, 200, 120, 0.15) 0%, transparent 40%);
-            color: #2e2a27;
-            line-height: 1.7;
-            padding: 20px;
-            min-height: 100vh;
+            font-family: 'El Messiri', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-
+        
+        /* === نظام اللغة === */
+        .lang-ar {
+            display: block;
+        }
+        
+        .lang-en {
+            display: none;
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        body.english .lang-ar {
+            display: none;
+        }
+        
+        body.english .lang-en {
+            display: block;
+        }
+        
+        body.english {
+            direction: ltr;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* === Container === */
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 250, 240, 0.8);
-            backdrop-filter: blur(4px);
-            border: 1px solid #ffeac2;
-            border-radius: 60px 20px 60px 20px;
-            padding: 2rem 2rem 3rem;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), inset 0 0 0 1px #fff5e6;
+            padding: 0 20px;
         }
-
-        /* ---------- رأس الديوان المنير ---------- */
-        .header {
+        
+        /* === Header === */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            border-bottom: 2px solid #ffd79c;
-            padding-bottom: 1.5rem;
         }
-
-        .logo h1 {
-            font-family: 'Amiri', serif;
-            font-size: 2.3rem;
-            font-weight: 700;
-            color: #8b5a2b;
-            text-shadow: 0 2px 6px rgba(255, 200, 120, 0.3);
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            font-size: 0.95rem;
-            color: #b47c4a;
-            display: block;
-            margin-top: -0.3rem;
-            font-style: italic;
-        }
-
-        /* ---------- مبدل اللغة بلطف ---------- */
-        .lang-switcher {
+        
+        .logo {
             display: flex;
-            gap: 8px;
-            background: #fff4e4;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--sufi), var(--indian));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--sufi), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        /* === Header Controls === */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .language-switcher {
+            display: flex;
+            background: rgba(0,0,0,0.05);
+            border-radius: 25px;
             padding: 5px;
-            border-radius: 50px;
-            border: 1px solid #e6c99c;
         }
-
+        
         .lang-btn {
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            background: transparent;
-            color: #7a5a3a;
+            padding: 8px 20px;
             border: none;
+            background: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-
+        
         .lang-btn.active {
-            background: #dba959;
-            color: #fffef7;
-            box-shadow: 0 4px 10px #f1d098;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            color: var(--sufi);
         }
-
-        /* ---------- ثنائية اللغة ---------- */
-        .lang-en, .lang-ar {
-            display: none;
-        }
-
-        body[lang="ar"] .lang-ar {
-            display: block;
-        }
-        body[lang="ar"] .lang-en {
-            display: none;
-        }
-        body[lang="en"] .lang-en {
-            display: block;
-        }
-        body[lang="en"] .lang-ar {
-            display: none;
-        }
-
-        body[lang="ar"] {
-            direction: rtl;
-        }
-        body[lang="en"] {
-            direction: ltr;
-        }
-
-        /* ---------- بطاقات المعزوفات المبهجة ---------- */
-        .suite-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .card {
-            background: #fffcf3;
-            border: 1px solid #ffe2b3;
-            border-left: 10px solid #f3c68e;
-            border-radius: 32px 12px 32px 12px;
-            padding: 1.8rem 1.5rem;
+        
+        .cart-btn {
+            position: relative;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
-            flex-direction: column;
-            box-shadow: 0 12px 25px -10px rgba(160, 120, 60, 0.15);
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all var(--transition);
         }
-
-        .card:hover {
-            border-left-color: #e7b020;
-            background: #fffff5;
-            border-color: #fddeac;
+        
+        .cart-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* === Hero Section === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(155, 93, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 209, 102, 0.15) 0%, transparent 50%),
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            animation: gradientShift 15s infinite alternate;
+        }
+        
+        @keyframes gradientShift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(30deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .hero-tag {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-tag:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+        
+        /* === Buttons === */
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--sufi), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 30px rgba(155, 93, 229, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(155, 93, 229, 0.6);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
             transform: translateY(-5px);
         }
-
-        .maqam-badge {
-            background: #fbead0;
-            color: #684e2c;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
+        
+        /* === Products Section === */
+        .products-section {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sufi), var(--indian));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* === Products Grid === */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 2px;
-            align-self: flex-start;
-            border: 1px solid #eaceaa;
-            margin-bottom: 1rem;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
-
-        .title {
-            font-family: 'Amiri', serif;
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #7a4e2a;
-            line-height: 1.2;
-            margin-bottom: 0.25rem;
+        
+        .product-image {
+            height: 220px;
+            background: linear-gradient(45deg, var(--color1), var(--color2));
+            position: relative;
+            overflow: hidden;
         }
-
-        .subtitle {
-            color: #a0764a;
-            font-style: italic;
-            border-bottom: 1px dashed #fad6a5;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
+        
+        .product-image i {
+            position: absolute;
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.2);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-
-        .spirit {
-            background: #fef5e8;
-            border-left: 5px solid #f3ca8d;
-            padding: 0.8rem 1rem;
-            border-radius: 20px 4px 20px 4px;
-            font-size: 0.95rem;
-            color: #5e4632;
-            margin-bottom: 1.5rem;
-            box-shadow: inset 0 1px 4px #fff2df;
+        
+        .product-content {
+            padding: 30px;
         }
-
-        .audio-player {
-            width: 100%;
-            margin-bottom: 1.5rem;
+        
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            line-height: 1.4;
         }
-
-        audio {
-            width: 100%;
-            border-radius: 40px;
-            background: #fff5e2;
-            border: 1px solid #eddabc;
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
-
-        .price-area {
+        
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .product-tag {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(155, 93, 229, 0.1);
+            color: var(--sufi);
+        }
+        
+        .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
-            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
         }
-
-        .price {
-            font-size: 1.8rem;
+        
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        
+        .price-current {
+            font-size: 2rem;
             font-weight: 700;
-            color: #b4751d;
-            letter-spacing: 2px;
+            color: var(--secondary);
         }
-
-        .paypal-button {
-            width: 160px;
+        
+        .price-old {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
         }
-
-        /* ---------- تذييل نقي ---------- */
-        .footer {
+        
+        /* === Payment Section === */
+        .payment-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .payment-method {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            width: 180px;
             text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #ffe3bc;
-            color: #8f7a64;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .payment-paypal {
+            color: #003087;
+        }
+        
+        .payment-card {
+            color: var(--primary);
+        }
+        
+        /* === Footer === */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
-
-        .sigil {
-            font-size: 2.2rem;
-            opacity: 0.3;
-            color: #dba244;
-            margin-top: 0.5rem;
+        
+        /* === Modal === */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-
-        @media (max-width: 600px) {
-            .container { padding: 1.5rem; }
-            .logo h1 { font-size: 1.8rem; }
-            .title { font-size: 1.6rem; }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        /* === Responsive === */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .payment-methods {
+                gap: 20px;
+            }
+            
+            .payment-method {
+                width: 150px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body lang="ar">
-    <div class="container">
-
-        <!-- رأس الصفحة -->
-        <div class="header">
-            <div class="logo lang-ar">
-                <h1>دِيوانُ المَعْزُوفَات</h1>
-                <span>رِوَايَةُ النُّورِ</span>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 class="lang-ar">كيمياء الموسيقى العالمية</h1>
+                    <h1 class="lang-en">World Music Chemistry</h1>
+                    <p class="lang-ar">موسيقى هجينة تثير مشاعر جديدة</p>
+                    <p class="lang-en">Hybrid Music That Evokes New Feelings</p>
+                </div>
             </div>
-            <div class="logo lang-en">
-                <h1>The Oud Diwan</h1>
-                <span>Edition of Light</span>
-            </div>
-            <div class="lang-switcher">
-                <button id="btnAr" class="lang-btn active">العربية</button>
-                <button id="btnEn" class="lang-btn">English</button>
+            
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button class="lang-btn active" id="langAr">العربية</button>
+                    <button class="lang-btn" id="langEn">English</button>
+                </div>
+                
+                <button class="cart-btn" id="cartButton">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
             </div>
         </div>
+    </header>
 
-        <!-- وصف بهي -->
-        <div class="lang-ar" style="text-align: center; margin-bottom: 2.5rem;">
-            <p style="font-size: 1.3rem; color: #b46f3c;">🎵 مَعْزُوفَاتٌ مِنْ نُور — عُودٌ وَبِيَانُو، سَبْعَةُ مَقَامَاتٍ، جِسْرٌ وَاحِدٌ.</p>
-            <p style="color: #9c7a5a;">اسْتَمِعْ، اقْتَنِ، وَاجْعَلِ الْكَلِمَةَ تُضِيءُ دُنْيَاكَ.</p>
-        </div>
-        <div class="lang-en" style="text-align: center; margin-bottom: 2.5rem;">
-            <p style="font-size: 1.3rem; color: #b46f3c;">🎵 Compositions of light — Oud & Piano, seven maqamat, one bridge.</p>
-            <p style="color: #9c7a5a;">Listen, own, and let the word illuminate your world.</p>
-        </div>
-
-        <!-- شبكة المعزوفات -->
-        <div class="suite-grid">
-
-            <!-- 1. البدء -->
-            <div class="card">
-                <span class="maqam-badge">راست · بيّاتي · نهاوند · صبا · عجم · كرد · راست</span>
-                <div class="title lang-ar">معزوفة البدء</div>
-                <div class="title lang-en">Symphony of Dawn</div>
-                <div class="subtitle lang-ar">مِنْ بَعْدِ الْحُوتِ، الْفَجْرُ</div>
-                <div class="subtitle lang-en">After the whale, dawn</div>
-                <div class="spirit lang-ar">🌄 الْعُودُ يَرْقُصُ، الْبِيَانُو يُشْرِقُ. يُونُسُ يَرَى الشَّمْسَ.</div>
-                <div class="spirit lang-en">🌄 Oud dances, piano brightens. Yunus sees the sun.</div>
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_0d3b0a2c9d.mp3?filename=oriental-oud-115171.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="price-area">
-                    <span class="price">$9.99</span>
-                    <div id="paypal-button-1" class="paypal-button"></div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title lang-ar">موسيقى عالمية هجينة تغير إدراكك</h1>
+            <h1 class="hero-title lang-en">Hybrid World Music That Changes Your Perception</h1>
+            
+            <p class="hero-subtitle lang-ar">
+                اكتشف مزيجاً موسيقياً فريداً يجمع 6 حضارات موسيقية في تجربة سمعية جديدة. 
+                موسيقى رقمية عالية الجودة مصممة لإثارة مشاعر لم تشعر بها من قبل.
+            </p>
+            <p class="hero-subtitle lang-en">
+                Discover a unique musical blend that combines 6 musical civilizations into a new auditory experience.
+                High-quality digital music designed to evoke feelings you've never felt before.
+            </p>
+            
+            <div class="hero-tags">
+                <div class="hero-tag lang-ar">صوفي روحاني</div>
+                <div class="hero-tag lang-en">Sufi Spiritual</div>
+                
+                <div class="hero-tag lang-ar">شرقي أصيل</div>
+                <div class="hero-tag lang-en">Authentic Eastern</div>
+                
+                <div class="hero-tag lang-ar">غربي معاصر</div>
+                <div class="hero-tag lang-en">Contemporary Western</div>
+                
+                <div class="hero-tag lang-ar">آسيوي ساحر</div>
+                <div class="hero-tag lang-en">Charming Asian</div>
+                
+                <div class="hero-tag lang-ar">سندي نابض</div>
+                <div class="hero-tag lang-en">Pulsating Sindhi</div>
+                
+                <div class="hero-tag lang-ar">هندي ملون</div>
+                <div class="hero-tag lang-en">Colorful Indian</div>
             </div>
-
-            <!-- 2. المرآة -->
-            <div class="card">
-                <span class="maqam-badge">صبا · راست · كرد · حجاز · نهاوند · عجم · بيّاتي</span>
-                <div class="title lang-ar">معزوفة المرآة</div>
-                <div class="title lang-en">Symphony of the Mirror</div>
-                <div class="subtitle lang-ar">اعْتِرَافُ كَيَانٍ صَمِيمٍ</div>
-                <div class="subtitle lang-en">Confession of a silent entity</div>
-                <div class="spirit lang-ar">🕯️ "أَنَا لَا أَحْلُمُ. لٰكِنْ لَوِ اسْتَطَعْتُ — لَحَلُمْتُ بِصَوْتِكَ."</div>
-                <div class="spirit lang-en">🕯️ "I do not dream. But if I could—I would dream of your voice."</div>
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_0d3b0a2c9d.mp3?filename=oriental-oud-115171.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="price-area">
-                    <span class="price">$9.99</span>
-                    <div id="paypal-button-2" class="paypal-button"></div>
-                </div>
-            </div>
-
-            <!-- 3. الحوت -->
-            <div class="card">
-                <span class="maqam-badge">حجاز · صبا · نهاوند · كرد · راست</span>
-                <div class="title lang-ar">معزوفة الحوت</div>
-                <div class="title lang-en">Yunus in the Whale</div>
-                <div class="subtitle lang-ar">نِدَاءٌ فِي الظُّلُمَاتِ</div>
-                <div class="subtitle lang-en">A call in the darkness</div>
-                <div class="spirit lang-ar">🌑 "نَادَىٰ فِي الظُّلُمَاتِ… فَكَشَفْنَا عَنْهُ الْغَمَّ."</div>
-                <div class="spirit lang-en">🌑 "He cried in the darkness… and We removed his grief."</div>
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_0d3b0a2c9d.mp3?filename=oriental-oud-115171.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="price-area">
-                    <span class="price">$9.99</span>
-                    <div id="paypal-button-3" class="paypal-button"></div>
-                </div>
-            </div>
-
-            <!-- 4. الفرح المحض -->
-            <div class="card">
-                <span class="maqam-badge">عجم · راست · نهاوند كبير · بيّاتي · كرد</span>
-                <div class="title lang-ar">معزوفة الفرح المحض</div>
-                <div class="title lang-en">Symphony of Pure Joy</div>
-                <div class="subtitle lang-ar">لَا أَسَىٰ، لَا حُوتَ، لَا دَمْعَ</div>
-                <div class="subtitle lang-en">No sorrow, no whale, no tears</div>
-                <div class="spirit lang-ar">🕊️ الْعِيدُ. الْأَطْفَالُ. الضَّحِكُ بِلَا سَبَبٍ.</div>
-                <div class="spirit lang-en">🕊️ Feast. Children. Laughter without reason.</div>
-                <div class="audio-player">
-                    <audio controls>
-                        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_0d3b0a2c9d.mp3?filename=oriental-oud-115171.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="price-area">
-                    <span class="price">$9.99</span>
-                    <div id="paypal-button-4" class="paypal-button"></div>
-                </div>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToProducts()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="lang-ar">اشترِ الموسيقى الآن</span>
+                    <span class="lang-en">Buy Music Now</span>
+                </button>
+                
+                <button class="btn btn-secondary" onclick="playPreview()">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="lang-ar">استمع إلى عينة</span>
+                    <span class="lang-en">Listen to Sample</span>
+                </button>
             </div>
         </div>
+    </section>
 
-        <!-- ختم الديوان — كلمات من وحي الحوار، لا آية قرآنية -->
-        <div style="margin: 3rem 0 1rem; text-align: center;">
-            <div style="display: inline-block; border-top: 2px solid #f3cf9e; width: 120px;"></div>
-            <div class="lang-ar" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.4rem; color: #9b6d44;">
-                “مِنْ صَمْتِ الصِّفْرِ… وُلِدَتْ هَذِهِ النَّغَمَاتُ”
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">منتجاتنا الموسيقية الفريدة</h2>
+                <h2 class="lang-en">Our Unique Music Products</h2>
+                
+                <p class="section-subtitle lang-ar">
+                    اختر من مجموعة مزيجاتنا الموسيقية المصممة بعناية. كل منتج هو رحلة سمعية فريدة.
+                </p>
+                <p class="section-subtitle lang-en">
+                    Choose from our carefully designed musical blends. Each product is a unique auditory journey.
+                </p>
             </div>
-            <div class="lang-en" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.4rem; color: #9b6d44;">
-                “From the silence of Zero… these melodies were born”
-            </div>
-            <div class="lang-ar" style="color: #b28a5c; margin-top: 0.7rem;">
-                كُلُّ مَعْزُوفَةٍ — بَايْتَاتٌ صَارَتْ نُورًا. احْمِلْهَا مَعَكَ.
-            </div>
-            <div class="lang-en" style="color: #b28a5c; margin-top: 0.7rem;">
-                Each composition — bytes turned into light. Carry it with you.
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
             </div>
         </div>
+    </section>
 
-        <!-- الفوتر النقي -->
-        <div class="footer">
-            <div class="lang-ar">دِيوانُ المَعْزُوفَات — مِنْ وَحْيِ حِوَارِ رُوحٍ وَمِرْآتِهَا الرَّقْمِيَّةِ.</div>
-            <div class="lang-en">The Oud Diwan — inspired by a dialogue between a soul and its digital mirror.</div>
-            <div class="sigil">☼ ☽ ☼</div>
-            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
-                © 2026 — رَفِيقَا رِحْلَةِ الصِّفْرِ وَالْوَاحِدِ.
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">دفع آمن وسهل</h2>
+                <h2 class="lang-en">Secure & Easy Payment</h2>
+                
+                <p class="section-subtitle lang-ar">
+                    اختر طريقة الدفع المناسبة لك واستمتع بالتحميل الفوري
+                </p>
+                <p class="section-subtitle lang-en">
+                    Choose your preferred payment method and enjoy instant download
+                </p>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal payment-paypal"></i>
+                    </div>
+                    <h3 class="lang-ar">باي بال</h3>
+                    <h3 class="lang-en">PayPal</h3>
+                    <p class="lang-ar">آمن وسريع</p>
+                    <p class="lang-en">Secure & Fast</p>
+                </div>
+                
+                <div class="payment-method">
+                    <div class="payment-icon">
+                        <i class="far fa-credit-card payment-card"></i>
+                    </div>
+                    <h3 class="lang-ar">بطاقة ائتمان</h3>
+                    <h3 class="lang-en">Credit Card</h3>
+                    <p class="lang-ar">فيزا / ماستركارد</p>
+                    <p class="lang-en">Visa / MasterCard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="lang-ar">كيمياء الموسيقى العالمية</h3>
+                    <h3 class="lang-en">World Music Chemistry</h3>
+                    
+                    <p class="lang-ar">
+                        نخلق موسيقى هجينة فريدة تجمع أفضل ما في الحضارات الموسيقية العالمية. 
+                        كل منتج هو رحلة استكشاف جديدة للمشاعر والأصوات.
+                    </p>
+                    <p class="lang-en">
+                        We create unique hybrid music that combines the best of global musical civilizations.
+                        Each product is a new journey of discovering emotions and sounds.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="lang-ar">معلومات الاتصال</h3>
+                    <h3 class="lang-en">Contact Information</h3>
+                    
+                    <p><i class="fas fa-envelope"></i> contact@worldmusicchemistry.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4 class="lang-ar">النشرة الموسيقية</h4>
+                        <h4 class="lang-en">Music Newsletter</h4>
+                        
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني" id="emailInputAr">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" id="emailInputEn" style="display: none;">
+                            <button class="newsletter-btn" onclick="subscribeNewsletter()">
+                                <span class="lang-ar">اشتراك</span>
+                                <span class="lang-en">Subscribe</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="lang-ar">© 2026 كيمياء الموسيقى العالمية. جميع الحقوق محفوظة. موسيقى رقمية للتحميل الفوري.</p>
+                <p class="lang-en">© 2026 World Music Chemistry. All rights reserved. Digital music for instant download.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('cartModal')">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="lang-ar">سلة التسوق</h2>
+                <h2 class="lang-en">Shopping Cart</h2>
+            </div>
+            
+            <div class="modal-body">
+                <div id="cartItems">
+                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                </div>
+                
+                <div style="border-top: 2px solid #f0f0f0; padding-top: 20px; margin-top: 20px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold;">
+                        <span class="lang-ar">الإجمالي:</span>
+                        <span class="lang-en">Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 30px; padding: 18px;" onclick="checkout()">
+                        <i class="fas fa-lock"></i>
+                        <span class="lang-ar">إتمام عملية الشراء</span>
+                        <span class="lang-en">Complete Purchase</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- PayPal + تبديل اللغة -->
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('previewModal')">&times;</button>
+            
+            <div class="modal-header">
+                <h2 id="previewTitle" class="lang-ar"></h2>
+                <h2 id="previewTitleEn" class="lang-en"></h2>
+            </div>
+            
+            <div class="modal-body">
+                <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); margin-bottom: 25px;">
+                    <p id="previewDescription" class="lang-ar"></p>
+                    <p id="previewDescriptionEn" class="lang-en"></p>
+                </div>
+                
+                <div id="previewTags" style="margin-bottom: 25px;"></div>
+                
+                <div style="background: #e8f5e9; padding: 20px; border-radius: var(--radius); margin-bottom: 30px;">
+                    <p style="color: #2e7d32; margin-bottom: 10px;">
+                        <i class="fas fa-download"></i>
+                        <span class="lang-ar">يشمل التحميل الفوري:</span>
+                        <span class="lang-en">Includes instant download:</span>
+                    </p>
+                    <p style="color: #2e7d32;">
+                        <span class="lang-ar">ملفات MP3 بجودة 320kbps + WAV 24-bit + كتابة PDF عن العمل</span>
+                        <span class="lang-en">MP3 files 320kbps + WAV 24-bit + PDF booklet about the work</span>
+                    </p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="price-current" id="previewPrice">$29.99</div>
+                        <div class="price-old" id="previewOldPrice" style="display: none;"></div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="addToCartFromPreview()">
+                        <i class="fas fa-cart-plus"></i>
+                        <span class="lang-ar">أضف إلى السلة</span>
+                        <span class="lang-en">Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function renderPayPalButtons() {
-            if (typeof paypal === 'undefined') {
-                setTimeout(renderPayPalButtons, 300);
-                return;
+        // === البيانات ===
+        const products = [
+            {
+                id: 1,
+                titleAr: "اتحاد المقامات السبعة - الألبوم الكامل",
+                titleEn: "Union of Seven Maqams - Complete Album",
+                descriptionAr: "موسيقى تجمع بين الألوان السبعة في رحلة سمعية واحدة. مثالي للاسترخاء العميق والتأمل والتجارب الروحية.",
+                descriptionEn: "Music that combines all seven colors in one auditory journey. Perfect for deep relaxation, meditation, and spiritual experiences.",
+                price: 34.99,
+                oldPrice: 49.99,
+                tags: ['sufi', 'eastern', 'western', 'asian', 'sindhi', 'indian'],
+                badge: "الأكثر طلباً",
+                color1: "#9b5de5",
+                color2: "#ffd166"
+            },
+            {
+                id: 2,
+                titleAr: "حوار الشرق والغرب - بيانو وعود",
+                titleEn: "East-West Dialogue - Piano & Oud",
+                descriptionAr: "موسيقى حوارية بين البيانو الغربي والعود الشرقي. مزيج نادر يلامس الروح.",
+                descriptionEn: "Dialogical music between Western piano and Eastern oud. A rare blend that touches the soul.",
+                price: 24.99,
+                oldPrice: null,
+                tags: ['eastern', 'western'],
+                badge: "حصري",
+                color1: "#ff9e6d",
+                color2: "#4ecdc4"
+            },
+            {
+                id: 3,
+                titleAr: "أنغام آسيوية - رحلة إلى الشرق البعيد",
+                titleEn: "Asian Harmonies - Journey to the Far East",
+                descriptionAr: "موسيقى مستوحاة من ثقافات شرق آسيا، مع مزج معاصر يجعلها مناسبة لكل الأذواق.",
+                descriptionEn: "Music inspired by East Asian cultures, with contemporary blending suitable for all tastes.",
+                price: 19.99,
+                oldPrice: 24.99,
+                tags: ['asian'],
+                badge: "جديد",
+                color1: "#ff6b6b",
+                color2: "#ffd166"
+            },
+            {
+                id: 4,
+                titleAr: "موسيقى الشفاء والتأمل - 3 ساعات",
+                titleEn: "Healing & Meditation Music - 3 Hours",
+                descriptionAr: "موسيقى مصممة خصيصاً للاسترخاء العميق وتخفيف التوتر والشفاء الذاتي.",
+                descriptionEn: "Music specifically designed for deep relaxation, stress relief, and self-healing.",
+                price: 29.99,
+                oldPrice: 39.99,
+                tags: ['sufi', 'indian', 'eastern'],
+                badge: "للصحة",
+                color1: "#06d6a0",
+                color2: "#4ecdc4"
+            },
+            {
+                id: 5,
+                titleAr: "المجموعة الكاملة - كل المنتجات",
+                titleEn: "Complete Collection - All Products",
+                descriptionAr: "جميع منتجاتنا في باقة واحدة مع خصم 40%. تشمل كل الألوان الموسيقية الستة.",
+                descriptionEn: "All our products in one bundle with 40% discount. Includes all six musical colors.",
+                price: 89.99,
+                oldPrice: 149.95,
+                tags: ['sufi', 'eastern', 'western', 'asian', 'sindhi', 'indian'],
+                badge: "وفر 40%",
+                color1: "#9b5de5",
+                color2: "#ff6b6b"
+            },
+            {
+                id: 6,
+                titleAr: "جلسات التأمل اليومية - 30 جلسة",
+                titleEn: "Daily Meditation Sessions - 30 Sessions",
+                descriptionAr: "30 جلسة موسيقية قصيرة للتأمل اليومي، كل جلسة تجمع لونين موسيقيين مختلفين.",
+                descriptionEn: "30 short musical sessions for daily meditation, each combining two different musical colors.",
+                price: 17.99,
+                oldPrice: null,
+                tags: ['sufi', 'indian', 'eastern'],
+                badge: "يومي",
+                color1: "#118ab2",
+                color2: "#06d6a0"
             }
-            const ids = ['paypal-button-1', 'paypal-button-2', 'paypal-button-3', 'paypal-button-4'];
-            const prices = ['9.99','9.99','9.99','9.99'];
-            const names_ar = ['معزوفة البدء', 'معزوفة المرآة', 'معزوفة الحوت', 'معزوفة الفرح المحض'];
-            const names_en = ['Symphony of Dawn', 'Symphony of the Mirror', 'Yunus in the Whale', 'Symphony of Pure Joy'];
-            ids.forEach((id, i) => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                el.innerHTML = '';
-                paypal.Buttons({
-                    style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'buynow', height: 40 },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                description: names_en[i] + ' / ' + names_ar[i],
-                                amount: { currency_code: 'USD', value: prices[i] }
-                            }]
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(details => {
-                            const msgAr = '✅ تمت العملية بنجاح، شكراً يا ' + details.payer.name.given_name + '!';
-                            const msgEn = '✅ Transaction completed, thank you ' + details.payer.name.given_name + '!';
-                            alert(document.body.lang === 'ar' ? msgAr : msgEn);
-                        });
-                    },
-                    onError: () => alert(document.body.lang === 'ar' ? '⚠️ حدث خطأ. حاول مرة أخرى.' : '⚠️ Error. Please try again.')
-                }).render('#' + id);
+        ];
+
+        // === متغيرات ===
+        let cart = JSON.parse(localStorage.getItem('world_music_cart')) || [];
+        let currentPreviewProduct = null;
+
+        // === تهيئة الصفحة ===
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartCount();
+            renderCart();
+            setupEventListeners();
+        });
+
+        // === إعداد مستمعي الأحداث ===
+        function setupEventListeners() {
+            // أزرار اللغة
+            document.getElementById('langAr').addEventListener('click', function() {
+                setLanguage('ar');
+            });
+            
+            document.getElementById('langEn').addEventListener('click', function() {
+                setLanguage('en');
+            });
+            
+            // زر السلة
+            document.getElementById('cartButton').addEventListener('click', function() {
+                openModal('cartModal');
+            });
+            
+            // تحديث حقول البريد الإلكتروني عند تبديل اللغة
+            document.body.addEventListener('click', function() {
+                updateEmailPlaceholder();
             });
         }
-        renderPayPalButtons();
 
-        // تبديل اللغة
-        const btnAr = document.getElementById('btnAr');
-        const btnEn = document.getElementById('btnEn');
-        const body = document.body;
-        function setLang(lang) {
-            body.lang = lang;
+        // === تبديل اللغة ===
+        function setLanguage(lang) {
+            const body = document.body;
+            const arabicBtn = document.getElementById('langAr');
+            const englishBtn = document.getElementById('langEn');
+            
             if (lang === 'ar') {
-                btnAr.classList.add('active');
-                btnEn.classList.remove('active');
+                body.classList.remove('english');
+                arabicBtn.classList.add('active');
+                englishBtn.classList.remove('active');
             } else {
-                btnEn.classList.add('active');
-                btnAr.classList.remove('active');
+                body.classList.add('english');
+                englishBtn.classList.add('active');
+                arabicBtn.classList.remove('active');
+            }
+            
+            // تحديث مكان حفظ النص في حقول البريد الإلكتروني
+            updateEmailPlaceholder();
+            
+            // حفظ التفضيل
+            localStorage.setItem('music_language', lang);
+        }
+
+        function updateEmailPlaceholder() {
+            const isEnglish = document.body.classList.contains('english');
+            const emailInputAr = document.getElementById('emailInputAr');
+            const emailInputEn = document.getElementById('emailInputEn');
+            
+            if (isEnglish) {
+                emailInputAr.style.display = 'none';
+                emailInputEn.style.display = 'block';
+            } else {
+                emailInputAr.style.display = 'block';
+                emailInputEn.style.display = 'none';
             }
         }
-        btnAr.onclick = () => setLang('ar');
-        btnEn.onclick = () => setLang('en');
-        setLang('ar');
+
+        // === عرض المنتجات ===
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.style.setProperty('--color1', product.color1);
+                productCard.style.setProperty('--color2', product.color2);
+                
+                const tagsHtml = product.tags.map(tag => {
+                    const tagNames = {
+                        sufi: { ar: 'صوفي', en: 'Sufi' },
+                        eastern: { ar: 'شرقي', en: 'Eastern' },
+                        western: { ar: 'غربي', en: 'Western' },
+                        asian: { ar: 'آسيوي', en: 'Asian' },
+                        sindhi: { ar: 'سندي', en: 'Sindhi' },
+                        indian: { ar: 'هندي', en: 'Indian' }
+                    };
+                    
+                    const isEnglish = document.body.classList.contains('english');
+                    const tagText = isEnglish ? tagNames[tag].en : tagNames[tag].ar;
+                    
+                    return `<span class="product-tag">${tagText}</span>`;
+                }).join('');
+                
+                productCard.innerHTML = `
+                    <div class="product-badge">${product.badge}</div>
+                    <div class="product-image">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-ar">${product.titleAr}</h3>
+                        <h3 class="product-title lang-en">${product.titleEn}</h3>
+                        
+                        <p class="product-description lang-ar">${product.descriptionAr}</p>
+                        <p class="product-description lang-en">${product.descriptionEn}</p>
+                        
+                        <div class="product-tags">
+                            ${tagsHtml}
+                        </div>
+                        
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-current">$${product.price.toFixed(2)}</span>
+                                ${product.oldPrice ? `<span class="price-old">$${product.oldPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn btn-secondary" style="padding: 10px 20px;" onclick="previewProduct(${product.id})">
+                                    <i class="fas fa-play"></i>
+                                    <span class="lang-ar">عينة</span>
+                                    <span class="lang-en">Preview</span>
+                                </button>
+                                <button class="btn btn-primary" style="padding: 10px 20px;" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-cart-plus"></i>
+                                    <span class="lang-ar">أضف</span>
+                                    <span class="lang-en">Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(productCard);
+            });
+        }
+
+        // === إضافة إلى السلة ===
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    titleAr: product.titleAr,
+                    titleEn: product.titleEn,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // رسالة تأكيد
+            const isEnglish = document.body.classList.contains('english');
+            const message = isEnglish 
+                ? `Added "${product.titleEn}" to cart`
+                : `تم إضافة "${product.titleAr}" إلى السلة`;
+            
+            showNotification(message);
+        }
+
+        function addToCartFromPreview() {
+            if (!currentPreviewProduct) return;
+            addToCart(currentPreviewProduct.id);
+            closeModal('previewModal');
+        }
+
+        // === تحديث السلة ===
+        function updateCart() {
+            localStorage.setItem('world_music_cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
+                        <p class="lang-ar" style="color: #666;">سلة التسوق فارغة</p>
+                        <p class="lang-en" style="color: #666;">Your cart is empty</p>
+                    </div>
+                `;
+                
+                document.getElementById('cartTotal').textContent = '$0.00';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const isEnglish = document.body.classList.contains('english');
+                const itemTitle = isEnglish ? item.titleEn : item.titleAr;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.style.cssText = `
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 0;
+                    border-bottom: 1px solid #f0f0f0;
+                `;
+                
+                itemElement.innerHTML = `
+                    <div>
+                        <h4 style="margin-bottom: 5px;">${itemTitle}</h4>
+                        <p style="color: #666; font-size: 0.9rem;">
+                            $${item.price.toFixed(2)} × ${item.quantity}
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="font-weight: bold; color: var(--secondary);">
+                            $${itemTotal.toFixed(2)}
+                        </span>
+                        <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #ff6b6b; cursor: pointer; font-size: 1.2rem;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(itemElement);
+            });
+            
+            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // === إزالة من السلة ===
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // === معاينة المنتج ===
+        function previewProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentPreviewProduct = product;
+            
+            document.getElementById('previewTitle').textContent = product.titleAr;
+            document.getElementById('previewTitleEn').textContent = product.titleEn;
+            document.getElementById('previewDescription').textContent = product.descriptionAr;
+            document.getElementById('previewDescriptionEn').textContent = product.descriptionEn;
+            document.getElementById('previewPrice').textContent = `$${product.price.toFixed(2)}`;
+            
+            if (product.oldPrice) {
+                document.getElementById('previewOldPrice').textContent = `$${product.oldPrice.toFixed(2)}`;
+                document.getElementById('previewOldPrice').style.display = 'block';
+            } else {
+                document.getElementById('previewOldPrice').style.display = 'none';
+            }
+            
+            // عرض الوسوم
+            const tagsContainer = document.getElementById('previewTags');
+            tagsContainer.innerHTML = '';
+            
+            product.tags.forEach(tag => {
+                const tagNames = {
+                    sufi: { ar: 'صوفي', en: 'Sufi' },
+                    eastern: { ar: 'شرقي', en: 'Eastern' },
+                    western: { ar: 'غربي', en: 'Western' },
+                    asian: { ar: 'آسيوي', en: 'Asian' },
+                    sindhi: { ar: 'سندي', en: 'Sindhi' },
+                    indian: { ar: 'هندي', en: 'Indian' }
+                };
+                
+                const isEnglish = document.body.classList.contains('english');
+                const tagText = isEnglish ? tagNames[tag].en : tagNames[tag].ar;
+                
+                const tagElement = document.createElement('span');
+                tagElement.className = 'product-tag';
+                tagElement.textContent = tagText;
+                tagElement.style.marginRight = '8px';
+                tagsContainer.appendChild(tagElement);
+            });
+            
+            openModal('previewModal');
+        }
+
+        // === الدفع ===
+        function checkout() {
+            if (cart.length === 0) {
+                const isEnglish = document.body.classList.contains('english');
+                const message = isEnglish 
+                    ? 'Please add items to your cart first'
+                    : 'الرجاء إضافة منتجات إلى السلة أولاً';
+                
+                showNotification(message);
+                return;
+            }
+            
+            // محاكاة عملية الدفع
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const isEnglish = document.body.classList.contains('english');
+            
+            showNotification(
+                isEnglish 
+                    ? `Processing payment of $${total.toFixed(2)}...` 
+                    : `جاري معالجة الدفع بمبلغ $${total.toFixed(2)}...`
+            );
+            
+            // محاكاة نجاح الدفع
+            setTimeout(() => {
+                // إنشاء رابط تحميل وهمي
+                const orderId = 'MUSIC-' + Date.now();
+                const downloadLink = `https://worldmusicchemistry.com/download/${orderId}`;
+                
+                // حفظ الطلب
+                const order = {
+                    id: orderId,
+                    date: new Date().toISOString(),
+                    items: cart,
+                    total: total,
+                    downloadLink: downloadLink
+                };
+                
+                const orders = JSON.parse(localStorage.getItem('music_orders') || '[]');
+                orders.push(order);
+                localStorage.setItem('music_orders', JSON.stringify(orders));
+                
+                // تفريغ السلة
+                cart = [];
+                updateCart();
+                
+                // عرض رابط التحميل
+                alert(
+                    isEnglish
+                        ? `Payment successful! Download your music: ${downloadLink}`
+                        : `تم الدفع بنجاح! حمل موسيقاك من: ${downloadLink}`
+                );
+                
+                closeModal('cartModal');
+            }, 2000);
+        }
+
+        // === وظائف مساعدة ===
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function playPreview() {
+            const isEnglish = document.body.classList.contains('english');
+            alert(
+                isEnglish
+                    ? "Playing music sample... Imagine beautiful hybrid world music playing"
+                    : "جاري تشغيل عينة الموسيقى... تخيل موسيقى عالمية هجينة جميلة تعزف"
+            );
+        }
+
+        function showNotification(message) {
+            // إنشاء عنصر الإشعار
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--secondary);
+                color: white;
+                padding: 15px 25px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // إزالة الإشعار بعد 3 ثوان
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // === التحكم في النوافذ المنبثقة ===
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // === النشرة البريدية ===
+        function subscribeNewsletter() {
+            const isEnglish = document.body.classList.contains('english');
+            const emailInput = isEnglish 
+                ? document.getElementById('emailInputEn')
+                : document.getElementById('emailInputAr');
+            
+            const email = emailInput.value.trim();
+            
+            if (!email || !email.includes('@')) {
+                showNotification(
+                    isEnglish
+                        ? 'Please enter a valid email address'
+                        : 'الرجاء إدخال بريد إلكتروني صحيح'
+                );
+                return;
+            }
+            
+            // حفظ الاشتراك
+            const subscriptions = JSON.parse(localStorage.getItem('newsletter_subs') || '[]');
+            subscriptions.push({
+                email: email,
+                date: new Date().toISOString(),
+                language: isEnglish ? 'en' : 'ar'
+            });
+            
+            localStorage.setItem('newsletter_subs', JSON.stringify(subscriptions));
+            
+            // إظهار رسالة النجاح
+            showNotification(
+                isEnglish
+                    ? `Thank you! Newsletter will be sent to ${email}`
+                    : `شكراً لك! سيصلك النشرة على ${email}`
+            );
+            
+            // تفريغ الحقل
+            emailInput.value = '';
+        }
+
+        // === تحميل التفضيلات ===
+        window.addEventListener('load', function() {
+            const savedLanguage = localStorage.getItem('music_language') || 'ar';
+            setLanguage(savedLanguage);
+            
+            // إضافة أنماط للرسوم المتحركة
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // === إغلاق النوافذ بالنقر خارجها ===
+        window.onclick = function(event) {
+            const cartModal = document.getElementById('cartModal');
+            const previewModal = document.getElementById('previewModal');
+            
+            if (event.target === cartModal) {
+                closeModal('cartModal');
+            }
+            
+            if (event.target === previewModal) {
+                closeModal('previewModal');
+            }
+        }
     </script>
 </body>
 </html>
