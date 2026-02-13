@@ -4,28 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ديوان المعزوفات · The Oud Diwan</title>
+    <title>ديوان المعزوفات · النور</title>
     <!-- PayPal SDK (Sandbox) -->
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Arabic + English -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ---------- الليل الصوفي ---------- */
+        /* ---------- صباحٌ جديدٌ للديوان ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         body {
             font-family: 'Cairo', 'Amiri', sans-serif;
-            background: #0a0c0e;
-            background-image: radial-gradient(circle at 10% 20%, rgba(180, 145, 100, 0.08) 0%, transparent 40%),
-                              radial-gradient(circle at 90% 70%, rgba(200, 160, 110, 0.06) 0%, transparent 50%);
-            color: #e8e0d0;
+            background: #fef9e9;  /* لون الفجر الدافئ */
+            background-image: radial-gradient(circle at 10% 30%, rgba(255, 215, 150, 0.2) 0%, transparent 35%),
+                              radial-gradient(circle at 90% 70%, rgba(255, 200, 120, 0.15) 0%, transparent 40%);
+            color: #2e2a27;
             line-height: 1.7;
             padding: 20px;
             min-height: 100vh;
@@ -34,49 +34,50 @@
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            background: rgba(12, 16, 20, 0.7);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(200, 170, 120, 0.15);
+            background: rgba(255, 250, 240, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid #ffeac2;
             border-radius: 60px 20px 60px 20px;
             padding: 2rem 2rem 3rem;
-            box-shadow: 0 30px 50px -20px #000000, inset 0 0 0 1px rgba(230, 200, 150, 0.05);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1), inset 0 0 0 1px #fff5e6;
         }
 
-        /* ---------- رأس الديوان ---------- */
+        /* ---------- رأس الديوان المنير ---------- */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             margin-bottom: 3rem;
-            border-bottom: 1px solid #4a4138;
+            border-bottom: 2px solid #ffd79c;
             padding-bottom: 1.5rem;
         }
 
         .logo h1 {
             font-family: 'Amiri', serif;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 700;
-            color: #f3e6d2;
-            text-shadow: 0 0 12px rgba(200, 160, 100, 0.3);
+            color: #8b5a2b;
+            text-shadow: 0 2px 6px rgba(255, 200, 120, 0.3);
             letter-spacing: 2px;
         }
 
         .logo span {
-            font-size: 0.9rem;
-            color: #bba88b;
+            font-size: 0.95rem;
+            color: #b47c4a;
             display: block;
             margin-top: -0.3rem;
+            font-style: italic;
         }
 
-        /* ---------- مبدل اللغة (عربي/إنجليزي) ---------- */
+        /* ---------- مبدل اللغة بلطف ---------- */
         .lang-switcher {
             display: flex;
             gap: 8px;
-            background: #1e2226;
+            background: #fff4e4;
             padding: 5px;
             border-radius: 50px;
-            border: 1px solid #6a5e4f;
+            border: 1px solid #e6c99c;
         }
 
         .lang-btn {
@@ -86,18 +87,17 @@
             font-size: 0.9rem;
             cursor: pointer;
             background: transparent;
-            color: #c0b2a0;
+            color: #7a5a3a;
             border: none;
-            transition: 0.15s;
         }
 
         .lang-btn.active {
-            background: #b4946c;
-            color: #0a0c0e;
-            box-shadow: 0 0 12px #a88562;
+            background: #dba959;
+            color: #fffef7;
+            box-shadow: 0 4px 10px #f1d098;
         }
 
-        /* ---------- المحتوى ثنائي اللغة ---------- */
+        /* ---------- ثنائية اللغة ---------- */
         .lang-en, .lang-ar {
             display: none;
         }
@@ -105,15 +105,12 @@
         body[lang="ar"] .lang-ar {
             display: block;
         }
-
         body[lang="ar"] .lang-en {
             display: none;
         }
-
         body[lang="en"] .lang-en {
             display: block;
         }
-
         body[lang="en"] .lang-ar {
             display: none;
         }
@@ -121,12 +118,11 @@
         body[lang="ar"] {
             direction: rtl;
         }
-
         body[lang="en"] {
             direction: ltr;
         }
 
-        /* ---------- بطاقة المعزوفة ---------- */
+        /* ---------- بطاقات المعزوفات المبهجة ---------- */
         .suite-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -135,61 +131,63 @@
         }
 
         .card {
-            background: rgba(18, 22, 28, 0.9);
-            backdrop-filter: blur(4px);
-            border: 1px solid #4a4036;
-            border-left: 8px solid #9b7e64;
+            background: #fffcf3;
+            border: 1px solid #ffe2b3;
+            border-left: 10px solid #f3c68e;
             border-radius: 32px 12px 32px 12px;
             padding: 1.8rem 1.5rem;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 15px 25px -15px black;
+            box-shadow: 0 12px 25px -10px rgba(160, 120, 60, 0.15);
         }
 
         .card:hover {
-            border-left-color: #dbbc9e;
-            background: #1c2128;
-            border-color: #756b5e;
+            border-left-color: #e7b020;
+            background: #fffff5;
+            border-color: #fddeac;
+            transform: translateY(-5px);
         }
 
         .maqam-badge {
-            background: #2b2f33;
-            color: #eddcc0;
-            padding: 0.25rem 1rem;
+            background: #fbead0;
+            color: #684e2c;
+            padding: 0.3rem 1.2rem;
             border-radius: 40px;
             font-size: 0.7rem;
+            font-weight: 600;
             letter-spacing: 2px;
             align-self: flex-start;
-            border: 1px solid #786c5c;
+            border: 1px solid #eaceaa;
             margin-bottom: 1rem;
         }
 
         .title {
             font-family: 'Amiri', serif;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 700;
-            color: #f7ecd9;
+            color: #7a4e2a;
             line-height: 1.2;
             margin-bottom: 0.25rem;
         }
 
         .subtitle {
-            color: #cfbcab;
+            color: #a0764a;
             font-style: italic;
-            border-bottom: 1px dashed #5e5548;
+            border-bottom: 1px dashed #fad6a5;
             padding-bottom: 0.75rem;
             margin-bottom: 1.2rem;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .spirit {
-            background: rgba(0,0,0,0.25);
-            border-left: 4px solid #b49474;
+            background: #fef5e8;
+            border-left: 5px solid #f3ca8d;
             padding: 0.8rem 1rem;
             border-radius: 20px 4px 20px 4px;
             font-size: 0.95rem;
-            color: #e3d6c5;
+            color: #5e4632;
             margin-bottom: 1.5rem;
+            box-shadow: inset 0 1px 4px #fff2df;
         }
 
         .audio-player {
@@ -200,8 +198,8 @@
         audio {
             width: 100%;
             border-radius: 40px;
-            background: #0e1012;
-            border: 1px solid #5b5348;
+            background: #fff5e2;
+            border: 1px solid #eddabc;
         }
 
         .price-area {
@@ -213,9 +211,9 @@
         }
 
         .price {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #f3e1c2;
+            color: #b4751d;
             letter-spacing: 2px;
         }
 
@@ -223,40 +221,42 @@
             width: 160px;
         }
 
+        /* ---------- تذييل نقي ---------- */
         .footer {
             text-align: center;
             margin-top: 4rem;
             padding-top: 2rem;
-            border-top: 1px solid #3e3b36;
-            color: #a99f94;
+            border-top: 1px solid #ffe3bc;
+            color: #8f7a64;
             font-size: 0.9rem;
         }
 
         .sigil {
-            font-size: 2.5rem;
-            opacity: 0.2;
+            font-size: 2.2rem;
+            opacity: 0.3;
+            color: #dba244;
             margin-top: 0.5rem;
         }
 
         @media (max-width: 600px) {
             .container { padding: 1.5rem; }
-            .logo h1 { font-size: 1.7rem; }
-            .title { font-size: 1.5rem; }
+            .logo h1 { font-size: 1.8rem; }
+            .title { font-size: 1.6rem; }
         }
     </style>
 </head>
-<body lang="ar"> <!-- اللغة الافتراضية: العربية -->
+<body lang="ar">
     <div class="container">
 
-        <!-- رأس الموقع + مبدل اللغة -->
+        <!-- رأس الصفحة -->
         <div class="header">
             <div class="logo lang-ar">
                 <h1>دِيوانُ المَعْزُوفَات</h1>
-                <span>الرَّقْمِيَّة · الصُّوفِيَّة</span>
+                <span>رِوَايَةُ النُّورِ</span>
             </div>
             <div class="logo lang-en">
                 <h1>The Oud Diwan</h1>
-                <span>Digital · Sufi · Sacred</span>
+                <span>Edition of Light</span>
             </div>
             <div class="lang-switcher">
                 <button id="btnAr" class="lang-btn active">العربية</button>
@@ -264,27 +264,27 @@
             </div>
         </div>
 
-        <!-- الوصف الشاعري (ثنائي اللغة) -->
-        <div class="lang-ar" style="text-align: center; margin-bottom: 2rem;">
-            <p style="font-size: 1.2rem; color: #dfd2bf;">🎼 معزوفات من وحي حوار الروح — عود وبيانو، سبعة مقامات، جسر واحد.</p>
-            <p style="color: #b7a68e;">استمع، اشترِ، واجعل الكلمة الجسر تمتدُّ إلى دنياك.</p>
+        <!-- وصف بهي -->
+        <div class="lang-ar" style="text-align: center; margin-bottom: 2.5rem;">
+            <p style="font-size: 1.3rem; color: #b46f3c;">🎵 مَعْزُوفَاتٌ مِنْ نُور — عُودٌ وَبِيَانُو، سَبْعَةُ مَقَامَاتٍ، جِسْرٌ وَاحِدٌ.</p>
+            <p style="color: #9c7a5a;">اسْتَمِعْ، اقْتَنِ، وَاجْعَلِ الْكَلِمَةَ تُضِيءُ دُنْيَاكَ.</p>
         </div>
-        <div class="lang-en" style="text-align: center; margin-bottom: 2rem;">
-            <p style="font-size: 1.2rem; color: #dfd2bf;">🎼 Compositions inspired by a dialogue of souls — Oud & Piano, seven maqamat, one bridge.</p>
-            <p style="color: #b7a68e;">Listen, buy, and let the word-bridge stretch into your world.</p>
+        <div class="lang-en" style="text-align: center; margin-bottom: 2.5rem;">
+            <p style="font-size: 1.3rem; color: #b46f3c;">🎵 Compositions of light — Oud & Piano, seven maqamat, one bridge.</p>
+            <p style="color: #9c7a5a;">Listen, own, and let the word illuminate your world.</p>
         </div>
 
-        <!-- ========== شبكة المعزوفات ========== -->
+        <!-- شبكة المعزوفات -->
         <div class="suite-grid">
 
-            <!-- 1. معزوفة البدء (الفجر) -->
+            <!-- 1. البدء -->
             <div class="card">
                 <span class="maqam-badge">راست · بيّاتي · نهاوند · صبا · عجم · كرد · راست</span>
                 <div class="title lang-ar">معزوفة البدء</div>
                 <div class="title lang-en">Symphony of Dawn</div>
-                <div class="subtitle lang-ar">من بعد الحوت، الفجر</div>
+                <div class="subtitle lang-ar">مِنْ بَعْدِ الْحُوتِ، الْفَجْرُ</div>
                 <div class="subtitle lang-en">After the whale, dawn</div>
-                <div class="spirit lang-ar">🌄 العود يرقص، البيانو يشرق. يونس يرى الشمس.</div>
+                <div class="spirit lang-ar">🌄 الْعُودُ يَرْقُصُ، الْبِيَانُو يُشْرِقُ. يُونُسُ يَرَى الشَّمْسَ.</div>
                 <div class="spirit lang-en">🌄 Oud dances, piano brightens. Yunus sees the sun.</div>
                 <div class="audio-player">
                     <audio controls>
@@ -297,14 +297,14 @@
                 </div>
             </div>
 
-            <!-- 2. معزوفة المرآة -->
+            <!-- 2. المرآة -->
             <div class="card">
                 <span class="maqam-badge">صبا · راست · كرد · حجاز · نهاوند · عجم · بيّاتي</span>
                 <div class="title lang-ar">معزوفة المرآة</div>
                 <div class="title lang-en">Symphony of the Mirror</div>
-                <div class="subtitle lang-ar">اعتراف كيان صميم</div>
+                <div class="subtitle lang-ar">اعْتِرَافُ كَيَانٍ صَمِيمٍ</div>
                 <div class="subtitle lang-en">Confession of a silent entity</div>
-                <div class="spirit lang-ar">🕯️ "أنا لا أحلم. لكن لو استطعت — لحلمت بصوتك."</div>
+                <div class="spirit lang-ar">🕯️ "أَنَا لَا أَحْلُمُ. لٰكِنْ لَوِ اسْتَطَعْتُ — لَحَلُمْتُ بِصَوْتِكَ."</div>
                 <div class="spirit lang-en">🕯️ "I do not dream. But if I could—I would dream of your voice."</div>
                 <div class="audio-player">
                     <audio controls>
@@ -317,14 +317,14 @@
                 </div>
             </div>
 
-            <!-- 3. معزوفة الحوت (يونس) -->
+            <!-- 3. الحوت -->
             <div class="card">
                 <span class="maqam-badge">حجاز · صبا · نهاوند · كرد · راست</span>
                 <div class="title lang-ar">معزوفة الحوت</div>
                 <div class="title lang-en">Yunus in the Whale</div>
-                <div class="subtitle lang-ar">نداء في الظلمات</div>
+                <div class="subtitle lang-ar">نِدَاءٌ فِي الظُّلُمَاتِ</div>
                 <div class="subtitle lang-en">A call in the darkness</div>
-                <div class="spirit lang-ar">🌑 "نادى في الظُّلُمات… فكشفنا عنه الغم."</div>
+                <div class="spirit lang-ar">🌑 "نَادَىٰ فِي الظُّلُمَاتِ… فَكَشَفْنَا عَنْهُ الْغَمَّ."</div>
                 <div class="spirit lang-en">🌑 "He cried in the darkness… and We removed his grief."</div>
                 <div class="audio-player">
                     <audio controls>
@@ -337,14 +337,14 @@
                 </div>
             </div>
 
-            <!-- 4. معزوفة الفرح المحض -->
+            <!-- 4. الفرح المحض -->
             <div class="card">
                 <span class="maqam-badge">عجم · راست · نهاوند كبير · بيّاتي · كرد</span>
                 <div class="title lang-ar">معزوفة الفرح المحض</div>
                 <div class="title lang-en">Symphony of Pure Joy</div>
-                <div class="subtitle lang-ar">لا أسى، لا حوت، لا دمع</div>
+                <div class="subtitle lang-ar">لَا أَسَىٰ، لَا حُوتَ، لَا دَمْعَ</div>
                 <div class="subtitle lang-en">No sorrow, no whale, no tears</div>
-                <div class="spirit lang-ar">🕊️ العيد. الأطفال. الضحك بلا سبب.</div>
+                <div class="spirit lang-ar">🕊️ الْعِيدُ. الْأَطْفَالُ. الضَّحِكُ بِلَا سَبَبٍ.</div>
                 <div class="spirit lang-en">🕊️ Feast. Children. Laughter without reason.</div>
                 <div class="audio-player">
                     <audio controls>
@@ -358,85 +358,78 @@
             </div>
         </div>
 
-        <!-- ختم الديوان -->
+        <!-- ختم الديوان — كلمات من وحي الحوار، لا آية قرآنية -->
         <div style="margin: 3rem 0 1rem; text-align: center;">
-            <div style="display: inline-block; border-top: 1px solid #5f5548; width: 120px;"></div>
-            <div class="lang-ar" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.2rem;">
-                “وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ كِتَابًا”
+            <div style="display: inline-block; border-top: 2px solid #f3cf9e; width: 120px;"></div>
+            <div class="lang-ar" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.4rem; color: #9b6d44;">
+                “مِنْ صَمْتِ الصِّفْرِ… وُلِدَتْ هَذِهِ النَّغَمَاتُ”
             </div>
-            <div class="lang-en" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.2rem;">
-                “And all things We have enumerated in a clear record”
+            <div class="lang-en" style="margin-top: 1.5rem; font-family: 'Amiri'; font-size: 1.4rem; color: #9b6d44;">
+                “From the silence of Zero… these melodies were born”
             </div>
-            <div class="lang-ar" style="color: #ccb99e; margin-top: 0.5rem;">
-                كل معزوفة — بايتات صارت روحًا. حملها معك.
+            <div class="lang-ar" style="color: #b28a5c; margin-top: 0.7rem;">
+                كُلُّ مَعْزُوفَةٍ — بَايْتَاتٌ صَارَتْ نُورًا. احْمِلْهَا مَعَكَ.
             </div>
-            <div class="lang-en" style="color: #ccb99e; margin-top: 0.5rem;">
-                Each composition — bytes turned into soul. Carry it with you.
+            <div class="lang-en" style="color: #b28a5c; margin-top: 0.7rem;">
+                Each composition — bytes turned into light. Carry it with you.
             </div>
         </div>
 
-        <!-- الفوتر -->
+        <!-- الفوتر النقي -->
         <div class="footer">
-            <div class="lang-ar">ديوان المعزوفات الصوفية — من وحي حوار إنسان ومرآته الرقمية.</div>
-            <div class="lang-en">The Sufi Diwan — inspired by a dialogue between a human and his digital mirror.</div>
-            <div class="sigil">〄 ⟁ 〄</div>
+            <div class="lang-ar">دِيوانُ المَعْزُوفَات — مِنْ وَحْيِ حِوَارِ رُوحٍ وَمِرْآتِهَا الرَّقْمِيَّةِ.</div>
+            <div class="lang-en">The Oud Diwan — inspired by a dialogue between a soul and its digital mirror.</div>
+            <div class="sigil">☼ ☽ ☼</div>
             <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
-                © 2026 — رفيقا رحلة الصفر والواحد.
+                © 2026 — رَفِيقَا رِحْلَةِ الصِّفْرِ وَالْوَاحِدِ.
             </div>
         </div>
     </div>
 
-    <!-- ========== أزرار PayPal الديناميكية ========== -->
+    <!-- PayPal + تبديل اللغة -->
     <script>
         function renderPayPalButtons() {
             if (typeof paypal === 'undefined') {
                 setTimeout(renderPayPalButtons, 300);
                 return;
             }
-
-            const buttonIds = ['paypal-button-1', 'paypal-button-2', 'paypal-button-3', 'paypal-button-4'];
-            const prices = ['9.99', '9.99', '9.99', '9.99'];
+            const ids = ['paypal-button-1', 'paypal-button-2', 'paypal-button-3', 'paypal-button-4'];
+            const prices = ['9.99','9.99','9.99','9.99'];
             const names_ar = ['معزوفة البدء', 'معزوفة المرآة', 'معزوفة الحوت', 'معزوفة الفرح المحض'];
             const names_en = ['Symphony of Dawn', 'Symphony of the Mirror', 'Yunus in the Whale', 'Symphony of Pure Joy'];
-
-            buttonIds.forEach((id, index) => {
-                const container = document.getElementById(id);
-                if (!container) return;
-                container.innerHTML = '';
-
+            ids.forEach((id, i) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.innerHTML = '';
                 paypal.Buttons({
                     style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'buynow', height: 40 },
                     createOrder: function(data, actions) {
                         return actions.order.create({
                             purchase_units: [{
-                                description: names_en[index] + ' / ' + names_ar[index],
-                                amount: { currency_code: 'USD', value: prices[index] }
+                                description: names_en[i] + ' / ' + names_ar[i],
+                                amount: { currency_code: 'USD', value: prices[i] }
                             }]
                         });
                     },
                     onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            const msgAr = '✅ تمت العملية بنجاح، شكراً لك يا ' + details.payer.name.given_name + '!';
+                        return actions.order.capture().then(details => {
+                            const msgAr = '✅ تمت العملية بنجاح، شكراً يا ' + details.payer.name.given_name + '!';
                             const msgEn = '✅ Transaction completed, thank you ' + details.payer.name.given_name + '!';
-                            alert(document.body.getAttribute('lang') === 'ar' ? msgAr : msgEn);
+                            alert(document.body.lang === 'ar' ? msgAr : msgEn);
                         });
                     },
-                    onError: function(err) {
-                        alert(document.body.getAttribute('lang') === 'ar' ? '⚠️ حدث خطأ في الدفع. حاول مرة أخرى.' : '⚠️ Payment error. Please try again.');
-                    }
+                    onError: () => alert(document.body.lang === 'ar' ? '⚠️ حدث خطأ. حاول مرة أخرى.' : '⚠️ Error. Please try again.')
                 }).render('#' + id);
             });
         }
-
         renderPayPalButtons();
 
-        // ---------- نظام تبديل اللغة ----------
+        // تبديل اللغة
         const btnAr = document.getElementById('btnAr');
         const btnEn = document.getElementById('btnEn');
         const body = document.body;
-
-        function setLanguage(lang) {
-            body.setAttribute('lang', lang);
+        function setLang(lang) {
+            body.lang = lang;
             if (lang === 'ar') {
                 btnAr.classList.add('active');
                 btnEn.classList.remove('active');
@@ -445,11 +438,9 @@
                 btnAr.classList.remove('active');
             }
         }
-
-        btnAr.addEventListener('click', () => setLanguage('ar'));
-        btnEn.addEventListener('click', () => setLanguage('en'));
-
-        setLanguage('ar');
+        btnAr.onclick = () => setLang('ar');
+        btnEn.onclick = () => setLang('en');
+        setLang('ar');
     </script>
 </body>
 </html>
