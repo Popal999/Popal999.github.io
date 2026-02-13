@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كيمياء الموسيقى العالمية | بيع الموسيقى الهجينة الرقمية</title>
-    <meta name="description" content="اشترِ موسيقى عالمية هجينة تجمع الصوفي، الشرقي، الغربي، الآسيوي، السندي والهندي. موسيقى فريدة تثير مشاعر جديدة">
+    <title>كيمياء الموسيقى العالمية | مختبر الدمج الموسيقي الرقمي</title>
+    <meta name="description" content="مختبر موسيقي رقمي يدمج 6 حضارات موسيقية في تجارب صوتية فريدة. موسيقى هجينة تثير مشاعر جديدة وتحفز الإبداع.">
+    <meta name="keywords" content="موسيقى هجينة, موسيقى عالمية, موسيقى تأمل, موسيقى علاجية, دمج حضاري موسيقي">
+    <meta name="author" content="مختبر كيمياء الموسيقى العالمية">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-        /* === نظام الألوان الحيوي === */
+        /* === نظام الألوان الحيوي المتكامل === */
         :root {
+            --primary-dark: #0f1419;
             --primary: #1a1a2e;
             --secondary: #ff6b6b;
             --accent: #4ecdc4;
@@ -19,116 +24,205 @@
             --teal: #06d6a0;
             --blue: #118ab2;
             --orange: #ff9e6d;
+            --deep-blue: #1e3a8a;
+            --rose: #e11d74;
+            --emerald: #10b981;
             
-            /* ألوان الأنماط الموسيقية */
-            --sufi: #9b5de5;
-            --eastern: #ff9e6d;
-            --western: #4ecdc4;
-            --asian: #ff6b6b;
-            --sindhi: #06d6a0;
-            --indian: #ffd166;
+            /* ألوان الأنماط الموسيقية مع درجات */
+            --sufi: linear-gradient(135deg, #9b5de5 0%, #6d28d9 100%);
+            --eastern: linear-gradient(135deg, #ff9e6d 0%, #f97316 100%);
+            --western: linear-gradient(135deg, #4ecdc4 0%, #0891b2 100%);
+            --asian: linear-gradient(135deg, #ff6b6b 0%, #dc2626 100%);
+            --sindhi: linear-gradient(135deg, #06d6a0 0%, #059669 100%);
+            --indian: linear-gradient(135deg, #ffd166 0%, #f59e0b 100%);
             
-            --radius: 12px;
-            --shadow: 0 8px 30px rgba(0,0,0,0.12);
-            --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
-            --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-medium: 0 15px 50px rgba(0,0,0,0.15);
+            --shadow-strong: 0 20px 60px rgba(0,0,0,0.25);
+            --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
         }
         
-        /* === Reset === */
+        /* === Reset & Base === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        
         body {
             font-family: 'El Messiri', sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            line-height: 1.8;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(155, 93, 229, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 40% 40%, rgba(4, 120, 87, 0.1) 0%, transparent 40%);
+            z-index: -1;
+            animation: pulse 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.1); }
         }
         
         /* === نظام اللغة === */
-        .lang-ar {
-            display: block;
-        }
-        
-        .lang-en {
-            display: none;
-            font-family: 'Poppins', sans-serif;
-            direction: ltr;
-            text-align: left;
-        }
-        
-        body.english .lang-ar {
-            display: none;
-        }
-        
-        body.english .lang-en {
-            display: block;
-        }
-        
-        body.english {
-            direction: ltr;
-            font-family: 'Poppins', sans-serif;
-        }
+        .lang-ar { display: block; }
+        .lang-en { display: none; }
+        body.english .lang-ar { display: none; }
+        body.english .lang-en { display: block; }
+        body.english { direction: ltr; font-family: 'Poppins', sans-serif; }
         
         /* === Container === */
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
         
-        /* === Header === */
+        /* === Header متطور === */
         header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 20, 30, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
-            padding: 15px 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-smooth);
+        }
+        
+        header.scrolled {
+            padding: 12px 0;
+            background: rgba(15, 20, 30, 0.95);
+            box-shadow: var(--shadow-medium);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
+            text-decoration: none;
         }
         
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--sufi), var(--indian));
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: var(--sufi);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
-            animation: rotate 20s linear infinite;
+            font-size: 28px;
+            position: relative;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255,255,255,0.3), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
         
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         
         .logo-text h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(45deg, var(--sufi), var(--orange));
+            font-size: 2rem;
+            background: linear-gradient(45deg, #fff 30%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        /* === Navigation === */
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+            background: var(--accent);
         }
         
         /* === Header Controls === */
@@ -140,50 +234,58 @@
         
         .language-switcher {
             display: flex;
-            background: rgba(0,0,0,0.05);
-            border-radius: 25px;
-            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
         }
         
         .lang-btn {
-            padding: 8px 20px;
+            padding: 10px 24px;
             border: none;
             background: transparent;
-            border-radius: 20px;
+            border-radius: 50px;
             cursor: pointer;
             font-family: inherit;
-            font-weight: 500;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
             transition: all 0.3s ease;
         }
         
         .lang-btn.active {
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            color: var(--sufi);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
-        .cart-btn {
-            position: relative;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
+        .user-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .icon-btn {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            transition: all var(--transition);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .cart-btn:hover {
+        .icon-btn:hover {
             background: var(--secondary);
-            transform: scale(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
         }
         
-        .cart-count {
+        .badge {
             position: absolute;
             top: -5px;
             right: -5px;
@@ -197,282 +299,263 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            border: 2px solid var(--primary-dark);
         }
         
-        /* === Hero Section === */
+        /* === Hero Section مع موجات صوتية === */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            margin-top: 80px;
+            padding-top: 100px;
             overflow: hidden;
         }
         
-        .hero-bg {
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(155, 93, 229, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(255, 209, 102, 0.15) 0%, transparent 50%),
-                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-            animation: gradientShift 15s infinite alternate;
+            z-index: -1;
         }
         
-        @keyframes gradientShift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(30deg); }
+        .audio-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px;
+            padding-bottom: 40px;
+        }
+        
+        .wave {
+            width: 6px;
+            background: linear-gradient(to top, transparent, var(--accent));
+            border-radius: 4px 4px 0 0;
+            animation: waveAnimation 1.5s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        .wave:nth-child(odd) { animation-delay: 0.2s; }
+        .wave:nth-child(3n) { animation-delay: 0.4s; }
+        .wave:nth-child(4n) { animation-delay: 0.6s; }
+        
+        @keyframes waveAnimation {
+            0%, 100% { height: 20px; }
+            50% { height: 100px; }
         }
         
         .hero-content {
-            position: relative;
-            z-index: 2;
             text-align: center;
-            color: white;
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 40px 0;
         }
         
         .hero-title {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease;
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #fff, var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.5)); }
+            100% { filter: drop-shadow(0 0 30px rgba(155, 93, 229, 0.8)); }
         }
         
         .hero-subtitle {
             font-size: 1.4rem;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             opacity: 0.9;
             line-height: 1.8;
-            animation: fadeInUp 1s ease 0.3s both;
+            color: #cbd5e1;
         }
         
-        .hero-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-        
-        .hero-tag {
-            padding: 10px 25px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .hero-tag:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-        }
-        
-        .hero-buttons {
-            display: flex;
+        /* === Music Styles Grid === */
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.9s both;
+            margin: 60px 0;
         }
         
-        /* === Buttons === */
-        .btn {
-            padding: 18px 40px;
-            border: none;
-            border-radius: var(--radius);
-            font-family: inherit;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, var(--sufi), var(--secondary));
-            color: white;
-            box-shadow: 0 10px 30px rgba(155, 93, 229, 0.4);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(155, 93, 229, 0.6);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
+        .style-card {
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 25px 20px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
         }
         
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-5px);
+        .style-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
         }
         
-        /* === Products Section === */
+        .style-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .sufi-bg { background: var(--sufi); }
+        .eastern-bg { background: var(--eastern); }
+        .western-bg { background: var(--western); }
+        .asian-bg { background: var(--asian); }
+        .sindhi-bg { background: var(--sindhi); }
+        .indian-bg { background: var(--indian); }
+        
+        /* === Products Section متطور === */
         .products-section {
-            padding: 100px 0;
-            background: white;
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
             position: relative;
         }
         
         .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
         }
         
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
+        .title-line {
+            width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, var(--sufi), var(--indian));
+            background: linear-gradient(90deg, var(--purple), var(--accent));
+            margin: 20px auto 30px;
             border-radius: 2px;
         }
         
         .section-subtitle {
-            color: #666;
+            color: #cbd5e1;
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.8;
         }
         
-        /* === Products Grid === */
+        /* === Products Grid متطور === */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 60px;
         }
         
         .product-card {
-            background: white;
-            border-radius: var(--radius);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all var(--transition);
             position: relative;
-            border: 1px solid #f0f0f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-smooth);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-hover);
-            border-color: transparent;
+            transform: translateY(-20px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-strong);
         }
         
         .product-badge {
             position: absolute;
             top: 20px;
-            left: 20px;
-            background: var(--secondary);
-            color: white;
+            right: 20px;
             padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 600;
             z-index: 2;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
         }
         
-        .product-image {
+        .product-media {
             height: 220px;
-            background: linear-gradient(45deg, var(--color1), var(--color2));
             position: relative;
             overflow: hidden;
         }
         
-        .product-image i {
+        .product-media::before {
+            content: '';
             position: absolute;
-            font-size: 80px;
-            color: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--color1), var(--color2));
+            opacity: 0.8;
+        }
+        
+        .product-media i {
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: rgba(255, 255, 255, 0.2);
+            animation: pulse 2s ease-in-out infinite;
         }
         
         .product-content {
             padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            color: var(--primary);
+            color: white;
             line-height: 1.4;
         }
         
         .product-description {
-            color: #666;
+            color: #94a3b8;
             margin-bottom: 25px;
             line-height: 1.7;
+            flex-grow: 1;
         }
         
-        .product-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        
-        .product-tag {
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: rgba(155, 93, 229, 0.1);
-            color: var(--sufi);
-        }
-        
-        .product-footer {
+        .product-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #f0f0f0;
+            margin-top: auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .product-price {
@@ -481,152 +564,231 @@
             gap: 10px;
         }
         
-        .price-current {
-            font-size: 2rem;
+        .current-price {
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--secondary);
+            background: linear-gradient(45deg, var(--secondary), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .price-old {
+        .old-price {
             font-size: 1.2rem;
-            color: #999;
+            color: #64748b;
             text-decoration: line-through;
+        }
+        
+        /* === Music Lab Section (جديد) === */
+        .music-lab {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lab-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .mixer-controls {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-top: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slider-group {
+            margin-bottom: 30px;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .slider-label {
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .slider-value {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(90deg, var(--color), var(--color-light));
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            border: 3px solid var(--color);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
         }
         
         /* === Payment Section === */
         .payment-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
         }
         
-        .payment-methods {
-            display: flex;
-            justify-content: center;
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        
-        .payment-method {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            width: 180px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all var(--transition);
-            border: 2px solid transparent;
-        }
-        
-        .payment-method:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .payment-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .payment-paypal {
-            color: #003087;
+            margin-top: 60px;
         }
         
         .payment-card {
-            color: var(--primary);
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-smooth);
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-medium);
         }
         
         /* === Footer === */
         footer {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: 80px 0 40px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 50px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .footer-section h3 {
             font-size: 1.4rem;
             margin-bottom: 25px;
-            color: var(--gold);
+            color: var(--accent);
         }
         
-        .footer-section p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            margin-bottom: 20px;
+        .contact-list {
+            list-style: none;
         }
         
-        .social-links {
+        .contact-list li {
+            margin-bottom: 15px;
             display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #94a3b8;
+        }
+        
+        .contact-list i {
+            color: var(--accent);
+            width: 20px;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-top: 25px;
         }
         
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
         
-        .social-link:hover {
+        .social-icon:hover {
             background: var(--secondary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotate(10deg);
         }
         
         .newsletter-form {
             display: flex;
             margin-top: 20px;
-            border-radius: var(--radius);
+            border-radius: var(--radius-md);
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .newsletter-input {
             flex: 1;
-            padding: 15px;
+            padding: 18px 20px;
             border: none;
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             color: white;
             font-family: inherit;
+            font-size: 1rem;
         }
         
         .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .newsletter-btn {
-            background: var(--secondary);
+            background: linear-gradient(45deg, var(--secondary), var(--orange));
             color: white;
             border: none;
-            padding: 0 25px;
+            padding: 0 30px;
             cursor: pointer;
             font-family: inherit;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
         
-        .copyright {
+        .newsletter-btn:hover {
+            filter: brightness(1.2);
+        }
+        
+        .footer-bottom {
             text-align: center;
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            color: #64748b;
+            font-size: 0.95rem;
         }
         
-        /* === Modal === */
+        /* === Modals === */
         .modal {
             display: none;
             position: fixed;
@@ -634,194 +796,389 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            backdrop-filter: blur(10px);
         }
         
         .modal-content {
-            background: white;
-            border-radius: var(--radius);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-strong);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         
         .modal-header {
             padding: 30px 30px 20px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .modal-body {
-            padding: 30px;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+        .modal-close {
             background: none;
             border: none;
+            color: #94a3b8;
             font-size: 1.5rem;
             cursor: pointer;
-            color: #999;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        /* === Audio Visualizer === */
+        .audio-visualizer {
+            width: 100%;
+            height: 150px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .visualizer-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100%;
+            gap: 3px;
+            padding: 20px;
+        }
+        
+        .visualizer-bar {
+            width: 6px;
+            min-height: 10px;
+            background: linear-gradient(to top, var(--accent), var(--purple));
+            border-radius: 3px;
+            animation: barAnimation 1.5s ease-in-out infinite;
         }
         
         /* === Responsive === */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 3.5rem; }
+            .section-title { font-size: 2.8rem; }
+        }
+        
         @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 30px;
-            }
+            .nav-menu { gap: 20px; }
+            .hero-title { font-size: 3rem; }
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .payment-methods {
-                gap: 20px;
-            }
-            
-            .payment-method {
-                width: 150px;
-                padding: 20px;
-            }
+            .header-content { flex-direction: column; gap: 20px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .hero-title { font-size: 2.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 1.8rem; }
+            .modal-content { padding: 15px; }
+        }
+        
+        /* === Utility Classes === */
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--purple), var(--accent));
+            color: white;
+            box-shadow: 0 10px 30px rgba(155, 93, 229, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(155, 93, 229, 0.6);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-dark);
+            border-color: white;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, var(--secondary), var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* === Particles Background === */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+    
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <div class="container header-content">
-            <div class="logo">
+            <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-atom"></i>
                 </div>
                 <div class="logo-text">
                     <h1 class="lang-ar">كيمياء الموسيقى العالمية</h1>
                     <h1 class="lang-en">World Music Chemistry</h1>
-                    <p class="lang-ar">موسيقى هجينة تثير مشاعر جديدة</p>
-                    <p class="lang-en">Hybrid Music That Evokes New Feelings</p>
+                    <p class="lang-ar">مختبر الدمج الموسيقي الرقمي</p>
+                    <p class="lang-en">Digital Music Fusion Lab</p>
                 </div>
-            </div>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span class="lang-ar">الرئيسية</span>
+                    <span class="lang-en">Home</span>
+                </a>
+                <a href="#products" class="nav-link" data-section="products">
+                    <i class="fas fa-music"></i>
+                    <span class="lang-ar">المكتبة</span>
+                    <span class="lang-en">Library</span>
+                </a>
+                <a href="#lab" class="nav-link" data-section="lab">
+                    <i class="fas fa-flask"></i>
+                    <span class="lang-ar">المختبر</span>
+                    <span class="lang-en">Lab</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="lang-ar">عن المختبر</span>
+                    <span class="lang-en">About</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span class="lang-ar">اتصل بنا</span>
+                    <span class="lang-en">Contact</span>
+                </a>
+            </nav>
             
             <div class="header-controls">
                 <div class="language-switcher">
-                    <button class="lang-btn active" id="langAr">العربية</button>
-                    <button class="lang-btn" id="langEn">English</button>
+                    <button class="lang-btn active" id="langAr">
+                        <i class="fas fa-language"></i>
+                        العربية
+                    </button>
+                    <button class="lang-btn" id="langEn">
+                        <i class="fas fa-language"></i>
+                        English
+                    </button>
                 </div>
                 
-                <button class="cart-btn" id="cartButton">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
+                <div class="user-actions">
+                    <button class="icon-btn" id="searchBtn" title="بحث">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="icon-btn" id="userBtn" title="حسابي">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="icon-btn" id="cartBtn" title="سلة المشتريات">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="audio-waves">
+                <!-- سيتم توليد الموجات ديناميكياً -->
+            </div>
+        </div>
+        
         <div class="container hero-content">
-            <h1 class="hero-title lang-ar">موسيقى عالمية هجينة تغير إدراكك</h1>
-            <h1 class="hero-title lang-en">Hybrid World Music That Changes Your Perception</h1>
+            <h1 class="hero-title lang-ar">
+                مختبر كيمياء<br>الموسيقى العالمية
+            </h1>
+            <h1 class="hero-title lang-en">
+                World Music<br>Chemistry Lab
+            </h1>
             
             <p class="hero-subtitle lang-ar">
-                اكتشف مزيجاً موسيقياً فريداً يجمع 6 حضارات موسيقية في تجربة سمعية جديدة. 
-                موسيقى رقمية عالية الجودة مصممة لإثارة مشاعر لم تشعر بها من قبل.
+                نحن لا نصنع موسيقى عادية.. نخلق كائنات صوتية جديدة تجمع 6 حضارات موسيقية في تجربة سمعية لم يسبق لها مثيل.
+                <br>موسيقى رقمية عالية الوضوح مصممة لتحفيز المشاعر وتنشيط الإبداع.
             </p>
             <p class="hero-subtitle lang-en">
-                Discover a unique musical blend that combines 6 musical civilizations into a new auditory experience.
-                High-quality digital music designed to evoke feelings you've never felt before.
+                We don't make ordinary music.. We create new sonic beings that combine 6 musical civilizations in an unprecedented auditory experience.
+                <br>High-fidelity digital music designed to stimulate emotions and activate creativity.
             </p>
             
-            <div class="hero-tags">
-                <div class="hero-tag lang-ar">صوفي روحاني</div>
-                <div class="hero-tag lang-en">Sufi Spiritual</div>
+            <div class="styles-grid">
+                <div class="style-card" data-style="sufi">
+                    <div class="style-icon sufi-bg">
+                        <i class="fas fa-dharmachakra"></i>
+                    </div>
+                    <h4 class="lang-ar">صوفي روحاني</h4>
+                    <h4 class="lang-en">Sufi Spiritual</h4>
+                    <p class="lang-ar">الوصول والتجلي</p>
+                    <p class="lang-en">Connection & Epiphany</p>
+                </div>
                 
-                <div class="hero-tag lang-ar">شرقي أصيل</div>
-                <div class="hero-tag lang-en">Authentic Eastern</div>
+                <div class="style-card" data-style="eastern">
+                    <div class="style-icon eastern-bg">
+                        <i class="fas fa-kaaba"></i>
+                    </div>
+                    <h4 class="lang-ar">شرقي أصيل</h4>
+                    <h4 class="lang-en">Authentic Eastern</h4>
+                    <p class="lang-ar">المقام والإيقاع</p>
+                    <p class="lang-en">Maqam & Rhythm</p>
+                </div>
                 
-                <div class="hero-tag lang-ar">غربي معاصر</div>
-                <div class="hero-tag lang-en">Contemporary Western</div>
+                <div class="style-card" data-style="western">
+                    <div class="style-icon western-bg">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <h4 class="lang-ar">غربي معاصر</h4>
+                    <h4 class="lang-en">Contemporary Western</h4>
+                    <p class="lang-ar">الهارموني والتوزيع</p>
+                    <p class="lang-en">Harmony & Arrangement</p>
+                </div>
                 
-                <div class="hero-tag lang-ar">آسيوي ساحر</div>
-                <div class="hero-tag lang-en">Charming Asian</div>
+                <div class="style-card" data-style="asian">
+                    <div class="style-icon asian-bg">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <h4 class="lang-ar">آسيوي ساحر</h4>
+                    <h4 class="lang-en">Charming Asian</h4>
+                    <p class="lang-ar">البساطة والعُمق</p>
+                    <p class="lang-en">Simplicity & Depth</p>
+                </div>
                 
-                <div class="hero-tag lang-ar">سندي نابض</div>
-                <div class="hero-tag lang-en">Pulsating Sindhi</div>
+                <div class="style-card" data-style="sindhi">
+                    <div class="style-icon sindhi-bg">
+                        <i class="fas fa-drum"></i>
+                    </div>
+                    <h4 class="lang-ar">سندي نابض</h4>
+                    <h4 class="lang-en">Pulsating Sindhi</h4>
+                    <p class="lang-ar">الإيقاع الحيوي</p>
+                    <p class="lang-en">Vital Rhythm</p>
+                </div>
                 
-                <div class="hero-tag lang-ar">هندي ملون</div>
-                <div class="hero-tag lang-en">Colorful Indian</div>
+                <div class="style-card" data-style="indian">
+                    <div class="style-icon indian-bg">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h4 class="lang-ar">هندي ملون</h4>
+                    <h4 class="lang-en">Colorful Indian</h4>
+                    <p class="lang-ar">اللحن والتلوين</p>
+                    <p class="lang-en">Melody & Coloring</p>
+                </div>
             </div>
             
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToProducts()">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="lang-ar">اشترِ الموسيقى الآن</span>
-                    <span class="lang-en">Buy Music Now</span>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 50px;">
+                <button class="btn btn-primary" onclick="scrollToSection('products')">
+                    <i class="fas fa-record-vinyl"></i>
+                    <span class="lang-ar">استكشف المكتبة</span>
+                    <span class="lang-en">Explore Library</span>
                 </button>
                 
-                <button class="btn btn-secondary" onclick="playPreview()">
+                <button class="btn btn-secondary" onclick="openMusicLab()">
+                    <i class="fas fa-flask"></i>
+                    <span class="lang-ar">ادخل المختبر</span>
+                    <span class="lang-en">Enter Lab</span>
+                </button>
+                
+                <button class="btn btn-secondary" onclick="playDemo()">
                     <i class="fas fa-play-circle"></i>
-                    <span class="lang-ar">استمع إلى عينة</span>
-                    <span class="lang-en">Listen to Sample</span>
+                    <span class="lang-ar">جرب التجربة</span>
+                    <span class="lang-en">Try Experience</span>
                 </button>
             </div>
         </div>
@@ -830,85 +1187,230 @@
     <!-- Products Section -->
     <section class="products-section" id="products">
         <div class="container">
-            <div class="section-title">
-                <h2 class="lang-ar">منتجاتنا الموسيقية الفريدة</h2>
-                <h2 class="lang-en">Our Unique Music Products</h2>
-                
+            <div class="section-header">
+                <h2 class="section-title lang-ar">مكتبة الكائنات الصوتية</h2>
+                <h2 class="section-title lang-en">Sonic Beings Library</h2>
+                <div class="title-line"></div>
                 <p class="section-subtitle lang-ar">
-                    اختر من مجموعة مزيجاتنا الموسيقية المصممة بعناية. كل منتج هو رحلة سمعية فريدة.
+                    كل منتج هنا هو كيان موسيقي فريد، وُلِد من اتحاد حضارات موسيقية مختلفة.
+                    اختر ما يتناغم مع روحك.
                 </p>
                 <p class="section-subtitle lang-en">
-                    Choose from our carefully designed musical blends. Each product is a unique auditory journey.
+                    Each product here is a unique musical entity, born from the union of different musical civilizations.
+                    Choose what resonates with your soul.
                 </p>
             </div>
             
             <div class="products-grid" id="productsGrid">
-                <!-- سيتم ملؤها بالجافاسكريبت -->
+                <!-- سيتم ملؤها ديناميكياً -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Lab Section -->
+    <section class="music-lab" id="lab">
+        <div class="lab-container">
+            <div class="section-header">
+                <h2 class="section-title lang-ar">مختبر الدمج الموسيقي</h2>
+                <h2 class="section-title lang-en">Music Fusion Lab</h2>
+                <div class="title-line"></div>
+                <p class="section-subtitle lang-ar">
+                    صمم مزيجك الموسيقي الخاص! حرك المُزَالات واختبر كيف تتفاعل الأنماط المختلفة معاً.
+                </p>
+                <p class="section-subtitle lang-en">
+                    Design your own musical blend! Move the sliders and test how different styles interact together.
+                </p>
+            </div>
+            
+            <div class="mixer-controls">
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span class="slider-label" style="color: #9b5de5;">
+                            <i class="fas fa-dharmachakra"></i>
+                            <span class="lang-ar">الموسيقى الصوفية</span>
+                            <span class="lang-en">Sufi Music</span>
+                        </span>
+                        <span class="slider-value" id="sufiValue">50%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider" id="sufiSlider" 
+                           style="--color: #9b5de5; --color-light: rgba(155, 93, 229, 0.3);">
+                </div>
+                
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span class="slider-label" style="color: #ff9e6d;">
+                            <i class="fas fa-kaaba"></i>
+                            <span class="lang-ar">الموسيقى الشرقية</span>
+                            <span class="lang-en">Eastern Music</span>
+                        </span>
+                        <span class="slider-value" id="easternValue">40%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="40" class="slider" id="easternSlider"
+                           style="--color: #ff9e6d; --color-light: rgba(255, 158, 109, 0.3);">
+                </div>
+                
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span class="slider-label" style="color: #4ecdc4;">
+                            <i class="fas fa-guitar"></i>
+                            <span class="lang-ar">الموسيقى الغربية</span>
+                            <span class="lang-en">Western Music</span>
+                        </span>
+                        <span class="slider-value" id="westernValue">35%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="35" class="slider" id="westernSlider"
+                           style="--color: #4ecdc4; --color-light: rgba(78, 205, 196, 0.3);">
+                </div>
+                
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <span class="slider-label" style="color: #ff6b6b;">
+                            <i class="fas fa-yin-yang"></i>
+                            <span class="lang-ar">الموسيقى الآسيوية</span>
+                            <span class="lang-en">Asian Music</span>
+                        </span>
+                        <span class="slider-value" id="asianValue">25%</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="25" class="slider" id="asianSlider"
+                           style="--color: #ff6b6b; --color-light: rgba(255, 107, 107, 0.3);">
+                </div>
+                
+                <div style="margin: 40px 0;">
+                    <div class="audio-visualizer" id="mixerVisualizer">
+                        <div class="visualizer-bars" id="mixerBars"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+                        <button class="btn btn-primary" onclick="playMix()">
+                            <i class="fas fa-play"></i>
+                            <span class="lang-ar">شغل المزيج</span>
+                            <span class="lang-en">Play Mix</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="saveMix()">
+                            <i class="fas fa-save"></i>
+                            <span class="lang-ar">احفظ التصميم</span>
+                            <span class="lang-en">Save Design</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetMix()">
+                            <i class="fas fa-redo"></i>
+                            <span class="lang-ar">إعادة ضبط</span>
+                            <span class="lang-en">Reset</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Payment Section -->
-    <section class="payment-section">
+    <section class="payment-section" id="payment">
         <div class="container">
-            <div class="section-title">
-                <h2 class="lang-ar">دفع آمن وسهل</h2>
-                <h2 class="lang-en">Secure & Easy Payment</h2>
-                
+            <div class="section-header">
+                <h2 class="section-title lang-ar">خيارات الاستحواذ</h2>
+                <h2 class="section-title lang-en">Acquisition Options</h2>
+                <div class="title-line"></div>
                 <p class="section-subtitle lang-ar">
-                    اختر طريقة الدفع المناسبة لك واستمتع بالتحميل الفوري
+                    اختر طريقة الاستحواذ المناسبة لك. جميع المنتجات تشمل تحميل فوري وتحديثات مجانية.
                 </p>
                 <p class="section-subtitle lang-en">
-                    Choose your preferred payment method and enjoy instant download
+                    Choose the acquisition method that suits you. All products include instant download and free updates.
                 </p>
             </div>
             
-            <div class="payment-methods">
-                <div class="payment-method">
-                    <div class="payment-icon">
-                        <i class="fab fa-paypal payment-paypal"></i>
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="style-icon sufi-bg" style="width: 80px; height: 80px; margin: 0 auto 25px;">
+                        <i class="fas fa-download"></i>
                     </div>
-                    <h3 class="lang-ar">باي بال</h3>
-                    <h3 class="lang-en">PayPal</h3>
-                    <p class="lang-ar">آمن وسريع</p>
-                    <p class="lang-en">Secure & Fast</p>
+                    <h3 class="lang-ar">شراء فردي</h3>
+                    <h3 class="lang-en">Individual Purchase</h3>
+                    <p class="lang-ar" style="color: #94a3b8; margin: 20px 0;">
+                        اشترِ المنتجات بشكل منفصل. مثالي لتجربة محددة.
+                    </p>
+                    <p class="lang-en" style="color: #94a3b8; margin: 20px 0;">
+                        Purchase products separately. Perfect for specific experiences.
+                    </p>
+                    <div class="current-price">$19.99+</div>
                 </div>
                 
-                <div class="payment-method">
-                    <div class="payment-icon">
-                        <i class="far fa-credit-card payment-card"></i>
+                <div class="payment-card">
+                    <div class="style-icon eastern-bg" style="width: 80px; height: 80px; margin: 0 auto 25px;">
+                        <i class="fas fa-layer-group"></i>
                     </div>
-                    <h3 class="lang-ar">بطاقة ائتمان</h3>
-                    <h3 class="lang-en">Credit Card</h3>
-                    <p class="lang-ar">فيزا / ماستركارد</p>
-                    <p class="lang-en">Visa / MasterCard</p>
+                    <h3 class="lang-ar">الباقة الكاملة</h3>
+                    <h3 class="lang-en">Complete Bundle</h3>
+                    <p class="lang-ar" style="color: #94a3b8; margin: 20px 0;">
+                        كل المكتبة مع خصم 40% + تحديثات دائمة.
+                    </p>
+                    <p class="lang-en" style="color: #94a3b8; margin: 20px 0;">
+                        Entire library with 40% discount + lifetime updates.
+                    </p>
+                    <div class="current-price">$299</div>
+                    <div class="old-price">$499</div>
+                </div>
+                
+                <div class="payment-card">
+                    <div class="style-icon western-bg" style="width: 80px; height: 80px; margin: 0 auto 25px;">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="lang-ar">اشتراك شهري</h3>
+                    <h3 class="lang-en">Monthly Subscription</h3>
+                    <p class="lang-ar" style="color: #94a3b8; margin: 20px 0;">
+                        وصول غير محدود لكل المحتوى + محتوى حصري.
+                    </p>
+                    <p class="lang-en" style="color: #94a3b8; margin: 20px 0;">
+                        Unlimited access to all content + exclusive content.
+                    </p>
+                    <div class="current-price">$29.99/شهر</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h3 class="lang-ar">كيمياء الموسيقى العالمية</h3>
-                    <h3 class="lang-en">World Music Chemistry</h3>
+                    <h3 class="lang-ar">مختبر كيمياء الموسيقى</h3>
+                    <h3 class="lang-en">Music Chemistry Lab</h3>
                     
-                    <p class="lang-ar">
-                        نخلق موسيقى هجينة فريدة تجمع أفضل ما في الحضارات الموسيقية العالمية. 
-                        كل منتج هو رحلة استكشاف جديدة للمشاعر والأصوات.
-                    </p>
-                    <p class="lang-en">
-                        We create unique hybrid music that combines the best of global musical civilizations.
-                        Each product is a new journey of discovering emotions and sounds.
+                    <p style="color: #94a3b8; margin: 20px 0; line-height: 1.8;">
+                        <span class="lang-ar">
+                            نحن رواد في هندسة المشاعر الصوتية. نؤمن بأن الموسيقى لغة كونية يمكنها توحيد الحضارات.
+                            مختبرنا هو مساحة للبحث والتطوير في مجال الدمج الموسيقي الحضاري.
+                        </span>
+                        <span class="lang-en">
+                            We are pioneers in the engineering of sonic emotions. We believe music is a universal language that can unite civilizations.
+                            Our lab is a space for research and development in cultural music fusion.
+                        </span>
                     </p>
                     
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
+                    <div class="social-grid">
+                        <a href="#" class="social-icon" style="background: #1DA1F2;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #E4405F;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #5865F2;">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #FF0000;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #1DB954;">
+                            <i class="fab fa-spotify"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #FF5722;">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #0088cc;">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-icon" style="background: #25D366;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -916,28 +1418,86 @@
                     <h3 class="lang-ar">معلومات الاتصال</h3>
                     <h3 class="lang-en">Contact Information</h3>
                     
-                    <p><i class="fas fa-envelope"></i> contact@worldmusicchemistry.com</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>lab@musicchemistry.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="lang-ar">الرياض، المملكة العربية السعودية</span>
+                            <span class="lang-en">Riyadh, Saudi Arabia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span class="lang-ar">٢٤/٧ - دعم فني متواصل</span>
+                            <span class="lang-en">24/7 - Continuous Support</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="lang-ar">النشرة الإبداعية</h3>
+                    <h3 class="lang-en">Creative Newsletter</h3>
                     
-                    <div style="margin-top: 30px;">
-                        <h4 class="lang-ar">النشرة الموسيقية</h4>
-                        <h4 class="lang-en">Music Newsletter</h4>
-                        
-                        <div class="newsletter-form">
-                            <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني" id="emailInputAr">
-                            <input type="email" class="newsletter-input" placeholder="Your Email" id="emailInputEn" style="display: none;">
-                            <button class="newsletter-btn" onclick="subscribeNewsletter()">
-                                <span class="lang-ar">اشتراك</span>
-                                <span class="lang-en">Subscribe</span>
-                            </button>
-                        </div>
+                    <p style="color: #94a3b8; margin: 20px 0;">
+                        <span class="lang-ar">
+                            اشترك للحصول على محتوى حصري، عروض خاصة، ومقاطع صوتية تجريبية.
+                        </span>
+                        <span class="lang-en">
+                            Subscribe for exclusive content, special offers, and experimental audio clips.
+                        </span>
+                    </p>
+                    
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" id="newsletterEmail" 
+                               placeholder="بريدك الإلكتروني" data-ar="بريدك الإلكتروني" data-en="Your Email">
+                        <button class="newsletter-btn" onclick="subscribeNewsletter()">
+                            <i class="fas fa-paper-plane"></i>
+                            <span class="lang-ar">اشتراك</span>
+                            <span class="lang-en">Subscribe</span>
+                        </button>
                     </div>
+                    
+                    <p style="color: #64748b; font-size: 0.9rem; margin-top: 15px;">
+                        <span class="lang-ar">نعدك بعدم إرسال بريد مزعج. يمكنك إلغاء الاشتراك في أي وقت.</span>
+                        <span class="lang-en">We promise no spam. You can unsubscribe anytime.</span>
+                    </p>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p class="lang-ar">© 2026 كيمياء الموسيقى العالمية. جميع الحقوق محفوظة. موسيقى رقمية للتحميل الفوري.</p>
-                <p class="lang-en">© 2026 World Music Chemistry. All rights reserved. Digital music for instant download.</p>
+            <div class="footer-bottom">
+                <p class="lang-ar">
+                    © ٢٠٢٦ مختبر كيمياء الموسيقى العالمية. جميع الحقوق محفوظة.
+                    <br>هذا المشروع هو ثمرة بحث وتطوير مستمر في مجال الدمج الموسيقي الحضاري.
+                </p>
+                <p class="lang-en">
+                    © 2026 World Music Chemistry Lab. All rights reserved.
+                    <br>This project is the fruit of continuous research and development in cultural music fusion.
+                </p>
+                
+                <div style="margin-top: 20px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">
+                        <span class="lang-ar">سياسة الخصوصية</span>
+                        <span class="lang-en">Privacy Policy</span>
+                    </a>
+                    <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">
+                        <span class="lang-ar">شروط الاستخدام</span>
+                        <span class="lang-en">Terms of Service</span>
+                    </a>
+                    <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">
+                        <span class="lang-ar">التراخيص</span>
+                        <span class="lang-en">Licenses</span>
+                    </a>
+                    <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">
+                        <span class="lang-ar">إخلاء المسؤولية</span>
+                        <span class="lang-en">Disclaimer</span>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -945,245 +1505,322 @@
     <!-- Cart Modal -->
     <div class="modal" id="cartModal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('cartModal')">&times;</button>
-            
             <div class="modal-header">
-                <h2 class="lang-ar">سلة التسوق</h2>
-                <h2 class="lang-en">Shopping Cart</h2>
+                <h2 class="lang-ar">سلة الكائنات الصوتية</h2>
+                <h2 class="lang-en">Sonic Beings Cart</h2>
+                <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
             </div>
-            
-            <div class="modal-body">
-                <div id="cartItems">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
-                </div>
-                
-                <div style="border-top: 2px solid #f0f0f0; padding-top: 20px; margin-top: 20px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold;">
-                        <span class="lang-ar">الإجمالي:</span>
-                        <span class="lang-en">Total:</span>
-                        <span id="cartTotal">$0.00</span>
-                    </div>
-                    
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 30px; padding: 18px;" onclick="checkout()">
-                        <i class="fas fa-lock"></i>
-                        <span class="lang-ar">إتمام عملية الشراء</span>
-                        <span class="lang-en">Complete Purchase</span>
-                    </button>
-                </div>
+            <div class="modal-body" id="cartModalBody">
+                <!-- سيتم ملؤها ديناميكياً -->
             </div>
         </div>
     </div>
 
-    <!-- Preview Modal -->
+    <!-- Product Preview Modal -->
     <div class="modal" id="previewModal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('previewModal')">&times;</button>
-            
             <div class="modal-header">
                 <h2 id="previewTitle" class="lang-ar"></h2>
                 <h2 id="previewTitleEn" class="lang-en"></h2>
+                <button class="modal-close" onclick="closeModal('previewModal')">&times;</button>
             </div>
-            
+            <div class="modal-body" id="previewModalBody">
+                <!-- سيتم ملؤها ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player Modal -->
+    <div class="modal" id="playerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="lang-ar">مشغل المختبر</h2>
+                <h2 class="lang-en">Lab Player</h2>
+                <button class="modal-close" onclick="closeModal('playerModal')">&times;</button>
+            </div>
             <div class="modal-body">
-                <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); margin-bottom: 25px;">
-                    <p id="previewDescription" class="lang-ar"></p>
-                    <p id="previewDescriptionEn" class="lang-en"></p>
+                <div class="audio-visualizer" id="playerVisualizer">
+                    <div class="visualizer-bars" id="playerBars"></div>
                 </div>
                 
-                <div id="previewTags" style="margin-bottom: 25px;"></div>
-                
-                <div style="background: #e8f5e9; padding: 20px; border-radius: var(--radius); margin-bottom: 30px;">
-                    <p style="color: #2e7d32; margin-bottom: 10px;">
-                        <i class="fas fa-download"></i>
-                        <span class="lang-ar">يشمل التحميل الفوري:</span>
-                        <span class="lang-en">Includes instant download:</span>
+                <div style="text-align: center; margin: 30px 0;">
+                    <h3 id="playerTitle" class="lang-ar">مزيجك الموسيقي</h3>
+                    <h3 id="playerTitleEn" class="lang-en">Your Music Mix</h3>
+                    <p id="playerDescription" class="lang-ar" style="color: #94a3b8; margin-top: 10px;">
+                        جاري تشغيل التصميم الخاص بك...
                     </p>
-                    <p style="color: #2e7d32;">
-                        <span class="lang-ar">ملفات MP3 بجودة 320kbps + WAV 24-bit + كتابة PDF عن العمل</span>
-                        <span class="lang-en">MP3 files 320kbps + WAV 24-bit + PDF booklet about the work</span>
+                    <p id="playerDescriptionEn" class="lang-en" style="color: #94a3b8; margin-top: 10px;">
+                        Playing your design...
                     </p>
                 </div>
                 
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <div class="price-current" id="previewPrice">$29.99</div>
-                        <div class="price-old" id="previewOldPrice" style="display: none;"></div>
-                    </div>
-                    
-                    <button class="btn btn-primary" onclick="addToCartFromPreview()">
-                        <i class="fas fa-cart-plus"></i>
-                        <span class="lang-ar">أضف إلى السلة</span>
-                        <span class="lang-en">Add to Cart</span>
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                    <button class="icon-btn" onclick="playerControl('prev')" style="width: 60px; height: 60px;">
+                        <i class="fas fa-step-backward"></i>
                     </button>
+                    <button class="icon-btn" onclick="playerControl('play')" id="playBtn" style="width: 80px; height: 80px; background: var(--secondary);">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="icon-btn" onclick="playerControl('next')" style="width: 60px; height: 60px;">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <input type="range" min="0" max="100" value="0" class="slider" id="progressSlider" style="--color: var(--accent); --color-light: rgba(78, 205, 196, 0.3);">
+                    <div style="display: flex; justify-content: space-between; margin-top: 10px; color: #94a3b8;">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">3:45</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // === البيانات ===
-        const products = [
+        // === بيانات المشروع ===
+        const musicProducts = [
             {
                 id: 1,
-                titleAr: "اتحاد المقامات السبعة - الألبوم الكامل",
-                titleEn: "Union of Seven Maqams - Complete Album",
-                descriptionAr: "موسيقى تجمع بين الألوان السبعة في رحلة سمعية واحدة. مثالي للاسترخاء العميق والتأمل والتجارب الروحية.",
-                descriptionEn: "Music that combines all seven colors in one auditory journey. Perfect for deep relaxation, meditation, and spiritual experiences.",
-                price: 34.99,
-                oldPrice: 49.99,
-                tags: ['sufi', 'eastern', 'western', 'asian', 'sindhi', 'indian'],
-                badge: "الأكثر طلباً",
+                titleAr: "الكونسيرتو الصوفي - مزمور الروح",
+                titleEn: "Sufi Concerto - Psalm of the Soul",
+                descriptionAr: "أول كونسيرتو في العالم يجمع بين الناي الصوفي والأوركسترا الغربية وآلات الشرق. رحلة من الأرض إلى السماء عبر 7 حركات موسيقية.",
+                descriptionEn: "World's first concerto combining Sufi ney, Western orchestra, and Eastern instruments. A journey from earth to heaven through 7 musical movements.",
+                price: 49.99,
+                oldPrice: 69.99,
+                tags: ['sufi', 'eastern', 'western'],
+                badgeAr: "تحفة فريدة",
+                badgeEn: "Unique Masterpiece",
                 color1: "#9b5de5",
-                color2: "#ffd166"
+                color2: "#4ecdc4",
+                duration: "72 دقيقة",
+                files: "WAV 24-bit + MP3 320kbps + PDF booklet",
+                features: ["7 حركات موسيقية", "مؤلفة أوركسترالية", "تسجيل في استوديو دولي"]
             },
             {
                 id: 2,
-                titleAr: "حوار الشرق والغرب - بيانو وعود",
-                titleEn: "East-West Dialogue - Piano & Oud",
-                descriptionAr: "موسيقى حوارية بين البيانو الغربي والعود الشرقي. مزيج نادر يلامس الروح.",
-                descriptionEn: "Dialogical music between Western piano and Eastern oud. A rare blend that touches the soul.",
-                price: 24.99,
+                titleAr: "حوار العود والبيانو - قصيدة صامتة",
+                titleEn: "Oud & Piano Dialogue - Silent Poem",
+                descriptionAr: "حوار حميم بين العود الشرقي والبيانو الغربي. 12 مقطوعة تعبر عن مراحل الحب الروحي، من اللقاء الأول إلى الاتحاد الكوني.",
+                descriptionEn: "Intimate dialogue between Eastern oud and Western piano. 12 pieces expressing stages of spiritual love, from first meeting to cosmic union.",
+                price: 34.99,
                 oldPrice: null,
                 tags: ['eastern', 'western'],
-                badge: "حصري",
+                badgeAr: "حصري",
+                badgeEn: "Exclusive",
                 color1: "#ff9e6d",
-                color2: "#4ecdc4"
+                color2: "#9b5de5",
+                duration: "58 دقيقة",
+                files: "FLAC + MP3 + Sheet Music PDF",
+                features: ["تسجيل مباشر", "ارتجال موسيقي", "جلسة واحدة متواصلة"]
             },
             {
                 id: 3,
-                titleAr: "أنغام آسيوية - رحلة إلى الشرق البعيد",
-                titleEn: "Asian Harmonies - Journey to the Far East",
-                descriptionAr: "موسيقى مستوحاة من ثقافات شرق آسيا، مع مزج معاصر يجعلها مناسبة لكل الأذواق.",
-                descriptionEn: "Music inspired by East Asian cultures, with contemporary blending suitable for all tastes.",
-                price: 19.99,
-                oldPrice: 24.99,
-                tags: ['asian'],
-                badge: "جديد",
+                titleAr: "أنغام الشرق البعيد - رحلة إلى اليابان",
+                titleEn: "Far East Harmonies - Journey to Japan",
+                descriptionAr: "موسيقى تجمع بين الكوتو الياباني والعود العربي والهارمونيات الغربية. رحلة صوتية عبر جبال فوجي وحدائق الزن.",
+                descriptionEn: "Music combining Japanese koto, Arabic oud, and Western harmonies. A sonic journey through Mount Fuji and Zen gardens.",
+                price: 29.99,
+                oldPrice: 39.99,
+                tags: ['asian', 'eastern'],
+                badgeAr: "رحلة صوتية",
+                badgeEn: "Sonic Journey",
                 color1: "#ff6b6b",
-                color2: "#ffd166"
+                color2: "#ffd166",
+                duration: "65 دقيقة",
+                files: "WAV + MP3 + Visual Art PDF",
+                features: ["آلات يابانية أصلية", "تسجيل في كيوتو", "أصوات طبيعية"]
             },
             {
                 id: 4,
-                titleAr: "موسيقى الشفاء والتأمل - 3 ساعات",
-                titleEn: "Healing & Meditation Music - 3 Hours",
-                descriptionAr: "موسيقى مصممة خصيصاً للاسترخاء العميق وتخفيف التوتر والشفاء الذاتي.",
-                descriptionEn: "Music specifically designed for deep relaxation, stress relief, and self-healing.",
-                price: 29.99,
-                oldPrice: 39.99,
-                tags: ['sufi', 'indian', 'eastern'],
-                badge: "للصحة",
+                titleAr: "موسيقى الشفاء الكمومي - موجات ألفا وثيتا",
+                titleEn: "Quantum Healing Music - Alpha & Theta Waves",
+                descriptionAr: "موسيقى مصممة علمياً لتغيير موجات الدماغ. تجمع بين الترددات الصوتية العلاجية والألحان الصوفية للوصول إلى حالات وعي عميقة.",
+                descriptionEn: "Scientifically designed music to change brain waves. Combines healing sound frequencies with Sufi melodies to reach deep states of consciousness.",
+                price: 44.99,
+                oldPrice: 59.99,
+                tags: ['sufi', 'indian'],
+                badgeAr: "للعلاج",
+                badgeEn: "For Healing",
                 color1: "#06d6a0",
-                color2: "#4ecdc4"
+                color2: "#4ecdc4",
+                duration: "180 دقيقة",
+                files: "Binaural Beats + Stereo + Meditation Guide",
+                features: ["ترددات شفائية", "موجات دماغية مدروسة", "جلسات موجهة"]
             },
             {
                 id: 5,
-                titleAr: "المجموعة الكاملة - كل المنتجات",
-                titleEn: "Complete Collection - All Products",
-                descriptionAr: "جميع منتجاتنا في باقة واحدة مع خصم 40%. تشمل كل الألوان الموسيقية الستة.",
-                descriptionEn: "All our products in one bundle with 40% discount. Includes all six musical colors.",
-                price: 89.99,
-                oldPrice: 149.95,
+                titleAr: "مختبر الدمج الكامل - كل المكتبة",
+                titleEn: "Complete Fusion Lab - Entire Library",
+                descriptionAr: "المكتبة الكاملة مع خصم 45%. تشمل كل الأعمال الحالية والمستقبلية + وصول للمختبر التفاعلي + تحديثات دائمة.",
+                descriptionEn: "Complete library with 45% discount. Includes all current and future works + access to interactive lab + lifetime updates.",
+                price: 299.00,
+                oldPrice: 549.00,
                 tags: ['sufi', 'eastern', 'western', 'asian', 'sindhi', 'indian'],
-                badge: "وفر 40%",
+                badgeAr: "وفر 45%",
+                badgeEn: "Save 45%",
                 color1: "#9b5de5",
-                color2: "#ff6b6b"
+                color2: "#ff6b6b",
+                duration: "غير محدود",
+                files: "كل الصيغ + المصادر + التراخيص",
+                features: ["كل المحتوى", "تحديثات دائمة", "دعم مميز"]
             },
             {
                 id: 6,
-                titleAr: "جلسات التأمل اليومية - 30 جلسة",
-                titleEn: "Daily Meditation Sessions - 30 Sessions",
-                descriptionAr: "30 جلسة موسيقية قصيرة للتأمل اليومي، كل جلسة تجمع لونين موسيقيين مختلفين.",
-                descriptionEn: "30 short musical sessions for daily meditation, each combining two different musical colors.",
-                price: 17.99,
+                titleAr: "جلسات التأمل اليومي - 30 يوماً من التحول",
+                titleEn: "Daily Meditation Sessions - 30 Days of Transformation",
+                descriptionAr: "برنامج متكامل لمدة 30 يوماً. كل يوم جلسة تأمل مختلفة تجمع نمطين موسيقيين. مصمم للتطور الروحي اليومي.",
+                descriptionEn: "Complete 30-day program. Each day a different meditation session combining two musical styles. Designed for daily spiritual evolution.",
+                price: 27.99,
                 oldPrice: null,
-                tags: ['sufi', 'indian', 'eastern'],
-                badge: "يومي",
+                tags: ['sufi', 'indian'],
+                badgeAr: "برنامج يومي",
+                badgeEn: "Daily Program",
                 color1: "#118ab2",
-                color2: "#06d6a0"
+                color2: "#06d6a0",
+                duration: "900 دقيقة",
+                files: "MP3 + PDF Guide + Progress Tracker",
+                features: ["برنامج منظم", "تتبع التقدم", "جلسات قصيرة"]
             }
         ];
 
-        // === متغيرات ===
-        let cart = JSON.parse(localStorage.getItem('world_music_cart')) || [];
-        let currentPreviewProduct = null;
+        // === حالة التطبيق ===
+        const state = {
+            cart: JSON.parse(localStorage.getItem('music_lab_cart')) || [],
+            language: localStorage.getItem('music_lab_language') || 'ar',
+            user: JSON.parse(localStorage.getItem('music_lab_user')) || null,
+            mix: JSON.parse(localStorage.getItem('music_lab_mix')) || {
+                sufi: 50,
+                eastern: 40,
+                western: 35,
+                asian: 25,
+                sindhi: 30,
+                indian: 45
+            },
+            isPlaying: false,
+            currentTrack: null
+        };
 
-        // === تهيئة الصفحة ===
+        // === تهيئة التطبيق ===
         document.addEventListener('DOMContentLoaded', function() {
-            renderProducts();
-            updateCartCount();
-            renderCart();
-            setupEventListeners();
+            initApp();
         });
+
+        function initApp() {
+            // تعيين اللغة
+            setLanguage(state.language);
+            
+            // إنشاء الموجات الصوتية
+            createAudioWaves();
+            
+            // إنشاء الجسيمات
+            createParticles();
+            
+            // عرض المنتجات
+            renderProducts();
+            
+            // تحديث العداد
+            updateCartBadge();
+            
+            // إعداد المنزلقات
+            setupSliders();
+            
+            // إعداد المستمعين للأحداث
+            setupEventListeners();
+            
+            // تحديث واجهة المستخدم
+            updateUI();
+        }
 
         // === إعداد مستمعي الأحداث ===
         function setupEventListeners() {
             // أزرار اللغة
-            document.getElementById('langAr').addEventListener('click', function() {
-                setLanguage('ar');
-            });
-            
-            document.getElementById('langEn').addEventListener('click', function() {
-                setLanguage('en');
-            });
+            document.getElementById('langAr').addEventListener('click', () => setLanguage('ar'));
+            document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
             
             // زر السلة
-            document.getElementById('cartButton').addEventListener('click', function() {
-                openModal('cartModal');
+            document.getElementById('cartBtn').addEventListener('click', () => openModal('cartModal'));
+            
+            // روابط التنقل
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    scrollToSection(section);
+                    
+                    // تحديث النشاط
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
             });
             
-            // تحديث حقول البريد الإلكتروني عند تبديل اللغة
-            document.body.addEventListener('click', function() {
-                updateEmailPlaceholder();
+            // تتبع التمرير لتحديث الهيدر
+            window.addEventListener('scroll', updateHeaderOnScroll);
+            
+            // تحديث حقل البريد عند تبديل اللغة
+            document.addEventListener('languageChanged', updateEmailPlaceholder);
+            
+            // إغلاق النوافذ المنبثقة بالنقر خارجها
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    closeModal(e.target.id);
+                }
+            });
+            
+            // تحديث المنزلقات
+            document.querySelectorAll('.slider').forEach(slider => {
+                slider.addEventListener('input', updateMixer);
             });
         }
 
-        // === تبديل اللغة ===
+        // === نظام اللغة ===
         function setLanguage(lang) {
-            const body = document.body;
-            const arabicBtn = document.getElementById('langAr');
-            const englishBtn = document.getElementById('langEn');
+            state.language = lang;
+            localStorage.setItem('music_lab_language', lang);
             
-            if (lang === 'ar') {
-                body.classList.remove('english');
-                arabicBtn.classList.add('active');
-                englishBtn.classList.remove('active');
-            } else {
+            const body = document.body;
+            const isEnglish = lang === 'en';
+            
+            if (isEnglish) {
                 body.classList.add('english');
-                englishBtn.classList.add('active');
-                arabicBtn.classList.remove('active');
+                document.getElementById('langEn').classList.add('active');
+                document.getElementById('langAr').classList.remove('active');
+            } else {
+                body.classList.remove('english');
+                document.getElementById('langAr').classList.add('active');
+                document.getElementById('langEn').classList.remove('active');
             }
             
-            // تحديث مكان حفظ النص في حقول البريد الإلكتروني
-            updateEmailPlaceholder();
+            // تحديث النصوص الديناميكية
+            updateDynamicTexts();
             
-            // حفظ التفضيل
-            localStorage.setItem('music_language', lang);
+            // حدث مخصص
+            document.dispatchEvent(new Event('languageChanged'));
+        }
+
+        function updateDynamicTexts() {
+            // تحديث النصوص الديناميكية هنا
+            updateEmailPlaceholder();
         }
 
         function updateEmailPlaceholder() {
-            const isEnglish = document.body.classList.contains('english');
-            const emailInputAr = document.getElementById('emailInputAr');
-            const emailInputEn = document.getElementById('emailInputEn');
+            const input = document.getElementById('newsletterEmail');
+            if (!input) return;
             
-            if (isEnglish) {
-                emailInputAr.style.display = 'none';
-                emailInputEn.style.display = 'block';
-            } else {
-                emailInputAr.style.display = 'block';
-                emailInputEn.style.display = 'none';
-            }
+            const isEnglish = state.language === 'en';
+            input.placeholder = isEnglish ? "Your Email" : "بريدك الإلكتروني";
         }
 
-        // === عرض المنتجات ===
+        // === المنتجات ===
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            
             grid.innerHTML = '';
             
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.style.setProperty('--color1', product.color1);
-                productCard.style.setProperty('--color2', product.color2);
+            musicProducts.forEach(product => {
+                const isEnglish = state.language === 'en';
+                const badgeText = isEnglish ? product.badgeEn : product.badgeAr;
                 
                 const tagsHtml = product.tags.map(tag => {
                     const tagNames = {
@@ -1195,15 +1832,18 @@
                         indian: { ar: 'هندي', en: 'Indian' }
                     };
                     
-                    const isEnglish = document.body.classList.contains('english');
                     const tagText = isEnglish ? tagNames[tag].en : tagNames[tag].ar;
-                    
                     return `<span class="product-tag">${tagText}</span>`;
                 }).join('');
                 
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.style.setProperty('--color1', product.color1);
+                productCard.style.setProperty('--color2', product.color2);
+                
                 productCard.innerHTML = `
-                    <div class="product-badge">${product.badge}</div>
-                    <div class="product-image">
+                    <div class="product-badge">${badgeText}</div>
+                    <div class="product-media">
                         <i class="fas fa-compact-disc"></i>
                     </div>
                     <div class="product-content">
@@ -1217,19 +1857,21 @@
                             ${tagsHtml}
                         </div>
                         
-                        <div class="product-footer">
+                        <div class="product-meta">
                             <div class="product-price">
-                                <span class="price-current">$${product.price.toFixed(2)}</span>
-                                ${product.oldPrice ? `<span class="price-old">$${product.oldPrice.toFixed(2)}</span>` : ''}
+                                <span class="current-price">$${product.price.toFixed(2)}</span>
+                                ${product.oldPrice ? `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>` : ''}
                             </div>
                             
-                            <div style="display: flex; gap: 10px;">
-                                <button class="btn btn-secondary" style="padding: 10px 20px;" onclick="previewProduct(${product.id})">
-                                    <i class="fas fa-play"></i>
-                                    <span class="lang-ar">عينة</span>
+                            <div style="display: flex; gap: 12px;">
+                                <button class="btn btn-secondary" style="padding: 12px 24px;" 
+                                        onclick="previewProduct(${product.id})">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span class="lang-ar">معاينة</span>
                                     <span class="lang-en">Preview</span>
                                 </button>
-                                <button class="btn btn-primary" style="padding: 10px 20px;" onclick="addToCart(${product.id})">
+                                <button class="btn btn-primary" style="padding: 12px 24px;" 
+                                        onclick="addToCart(${product.id})">
                                     <i class="fas fa-cart-plus"></i>
                                     <span class="lang-ar">أضف</span>
                                     <span class="lang-en">Add</span>
@@ -1243,146 +1885,246 @@
             });
         }
 
-        // === إضافة إلى السلة ===
+        // === السلة ===
         function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = musicProducts.find(p => p.id === productId);
             if (!product) return;
             
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
+            const existing = state.cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
             } else {
-                cart.push({
+                state.cart.push({
                     id: product.id,
                     titleAr: product.titleAr,
                     titleEn: product.titleEn,
                     price: product.price,
-                    quantity: 1
+                    quantity: 1,
+                    color: product.color1
                 });
             }
             
             updateCart();
-            
-            // رسالة تأكيد
-            const isEnglish = document.body.classList.contains('english');
-            const message = isEnglish 
-                ? `Added "${product.titleEn}" to cart`
-                : `تم إضافة "${product.titleAr}" إلى السلة`;
-            
-            showNotification(message);
+            showNotification(
+                state.language === 'en' 
+                    ? `Added "${product.titleEn}" to cart`
+                    : `تم إضافة "${product.titleAr}" إلى السلة`
+            );
         }
 
-        function addToCartFromPreview() {
-            if (!currentPreviewProduct) return;
-            addToCart(currentPreviewProduct.id);
-            closeModal('previewModal');
-        }
-
-        // === تحديث السلة ===
         function updateCart() {
-            localStorage.setItem('world_music_cart', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
+            localStorage.setItem('music_lab_cart', JSON.stringify(state.cart));
+            updateCartBadge();
+            renderCartModal();
         }
 
-        function updateCartCount() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
+        function updateCartBadge() {
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                const count = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
         }
 
-        function renderCart() {
-            const container = document.getElementById('cartItems');
-            if (!container) return;
+        function renderCartModal() {
+            const modalBody = document.getElementById('cartModalBody');
+            if (!modalBody) return;
             
-            container.innerHTML = '';
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 40px 20px;">
-                        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
-                        <p class="lang-ar" style="color: #666;">سلة التسوق فارغة</p>
-                        <p class="lang-en" style="color: #666;">Your cart is empty</p>
+            if (state.cart.length === 0) {
+                modalBody.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div class="style-icon sufi-bg" style="width: 100px; height: 100px; margin: 0 auto 30px;">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="lang-ar" style="margin-bottom: 15px;">سلة الكائنات الصوتية فارغة</h3>
+                        <h3 class="lang-en" style="margin-bottom: 15px;">Sonic Beings Cart is Empty</h3>
+                        <p class="lang-ar" style="color: #94a3b8; margin-bottom: 30px;">
+                            ابدأ بإضافة بعض الكائنات الصوتية من المكتبة
+                        </p>
+                        <p class="lang-en" style="color: #94a3b8; margin-bottom: 30px;">
+                            Start by adding some sonic beings from the library
+                        </p>
+                        <button class="btn btn-primary" onclick="closeModal('cartModal'); scrollToSection('products');">
+                            <i class="fas fa-record-vinyl"></i>
+                            <span class="lang-ar">استكشف المكتبة</span>
+                            <span class="lang-en">Explore Library</span>
+                        </button>
                     </div>
                 `;
-                
-                document.getElementById('cartTotal').textContent = '$0.00';
                 return;
             }
             
             let total = 0;
+            let itemsHtml = '';
             
-            cart.forEach(item => {
+            state.cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 
-                const isEnglish = document.body.classList.contains('english');
-                const itemTitle = isEnglish ? item.titleEn : item.titleAr;
+                const title = state.language === 'en' ? item.titleEn : item.titleAr;
                 
-                const itemElement = document.createElement('div');
-                itemElement.className = 'cart-item';
-                itemElement.style.cssText = `
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 15px 0;
-                    border-bottom: 1px solid #f0f0f0;
-                `;
-                
-                itemElement.innerHTML = `
-                    <div>
-                        <h4 style="margin-bottom: 5px;">${itemTitle}</h4>
-                        <p style="color: #666; font-size: 0.9rem;">
-                            $${item.price.toFixed(2)} × ${item.quantity}
-                        </p>
+                itemsHtml += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; 
+                                padding: 20px; background: rgba(255,255,255,0.05); border-radius: var(--radius-md); 
+                                margin-bottom: 15px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; border-radius: 10px; 
+                                        background: ${item.color}; display: flex; align-items: center; 
+                                        justify-content: center; color: white;">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">${title}</h4>
+                                <p style="color: #94a3b8; font-size: 0.9rem;">
+                                    $${item.price.toFixed(2)} × ${item.quantity}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <button class="icon-btn" onclick="updateCartQuantity(${item.id}, -1)" 
+                                        style="width: 36px; height: 36px; font-size: 0.9rem;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span style="font-weight: bold; min-width: 30px; text-align: center;">
+                                    ${item.quantity}
+                                </span>
+                                <button class="icon-btn" onclick="updateCartQuantity(${item.id}, 1)" 
+                                        style="width: 36px; height: 36px; font-size: 0.9rem;">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            
+                            <span style="font-weight: bold; color: var(--accent); min-width: 80px; text-align: right;">
+                                $${itemTotal.toFixed(2)}
+                            </span>
+                            
+                            <button class="icon-btn" onclick="removeFromCart(${item.id})" 
+                                    style="color: #ff6b6b;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <span style="font-weight: bold; color: var(--secondary);">
-                            $${itemTotal.toFixed(2)}
-                        </span>
-                        <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #ff6b6b; cursor: pointer; font-size: 1.2rem;">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
                 `;
-                
-                container.appendChild(itemElement);
             });
             
-            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+            modalBody.innerHTML = `
+                <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                    ${itemsHtml}
+                </div>
+                
+                <div style="border-top: 2px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span class="lang-ar">المجموع الفرعي</span>
+                        <span class="lang-en">Subtotal</span>
+                        <span>$${(total * 0.85).toFixed(2)}</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span class="lang-ar">الضرائب (15%)</span>
+                        <span class="lang-en">Tax (15%)</span>
+                        <span>$${(total * 0.15).toFixed(2)}</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: bold; 
+                                padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
+                        <span class="lang-ar">الإجمالي النهائي</span>
+                        <span class="lang-en">Final Total</span>
+                        <span style="color: var(--accent);">$${total.toFixed(2)}</span>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 30px; padding: 20px;" 
+                            onclick="proceedToCheckout()">
+                        <i class="fas fa-lock"></i>
+                        <span class="lang-ar">إتمام عملية الاستحواذ</span>
+                        <span class="lang-en">Complete Acquisition</span>
+                    </button>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="btn btn-secondary" onclick="closeModal('cartModal')" 
+                                style="padding: 12px 30px;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="lang-ar">مواصلة التسوق</span>
+                            <span class="lang-en">Continue Shopping</span>
+                        </button>
+                    </div>
+                </div>
+            `;
         }
 
-        // === إزالة من السلة ===
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
+        function updateCartQuantity(productId, delta) {
+            const item = state.cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += delta;
+            if (item.quantity < 1) {
+                state.cart = state.cart.filter(i => i.id !== productId);
+            }
+            
             updateCart();
         }
 
-        // === معاينة المنتج ===
+        function removeFromCart(productId) {
+            state.cart = state.cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function proceedToCheckout() {
+            if (state.cart.length === 0) return;
+            
+            const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderId = 'MUSIC-LAB-' + Date.now();
+            
+            showNotification(
+                state.language === 'en'
+                    ? `Processing acquisition of $${total.toFixed(2)}...`
+                    : `جاري معالجة الاستحواذ بقيمة $${total.toFixed(2)}...`
+            );
+            
+            // محاكاة عملية الدفع
+            setTimeout(() => {
+                // حفظ الطلب
+                const order = {
+                    id: orderId,
+                    date: new Date().toISOString(),
+                    items: [...state.cart],
+                    total: total,
+                    downloadLink: `https://musicchemistry.com/download/${orderId}`
+                };
+                
+                const orders = JSON.parse(localStorage.getItem('music_lab_orders') || '[]');
+                orders.push(order);
+                localStorage.setItem('music_lab_orders', JSON.stringify(orders));
+                
+                // تفريغ السلة
+                state.cart = [];
+                updateCart();
+                
+                // عرض رابط التحميل
+                const downloadUrl = `https://musicchemistry.com/download/${orderId}`;
+                alert(
+                    state.language === 'en'
+                        ? `Acquisition successful!\n\nDownload link:\n${downloadUrl}\n\nLink also saved to your account.`
+                        : `تم الاستحواذ بنجاح!\n\nرابط التحميل:\n${downloadUrl}\n\nتم حفظ الرابط في حسابك أيضاً.`
+                );
+                
+                closeModal('cartModal');
+            }, 2000);
+        }
+
+        // === المعاينة ===
         function previewProduct(productId) {
-            const product = products.find(p => p.id === productId);
+            const product = musicProducts.find(p => p.id === productId);
             if (!product) return;
             
-            currentPreviewProduct = product;
+            const isEnglish = state.language === 'en';
             
             document.getElementById('previewTitle').textContent = product.titleAr;
             document.getElementById('previewTitleEn').textContent = product.titleEn;
-            document.getElementById('previewDescription').textContent = product.descriptionAr;
-            document.getElementById('previewDescriptionEn').textContent = product.descriptionEn;
-            document.getElementById('previewPrice').textContent = `$${product.price.toFixed(2)}`;
             
-            if (product.oldPrice) {
-                document.getElementById('previewOldPrice').textContent = `$${product.oldPrice.toFixed(2)}`;
-                document.getElementById('previewOldPrice').style.display = 'block';
-            } else {
-                document.getElementById('previewOldPrice').style.display = 'none';
-            }
-            
-            // عرض الوسوم
-            const tagsContainer = document.getElementById('previewTags');
-            tagsContainer.innerHTML = '';
-            
-            product.tags.forEach(tag => {
+            const tagsHtml = product.tags.map(tag => {
                 const tagNames = {
                     sufi: { ar: 'صوفي', en: 'Sufi' },
                     eastern: { ar: 'شرقي', en: 'Eastern' },
@@ -1392,90 +2134,476 @@
                     indian: { ar: 'هندي', en: 'Indian' }
                 };
                 
-                const isEnglish = document.body.classList.contains('english');
                 const tagText = isEnglish ? tagNames[tag].en : tagNames[tag].ar;
+                return `<span class="product-tag">${tagText}</span>`;
+            }).join('');
+            
+            const featuresHtml = product.features.map(feature => 
+                `<li style="margin-bottom: 10px; color: #94a3b8;">
+                    <i class="fas fa-check" style="color: var(--teal); margin-left: 10px;"></i>
+                    ${feature}
+                </li>`
+            ).join('');
+            
+            document.getElementById('previewModalBody').innerHTML = `
+                <div style="background: linear-gradient(45deg, ${product.color1}, ${product.color2}); 
+                            height: 200px; border-radius: var(--radius-md); position: relative; 
+                            margin-bottom: 30px; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                                text-align: center; color: white; width: 100%;">
+                        <i class="fas fa-compact-disc" style="font-size: 80px; opacity: 0.3;"></i>
+                        <div style="margin-top: 20px; font-size: 1.2rem; opacity: 0.9;">
+                            ${product.duration}
+                        </div>
+                    </div>
+                </div>
                 
-                const tagElement = document.createElement('span');
-                tagElement.className = 'product-tag';
-                tagElement.textContent = tagText;
-                tagElement.style.marginRight = '8px';
-                tagsContainer.appendChild(tagElement);
-            });
+                <div>
+                    <p class="lang-ar" style="color: #94a3b8; margin-bottom: 25px; line-height: 1.8;">
+                        ${product.descriptionAr}
+                    </p>
+                    <p class="lang-en" style="color: #94a3b8; margin-bottom: 25px; line-height: 1.8;">
+                        ${product.descriptionEn}
+                    </p>
+                    
+                    <div style="margin: 25px 0;">
+                        <h4 style="margin-bottom: 15px; color: var(--accent);">
+                            <i class="fas fa-tags"></i>
+                            <span class="lang-ar">الأنماط الموسيقية</span>
+                            <span class="lang-en">Musical Styles</span>
+                        </h4>
+                        <div class="product-tags">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 25px 0;">
+                        <h4 style="margin-bottom: 15px; color: var(--accent);">
+                            <i class="fas fa-file-alt"></i>
+                            <span class="lang-ar">المحتوى المرفق</span>
+                            <span class="lang-en">Included Content</span>
+                        </h4>
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: var(--radius-md);">
+                            <p style="color: #94a3b8; margin-bottom: 10px;">
+                                <i class="fas fa-music"></i>
+                                <span style="margin-right: 10px;">${product.files}</span>
+                            </p>
+                            <ul style="padding-right: 20px; margin-top: 15px;">
+                                ${featuresHtml}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; 
+                                margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div>
+                            <div class="current-price">$${product.price.toFixed(2)}</div>
+                            ${product.oldPrice ? 
+                                `<div class="old-price">$${product.oldPrice.toFixed(2)}</div>` : 
+                                ''
+                            }
+                        </div>
+                        
+                        <div style="display: flex; gap: 15px;">
+                            <button class="btn btn-secondary" onclick="playProductPreview(${product.id})">
+                                <i class="fas fa-play"></i>
+                                <span class="lang-ar">استمع</span>
+                                <span class="lang-en">Listen</span>
+                            </button>
+                            <button class="btn btn-primary" onclick="addToCart(${product.id}); closeModal('previewModal');">
+                                <i class="fas fa-cart-plus"></i>
+                                <span class="lang-ar">أضف إلى السلة</span>
+                                <span class="lang-en">Add to Cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
             
             openModal('previewModal');
         }
 
-        // === الدفع ===
-        function checkout() {
-            if (cart.length === 0) {
-                const isEnglish = document.body.classList.contains('english');
-                const message = isEnglish 
-                    ? 'Please add items to your cart first'
-                    : 'الرجاء إضافة منتجات إلى السلة أولاً';
-                
-                showNotification(message);
-                return;
-            }
+        function playProductPreview(productId) {
+            const product = musicProducts.find(p => p.id === productId);
+            if (!product) return;
             
-            // محاكاة عملية الدفع
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const isEnglish = document.body.classList.contains('english');
+            state.currentTrack = product;
+            state.isPlaying = true;
             
-            showNotification(
-                isEnglish 
-                    ? `Processing payment of $${total.toFixed(2)}...` 
-                    : `جاري معالجة الدفع بمبلغ $${total.toFixed(2)}...`
-            );
+            openModal('playerModal');
+            updatePlayer();
             
-            // محاكاة نجاح الدفع
-            setTimeout(() => {
-                // إنشاء رابط تحميل وهمي
-                const orderId = 'MUSIC-' + Date.now();
-                const downloadLink = `https://worldmusicchemistry.com/download/${orderId}`;
-                
-                // حفظ الطلب
-                const order = {
-                    id: orderId,
-                    date: new Date().toISOString(),
-                    items: cart,
-                    total: total,
-                    downloadLink: downloadLink
-                };
-                
-                const orders = JSON.parse(localStorage.getItem('music_orders') || '[]');
-                orders.push(order);
-                localStorage.setItem('music_orders', JSON.stringify(orders));
-                
-                // تفريغ السلة
-                cart = [];
-                updateCart();
-                
-                // عرض رابط التحميل
-                alert(
-                    isEnglish
-                        ? `Payment successful! Download your music: ${downloadLink}`
-                        : `تم الدفع بنجاح! حمل موسيقاك من: ${downloadLink}`
-                );
-                
-                closeModal('cartModal');
-            }, 2000);
+            // بدء المحاكاة البصرية
+            simulateAudioPlayback();
         }
 
-        // === وظائف مساعدة ===
-        function scrollToProducts() {
-            document.getElementById('products').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
+        // === المختبر التفاعلي ===
+        function setupSliders() {
+            // تعيين القيم الأولية
+            Object.keys(state.mix).forEach(key => {
+                const slider = document.getElementById(`${key}Slider`);
+                const valueDisplay = document.getElementById(`${key}Value`);
+                
+                if (slider && valueDisplay) {
+                    slider.value = state.mix[key];
+                    valueDisplay.textContent = `${state.mix[key]}%`;
+                }
+            });
+            
+            // إنشاء الأشرطة البصرية
+            createVisualizerBars('mixerBars', 40);
+        }
+
+        function updateMixer() {
+            // تحديث القيم من المنزلقات
+            Object.keys(state.mix).forEach(key => {
+                const slider = document.getElementById(`${key}Slider`);
+                const valueDisplay = document.getElementById(`${key}Value`);
+                
+                if (slider && valueDisplay) {
+                    state.mix[key] = parseInt(slider.value);
+                    valueDisplay.textContent = `${state.mix[key]}%`;
+                }
+            });
+            
+            // تحديث البصرية
+            updateVisualizer();
+            
+            // حفظ المزيج
+            localStorage.setItem('music_lab_mix', JSON.stringify(state.mix));
+        }
+
+        function updateVisualizer() {
+            const bars = document.querySelectorAll('#mixerBars .visualizer-bar');
+            const values = Object.values(state.mix);
+            const maxValue = Math.max(...values);
+            
+            bars.forEach((bar, index) => {
+                const value = values[index % values.length];
+                const height = 10 + (value / maxValue) * 90;
+                bar.style.height = `${height}%`;
+                bar.style.animationDelay = `${index * 0.05}s`;
             });
         }
 
-        function playPreview() {
-            const isEnglish = document.body.classList.contains('english');
-            alert(
-                isEnglish
-                    ? "Playing music sample... Imagine beautiful hybrid world music playing"
-                    : "جاري تشغيل عينة الموسيقى... تخيل موسيقى عالمية هجينة جميلة تعزف"
+        function createVisualizerBars(containerId, count) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            for (let i = 0; i < count; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                bar.style.animationDelay = `${i * 0.05}s`;
+                container.appendChild(bar);
+            }
+            
+            // إنشاء نسخة للمشغل أيضاً
+            if (containerId === 'mixerBars') {
+                createVisualizerBars('playerBars', 60);
+            }
+        }
+
+        function playMix() {
+            state.isPlaying = true;
+            openModal('playerModal');
+            updatePlayer();
+            
+            // تحديث عنوان المزيج
+            document.getElementById('playerTitle').textContent = 'مزيجك الموسيقي';
+            document.getElementById('playerTitleEn').textContent = 'Your Music Mix';
+            
+            // بدء المحاكاة البصرية
+            simulateAudioPlayback();
+        }
+
+        function saveMix() {
+            const mixName = prompt(
+                state.language === 'en' 
+                    ? 'Enter a name for your mix:'
+                    : 'أدخل اسماً لمزيتك الموسيقي:',
+                state.language === 'en' ? 'My Custom Mix' : 'مزيجي الخاص'
             );
+            
+            if (mixName) {
+                const mixes = JSON.parse(localStorage.getItem('music_lab_saved_mixes') || '[]');
+                mixes.push({
+                    name: mixName,
+                    mix: {...state.mix},
+                    date: new Date().toISOString()
+                });
+                
+                localStorage.setItem('music_lab_saved_mixes', JSON.stringify(mixes));
+                
+                showNotification(
+                    state.language === 'en'
+                        ? `Mix "${mixName}" saved successfully!`
+                        : `تم حفظ المزيج "${mixName}" بنجاح!`
+                );
+            }
+        }
+
+        function resetMix() {
+            if (confirm(
+                state.language === 'en'
+                    ? 'Reset all sliders to default values?'
+                    : 'هل تريد إعادة ضبط جميع المُزَالات للقيم الافتراضية؟'
+            )) {
+                state.mix = {
+                    sufi: 50,
+                    eastern: 40,
+                    western: 35,
+                    asian: 25,
+                    sindhi: 30,
+                    indian: 45
+                };
+                
+                setupSliders();
+                updateMixer();
+                
+                showNotification(
+                    state.language === 'en'
+                        ? 'Mix reset to default values'
+                        : 'تم إعادة ضبط المزيج للقيم الافتراضية'
+                );
+            }
+        }
+
+        // === مشغل الموسيقى ===
+        function updatePlayer() {
+            if (!state.currentTrack) return;
+            
+            const playBtn = document.getElementById('playBtn');
+            if (playBtn) {
+                const icon = playBtn.querySelector('i');
+                if (state.isPlaying) {
+                    icon.className = 'fas fa-pause';
+                    playBtn.style.background = 'var(--secondary)';
+                } else {
+                    icon.className = 'fas fa-play';
+                    playBtn.style.background = 'var(--accent)';
+                }
+            }
+            
+            // محاكاة تقدم التشغيل
+            if (state.isPlaying) {
+                simulateProgress();
+            }
+        }
+
+        function playerControl(action) {
+            switch (action) {
+                case 'play':
+                    state.isPlaying = !state.isPlaying;
+                    updatePlayer();
+                    if (state.isPlaying) {
+                        simulateAudioPlayback();
+                    }
+                    break;
+                    
+                case 'prev':
+                    // المقطع السابق
+                    showNotification(
+                        state.language === 'en'
+                            ? 'Previous track'
+                            : 'المقطع السابق'
+                    );
+                    break;
+                    
+                case 'next':
+                    // المقطع التالي
+                    showNotification(
+                        state.language === 'en'
+                            ? 'Next track'
+                            : 'المقطع التالي'
+                    );
+                    break;
+            }
+        }
+
+        function simulateProgress() {
+            const slider = document.getElementById('progressSlider');
+            const currentTime = document.getElementById('currentTime');
+            const duration = document.getElementById('duration');
+            
+            if (!slider || !currentTime) return;
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (!state.isPlaying) {
+                    clearInterval(interval);
+                    return;
+                }
+                
+                progress += 0.5;
+                if (progress > 100) progress = 0;
+                
+                slider.value = progress;
+                
+                // تحويل النسبة إلى وقت
+                const totalSeconds = 225; // 3:45 دقيقة
+                const currentSeconds = Math.floor((progress / 100) * totalSeconds);
+                const minutes = Math.floor(currentSeconds / 60);
+                const seconds = currentSeconds % 60;
+                
+                currentTime.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                duration.textContent = '3:45';
+                
+            }, 500);
+        }
+
+        function simulateAudioPlayback() {
+            // محاكاة الأشرطة البصرية أثناء التشغيل
+            const bars = document.querySelectorAll('#playerBars .visualizer-bar');
+            
+            const interval = setInterval(() => {
+                if (!state.isPlaying) {
+                    clearInterval(interval);
+                    return;
+                }
+                
+                bars.forEach((bar, index) => {
+                    const randomHeight = 20 + Math.random() * 80;
+                    bar.style.height = `${randomHeight}%`;
+                    bar.style.opacity = 0.5 + Math.random() * 0.5;
+                });
+            }, 100);
+        }
+
+        // === وظائف مساعدة ===
+        function createAudioWaves() {
+            const wavesContainer = document.querySelector('.audio-waves');
+            if (!wavesContainer) return;
+            
+            for (let i = 0; i < 50; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'wave';
+                wave.style.height = `${20 + Math.random() * 80}px`;
+                wave.style.animationDelay = `${i * 0.1}s`;
+                wavesContainer.appendChild(wave);
+            }
+        }
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const colors = ['#9b5de5', '#4ecdc4', '#ff6b6b', '#ffd166', '#06d6a0'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = 2 + Math.random() * 8;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${20 + Math.random() * 30}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.setProperty('--color', color);
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        function openMusicLab() {
+            scrollToSection('lab');
+        }
+
+        function playDemo() {
+            showNotification(
+                state.language === 'en'
+                    ? 'Starting immersive audio experience...'
+                    : 'جاري بدء التجربة الصوتية الغامرة...'
+            );
+            
+            // افتح المختبر وشغل مزيجاً عشوائياً
+            setTimeout(() => {
+                scrollToSection('lab');
+                setTimeout(() => playMix(), 500);
+            }, 1000);
+        }
+
+        function updateHeaderOnScroll() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                // إذا كانت سلة التسوق، عرض المحتويات
+                if (modalId === 'cartModal') {
+                    renderCartModal();
+                }
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // إيقاف التشغيل إذا كان مشغل
+                if (modalId === 'playerModal') {
+                    state.isPlaying = false;
+                }
+            }
+        }
+
+        function subscribeNewsletter() {
+            const emailInput = document.getElementById('newsletterEmail');
+            const email = emailInput?.value.trim();
+            
+            if (!email || !email.includes('@')) {
+                showNotification(
+                    state.language === 'en'
+                        ? 'Please enter a valid email address'
+                        : 'الرجاء إدخال بريد إلكتروني صحيح'
+                );
+                return;
+            }
+            
+            // حفظ الاشتراك
+            const subscriptions = JSON.parse(localStorage.getItem('music_lab_subscriptions') || '[]');
+            subscriptions.push({
+                email: email,
+                date: new Date().toISOString(),
+                language: state.language
+            });
+            
+            localStorage.setItem('music_lab_subscriptions', JSON.stringify(subscriptions));
+            
+            // إظهار رسالة النجاح
+            showNotification(
+                state.language === 'en'
+                    ? `Thank you! Welcome to our creative community.`
+                    : `شكراً لك! مرحباً بك في مجتمعنا الإبداعي.`
+            );
+            
+            // تفريغ الحقل
+            if (emailInput) emailInput.value = '';
         }
 
         function showNotification(message) {
@@ -1486,108 +2614,74 @@
                 position: fixed;
                 top: 100px;
                 right: 20px;
-                background: var(--secondary);
+                background: linear-gradient(45deg, var(--purple), var(--accent));
                 color: white;
                 padding: 15px 25px;
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-strong);
                 z-index: 3000;
-                animation: slideIn 0.3s ease;
+                animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+                max-width: 400px;
+                font-weight: 500;
             `;
             
             document.body.appendChild(notification);
             
+            // إضافة أنماط للرسوم المتحركة إذا لم تكن موجودة
+            if (!document.querySelector('#notificationStyles')) {
+                const style = document.createElement('style');
+                style.id = 'notificationStyles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
             // إزالة الإشعار بعد 3 ثوان
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
             }, 3000);
         }
 
-        // === التحكم في النوافذ المنبثقة ===
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+        function updateUI() {
+            // تحديث واجهة المستخدم بناءً على الحالة
+            updateCartBadge();
+            
+            // تحديث النصوص بناءً على اللغة
+            updateDynamicTexts();
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // === النشرة البريدية ===
-        function subscribeNewsletter() {
-            const isEnglish = document.body.classList.contains('english');
-            const emailInput = isEnglish 
-                ? document.getElementById('emailInputEn')
-                : document.getElementById('emailInputAr');
-            
-            const email = emailInput.value.trim();
-            
-            if (!email || !email.includes('@')) {
-                showNotification(
-                    isEnglish
-                        ? 'Please enter a valid email address'
-                        : 'الرجاء إدخال بريد إلكتروني صحيح'
-                );
-                return;
-            }
-            
-            // حفظ الاشتراك
-            const subscriptions = JSON.parse(localStorage.getItem('newsletter_subs') || '[]');
-            subscriptions.push({
-                email: email,
-                date: new Date().toISOString(),
-                language: isEnglish ? 'en' : 'ar'
-            });
-            
-            localStorage.setItem('newsletter_subs', JSON.stringify(subscriptions));
-            
-            // إظهار رسالة النجاح
-            showNotification(
-                isEnglish
-                    ? `Thank you! Newsletter will be sent to ${email}`
-                    : `شكراً لك! سيصلك النشرة على ${email}`
-            );
-            
-            // تفريغ الحقل
-            emailInput.value = '';
-        }
-
-        // === تحميل التفضيلات ===
+        // === تهيئة إضافية عند التحميل ===
         window.addEventListener('load', function() {
-            const savedLanguage = localStorage.getItem('music_language') || 'ar';
-            setLanguage(savedLanguage);
+            // تحديث الواجهة النهائية
+            updateUI();
             
-            // إضافة أنماط للرسوم المتحركة
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
+            // إضافة تأثيرات دخول للمنتجات
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
         });
-
-        // === إغلاق النوافذ بالنقر خارجها ===
-        window.onclick = function(event) {
-            const cartModal = document.getElementById('cartModal');
-            const previewModal = document.getElementById('previewModal');
-            
-            if (event.target === cartModal) {
-                closeModal('cartModal');
-            }
-            
-            if (event.target === previewModal) {
-                closeModal('previewModal');
-            }
-        }
     </script>
 </body>
 </html>
