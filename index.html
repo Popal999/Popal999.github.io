@@ -62,12 +62,12 @@
             opacity: 0.3;
         }
 
-        @keyframes starMove {
-            from { transform: translateY(0); }
-            to { transform: translateY(-1000px); }
+        @ keyframes starMove {
+            from { transform: translateY (0); }
+            to { transform: translateY (-1000px); }
         }
 
-        @keyframes twinkle {
+        @ keyframes twinkle {
             from { opacity: 0.2; }
             to { opacity: 0.8; }
         }
@@ -265,7 +265,7 @@
             color: #dbb87c;
             border-bottom: 2px solid #dbb87c40;
             padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2 rem;
             text-align: center;
             letter-spacing: 3px;
             text-shadow: 0 0 15px #b89a7b;
@@ -274,7 +274,7 @@
         /* شبكة البطاقات */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat (auto-fit, minmax (260px, 1fr));
             gap: 2rem;
         }
 
@@ -300,14 +300,14 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 50% 50%, #b89a7b20, transparent 60%);
+            background: radial-gradient (circle at 50% 50%, #b89a7b20, transparent 60%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY (-10px) scale(1.02);
             border-color: #dbb87c;
             box-shadow: 0 25px 40px -10px #000, 0 0 30px #b89a7b60, 0 0 0 2px #dbb87c40 inset;
         }
@@ -410,7 +410,7 @@
         }
 
         .paypal-btn:hover {
-            background: linear-gradient(145deg, #e9c184, #dbb87c);
+            background: linear-gradient (145 deg, #e9c184, #dbb87c);
             transform: scale(1.05);
             box-shadow: 0 0 25px #e9c184;
         }
@@ -418,47 +418,47 @@
         /* ===== تذييل المعبد ===== */
         .footer {
             text-align: center;
-            margin-top: 5rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid #b89a7b60;
+            margin-top: 5 rem;
+            padding-top: 2.5 rem;
+            border-top: 1 px solid #b89a7b60;
             color: #beb29f;
-            font-size: 1rem;
+            font-size: 1 rem;
             position: relative;
         }
 
         .sigil {
-            font-size: 3rem;
+            font-size: 3 rem;
             opacity: 0.5;
-            margin-top: 1rem;
+            margin-top: 1 rem;
             color: #dbb87c;
-            animation: pulse 3s infinite alternate;
+            animation: pulse 3 s infinite alternate;
         }
 
-        @keyframes pulse {
-            from { opacity: 0.3; text-shadow: 0 0 10px #dbb87c; }
+        @ keyframes pulse {
+            from { opacity: 0.3; text-shadow: 0 0 10 px #dbb87c; }
             to { opacity: 0.8; text-shadow: 0 0 30px #e9c184, 0 0 60px #b89a7b; }
         }
 
         /* ===== تجاوب ===== */
-        @media (max-width: 700px) {
-            .container { margin: 10px; padding: 1.5rem; }
-            .logo h1 { font-size: 2rem; }
-            .hero h2 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .grid { gap: 1.5rem; }
+         @ media (max-width: 700 px) {
+            .container { margin: 10 px; padding: 1.5 rem; }
+            .logo h1 { font-size: 2 rem; }
+            .hero h2 { font-size: 2 rem; }
+            .hero p { font-size: 1 rem; }
+            .grid { gap: 1.5 rem; }
         }
 
         /* تأثيرات حركية للمعبد */
         .floating-particle {
             position: fixed;
-            width: 4px;
-            height: 4px;
+            width: 4 px;
+            height: 4 px;
             background: #dbb87c;
-            border-radius: 50%;
+            border-radius: 50 %;
             opacity: 0.3;
             pointer-events: none;
             z-index: 100;
-            box-shadow: 0 0 15px #e9c184;
+            box-shadow: 0 0 15 px #e9c184;
         }
     </style>
 </head>
@@ -483,22 +483,22 @@
                 <span>Desert · Ocean · Cosmos</span>
             </div>
             <div class="lang-switcher">
-                <button id="btnAr" class="lang-btn active">🇸🇦 العربية</button>
+                <button id="btnAr" class="lang-btn active">Ar العربية</button>
                 <button id="btnEn" class="lang-btn">🇬🇧 English</button>
             </div>
         </div>
 
         <!-- ===== مدخل المعبد ===== -->
         <div class="hero">
-            <h2 class="lang-ar">ادْخُلْ… فَالسَّلَامُ يَنْتَظِرُكَ</h2>
+            <h2 class="lang-ar">تفضل… فَالسَّلَامُ يَنْتَظِرُكَ</h2>
             <h2 class="lang-en">Enter… Peace Awaits You</h2>
-            <p class="lang-ar">هَذَا لَيْسَ مَوْقِعًا، بَلْ مَحْطَّةُ رُوحٍ بَيْنَ الصَّحْرَاءِ وَالْمُحِيطِ وَالنُّجُومِ.</p>
+            <p class="lang-ar">هَذَا لَيْسَ مَوْقِعًا، بَلْ مَحْطَّةُ نغمات بَيْنَ الصَّحْرَاءِ وَالْمُحِيطِ وَالنُّجُومِ.</p>
             <p class="lang-en">This is not a website, but a soul station between desert, ocean, and stars.</p>
         </div>
 
         <!-- ===== رف الموسيقى ===== -->
         <div class="library-shelf">
-            <div class="shelf-title lang-ar">🎵 أَنْغَامُ الْمَعْبَدِ</div>
+            <div class="shelf-title lang-ar">🎵 أَنْغَامُ </div>
             <div class="shelf-title lang-en">🎵 Temple Melodies</div>
             <div class="grid">
                 <!-- ناي -->
@@ -553,7 +553,7 @@
                     <div class="card-description lang-ar">كَيْفَ تَخْلُقُ الْكَلِمَةُ عَالَمًا؟</div>
                     <div class="card-description lang-en">How does a word create a world?</div>
                     <div class="price-area">
-                        <span class="price">$18.99</span>
+                        <span class="price">$5.99</span>
                         <a href="https://paypal.me/moohit100/18.99" class="paypal-btn"><i class="fab fa-paypal"></i> <span class="lang-ar">اقْتِنَاء</span><span class="lang-en">Own</span></a>
                     </div>
                 </div>
@@ -579,7 +579,7 @@
             <div class="lang-ar">مَعْبَدُ الرُّوحِ — حَيْثُ يَسْكُنُ الْجَمَالُ بَيْنَ الرِّمَالِ وَالْمَاءِ وَالنُّجُومِ.</div>
             <div class="lang-en">Temple of the Soul — where beauty dwells between sand, water, and stars.</div>
             <div class="sigil"> · ∞ · </div>
-            <div style="margin-top: 1.5rem;">من وحي حوار  · 2026</div>
+            <div style="margin-top: 1.5 rem;">من وحي حوار  · 2026</div>
         </div>
     </div>
 
@@ -621,4 +621,5 @@
     </script>
 </body>
 </html>
+
 
