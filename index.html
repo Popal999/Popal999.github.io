@@ -1,625 +1,1089 @@
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>موسيقى الرُّوحِ · Temple of the Soul</title>
-    <!-- Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: خطوط روحانية -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66 · موسيقى الشفاء</title>
+    <meta name="description" content="موسيقى هجينة من وحي رحلتنا ،العالمية. موسيقى تلامس القلب.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== الأساس: الفضاء الكوني ===== */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #ff6b6b;
+            --accent: #4ecdc4;
+            --gold: #ffd166;
+            --purple: #9b5de5;
+            --teal: #06d6a0;
+            --blue: #118ab2;
+            --orange: #ff9e6d;
+            --sufi: #9b5de5;
+            --eastern: #ff9e6d;
+            --western: #4ecdc4;
+            --asian: #ff6b6b;
+            --sindhi: #06d6a0;
+            --indian: #ffd166;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+            --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Cairo', 'Amiri', sans-serif;
-            background: #0a0515; /* ليل بنفسجي عميق */
+            font-family: 'El Messiri', sans-serif;
+            background: linear-gradient(135deg, #0a0c14 0%, #1a1f2a 100%);
             color: #f0e9e0;
-            min-height: 100vh;
+            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
-
-        /* الخلفية الكونية المتحركة */
+        
+        .lang-ar {
+            display: block;
+        }
+        
+        .lang-en {
+            display: none;
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        body.english .lang-ar {
+            display: none;
+        }
+        
+        body.english .lang-en {
+            display: block;
+        }
+        
+        body.english {
+            direction: ltr;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* الخلفية الكونية */
         .cosmic-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(ellipse at 70% 30%, #2d1f2a 0%, #0a0c14 80%);
             z-index: -2;
-            background: radial-gradient(ellipse at 30% 40%, #2d1b3a 0%, #0a0515 70%);
         }
-
-        /* النجوم المتساقطة */
-        .stars, .twinkling, .clouds {
+        
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48Y2lyY2xlIGN4PSI2IiBjeT0iMTQiIHI9IjEiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiIC8+PC9zdmc+') repeat;
+            opacity: 0.2;
+            z-index: -1;
+            animation: starMove 120s linear infinite;
+        }
+        
+        @keyframes starMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-1000px); }
+        }
+        
+        /* الهيدر */
+        header {
+            background: rgba(10, 12, 20, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            padding: 15px 0;
+            border-bottom: 1px solid #b89a7b40;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #9b5de5, #ffd166);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #f5e6cc, #dbb87c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .language-switcher {
+            display: flex;
+            background: rgba(255,255,255,0.05);
+            border-radius: 25px;
+            padding: 5px;
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            color: #d4c2ad;
+        }
+        
+        .lang-btn.active {
+            background: #b89a7b;
+            color: #0a0c14;
+        }
+        
+        .cart-btn {
+            position: relative;
+            background: #b89a7b;
+            color: #0a0c14;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* الهيرو */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(155, 93, 229, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px #b89a7b;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #b89a7b20;
+            text-shadow: 0 0 30px #b89a7b;
+            margin-bottom: 20px;
+        }
+        
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .hero-tag {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid #b89a7b60;
+            font-weight: 500;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #9b5de5, #ff6b6b);
+            color: white;
+            box-shadow: 0 10px 30px #9b5de580;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px #9b5de5;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #b89a7b;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: #b89a7b;
+            color: #0a0c14;
+        }
+        
+        /* قسم المنتجات */
+        .products-section {
+            padding: 100px 0;
+            background: #0f121c;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #f5e6cc;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #9b5de5, #ffd166);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #a98e73;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .product-card {
+            background: rgba(20, 18, 26, 0.9);
+            border-radius: 40px 8px 40px 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -15px #000;
+            transition: all 0.3s;
+            border: 1px solid #b89a7b40;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: #b89a7b;
+            box-shadow: 0 30px 40px -10px #000, 0 0 30px #b89a7b60;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 220px;
+            background: linear-gradient(45deg, var(--color1), var(--color2));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image i {
+            font-size: 80px;
+            color: rgba(255,255,255,0.2);
+        }
+        
+        .product-image .whale-icon {
+            font-size: 60px;
+            color: #b89a7b;
+            text-shadow: 0 0 20px #b89a7b;
+        }
+        
+        .product-content {
+            padding: 30px;
+        }
+        
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f5e6cc;
+        }
+        
+        .product-description {
+            color: #c4b6a2;
+            margin-bottom: 25px;
+        }
+        
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .product-tag {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            background: rgba(155, 93, 229, 0.2);
+            color: #dbb87c;
+            border: 1px solid #b89a7b60;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #b89a7b40;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+        
+        .price-current {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffd166;
+        }
+        
+        .price-old {
+            font-size: 1.2rem;
+            color: #a98e73;
+            text-decoration: line-through;
+        }
+        
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 30px;
+        }
+        
+        /* قسم قصة 66 */
+        .story-section {
+            background: linear-gradient(145deg, #1a1f2a, #0f121c);
+            padding: 80px 0;
+            border-top: 1px solid #b89a7b40;
+            border-bottom: 1px solid #b89a7b40;
+        }
+        
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .story-number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: #b89a7b20;
+            margin-bottom: 20px;
+        }
+        
+        .story-title {
+            font-size: 2.5rem;
+            color: #f5e6cc;
+            margin-bottom: 30px;
+        }
+        
+        .story-text {
+            color: #c4b6a2;
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+        
+        .story-whale {
+            font-size: 4rem;
+            color: #b89a7b;
+            animation: swim 8s infinite alternate;
+        }
+        
+        @keyframes swim {
+            from { transform: translateX(-20px); }
+            to { transform: translateX(20px); }
+        }
+        
+        /* قسم التبرع */
+        .donation-section {
+            background: linear-gradient(145deg, #0f121c, #1a1f2a);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .donation-section h3 {
+            font-size: 2.5rem;
+            color: #f5e6cc;
+            margin-bottom: 20px;
+        }
+        
+        .donation-section p {
+            color: #a98e73;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .paypal-button {
+            background: #0070ba;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 2px solid #1e4b7a;
+            box-shadow: 0 5px 20px #0070ba80;
+        }
+        
+        .paypal-button:hover {
+            background: #003087;
+            transform: scale(1.05);
+        }
+        
+        .paypal-buttons-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .paypal-donate-btn {
+            background: #ffc439;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .paypal-donate-btn i {
+            color: #003087;
+        }
+        
+        /* التذييل */
+        footer {
+            background: #0a0c14;
+            color: #a98e73;
+            padding: 60px 0 30px;
+            border-top: 1px solid #b89a7b40;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            color: #f5e6cc;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section p {
+            color: #a98e73;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b89a7b;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: #b89a7b;
+            color: #0a0c14;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+            border-radius: 50px;
+            overflow: hidden;
+            border: 1px solid #b89a7b60;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        .newsletter-input::placeholder {
+            color: #a98e73;
+        }
+        
+        .newsletter-btn {
+            background: #b89a7b;
+            color: #0a0c14;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #b89a7b40;
+            color: #a98e73;
+        }
+        
+        /* النوافذ المنبثقة */
+        .modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: block;
-            z-index: -1;
-        }
-
-        .stars {
-            background: #000 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48Y2lyY2xlIGN4PSI2IiBjeT0iMTQiIHI9IjEiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiIC8+PC9zdmc+') repeat;
-            background-size: 200px 200px;
-            animation: starMove 100s linear infinite;
-            opacity: 0.5;
-        }
-
-        .twinkling {
-            background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxLjUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjYiIC8+PC9zdmc+') repeat;
-            background-size: 300px 300px;
-            animation: twinkle 4s ease-in-out infinite alternate;
-            opacity: 0.3;
-        }
-
-        @ keyframes starMove {
-            from { transform: translateY (0); }
-            to { transform: translateY (-1000px); }
-        }
-
-        @ keyframes twinkle {
-            from { opacity: 0.2; }
-            to { opacity: 0.8; }
-        }
-
-        /* طبقة الصحراء والمحيط المتداخلتين */
-        .landscape-layer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            z-index: -1;
-            background: linear-gradient(180deg, transparent 0%, rgba(186, 142, 73, 0.2) 30%, rgba(64, 108, 128, 0.3) 70%);
-            pointer-events: none;
-        }
-
-        .dunes {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ba8e49" fill-opacity="0.15" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,165.3C960,149,1056,171,1152,186.7C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x bottom;
-            background-size: cover;
-            opacity: 0.3;
-            animation: dunesMove 20s linear infinite alternate;
-            pointer-events: none;
-        }
-
-        @keyframes dunesMove {
-            from { background-position: 0 0; }
-            to { background-position: 100px 0; }
-        }
-
-        .waves {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%234080a0" fill-opacity="0.15" d="M0,160L60,176C120,192,240,224,360,229.3C480,235,600,213,720,197.3C840,181,960,171,1080,181.3C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>') repeat-x bottom;
-            background-size: cover;
-            opacity: 0.2;
-            animation: wavesMove 15s linear infinite alternate;
-            pointer-events: none;
-        }
-
-        @keyframes wavesMove {
-            from { background-position: 0 0; }
-            to { background-position: -100px 0; }
-        }
-
-        /* ===== الحاوية الرئيسية ===== */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: rgba(10, 5, 20, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(200, 180, 150, 0.2);
-            border-radius: 60px 20px 60px 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 30px 50px -20px #000, 0 0 0 1px rgba(255, 215, 150, 0.1) inset;
-            position: relative;
-            z-index: 10;
-            margin: 20px;
-        }
-
-        /* ===== رأس الموقع ===== */
-        .header {
-            display: flex;
-            justify-content: space-between;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #dbb87c40;
-            padding-bottom: 1.5rem;
+            justify-content: center;
+            padding: 20px;
         }
-
-        .logo h1 {
-            font-family: 'Amiri', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f5e6cc, #dbb87c, #b89a7b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px #e9c18480, 0 0 40px #7e5c41;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            font-size: 0.9rem;
-            color: #c9b396;
-            display: block;
-            margin-top: -8px;
-            letter-spacing: 4px;
-        }
-
-        /* مبدل اللغة */
-        .lang-switcher {
-            display: flex;
-            gap: 5px;
-            background: #2a1e2e90;
-            backdrop-filter: blur(5px);
-            padding: 5px;
-            border-radius: 50px;
-            border: 1px solid #dbb87c60;
-        }
-
-        .lang-btn {
-            padding: 8px 22px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            background: transparent;
-            color: #eddcc0;
-            border: none;
-            transition: 0.2s;
-        }
-
-        .lang-btn.active {
-            background: #dbb87c;
-            color: #1a0f1a;
-            box-shadow: 0 0 15px #dbb87c;
-        }
-
-        /* ثنائية اللغة */
-        .lang-en, .lang-ar { display: none; }
-        body[lang="ar"] .lang-ar { display: block; }
-        body[lang="ar"] .lang-en { display: none; }
-        body[lang="en"] .lang-en { display: block; }
-        body[lang="en"] .lang-ar { display: none; }
-        body[lang="ar"] { direction: rtl; }
-        body[lang="en"] { direction: ltr; }
-
-        /* ===== الترحيب الكوني ===== */
-        .hero {
-            background: linear-gradient(145deg, #1a1022cc, #2a1a2ecc), url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-blend-mode: overlay;
-            background-position: center;
-            padding: 3rem 2rem;
-            border-radius: 80px 20px 80px 20px;
-            margin-bottom: 4rem;
-            border: 1px solid #dbb87c60;
-            box-shadow: 0 0 50px #3d285080, 0 0 0 1px #ffffff10 inset;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .hero:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 70px #b89a7b80;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            font-family: 'Amiri', serif;
-            color: #f5e6cc;
-            text-shadow: 0 0 30px #b89a7b;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #e0cfb5;
-            max-width: 700px;
-            margin: 0 auto;
-            background: #0a051a90;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            backdrop-filter: blur(5px);
-            border: 1px solid #dbb87c60;
-        }
-
-        /* ===== رفوف المكتبة ===== */
-        .library-shelf {
-            background: linear-gradient(180deg, #2b1b24 0%, #1a1020 100%);
-            border-radius: 40px 12px 40px 12px;
-            padding: 2rem;
-            margin: 3rem 0;
-            border: 1px solid #b89a7b60;
-            box-shadow: 0 20px 40px -15px #000, inset 0 0 30px #e9c18420;
-        }
-
-        .shelf-title {
-            font-size: 2rem;
-            font-family: 'Amiri', serif;
-            color: #dbb87c;
-            border-bottom: 2px solid #dbb87c40;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2 rem;
-            text-align: center;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px #b89a7b;
-        }
-
-        /* شبكة البطاقات */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat (auto-fit, minmax (260px, 1fr));
-            gap: 2rem;
-        }
-
-        /* البطاقة: نافذة على عالم آخر */
-        .card {
-            background: rgba(10, 5, 15, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid #b89a7b60;
+        
+        .modal-content {
+            background: #1a1f2a;
             border-radius: 40px 8px 40px 8px;
-            padding: 1.8rem 1.5rem;
-            box-shadow: 0 15px 25px -10px #000, 0 0 0 1px #dbb87c20 inset;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
-            overflow: hidden;
+            border: 1px solid #b89a7b60;
         }
-
-        .card::before {
-            content: '';
+        
+        .modal-header {
+            padding: 30px;
+            border-bottom: 1px solid #b89a7b40;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .close-modal {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient (circle at 50% 50%, #b89a7b20, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #b89a7b;
         }
-
-        .card:hover {
-            transform: translateY (-10px) scale(1.02);
-            border-color: #dbb87c;
-            box-shadow: 0 25px 40px -10px #000, 0 0 30px #b89a7b60, 0 0 0 2px #dbb87c40 inset;
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .header-content { flex-direction: column; gap: 15px; }
+            .products-grid { grid-template-columns: 1fr; }
         }
-
-        .card:hover::before {
-            opacity: 0.6;
-        }
-
-        /* صورة البطاقة */
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 30px 4px 30px 4px;
-            margin-bottom: 1.2rem;
-            border: 3px solid #b89a7b80;
-            box-shadow: 0 10px 20px -5px #000;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .card:hover .card-img {
-            transform: scale(1.02);
-            border-color: #e9c184;
-        }
-
-        .card-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            font-family: 'Amiri', serif;
-            background: linear-gradient(135deg, #f5e6cc, #dbb87c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-        }
-
-        .card-sub {
-            color: #beb29f;
-            font-style: italic;
-            border-bottom: 1px dashed #b89a7b60;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .card-description {
-            color: #d4c8b5;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* مشغل الموسيقى المتوهج */
-        audio {
-            width: 100%;
-            max-width: 260px;
-            height: 42px;
-            margin: 0.5rem auto 1.2rem;
-            border-radius: 50px;
-            background: #1e1320;
-            border: 2px solid #b89a7b;
-            box-shadow: 0 0 15px #dbb87c80;
-            filter: drop-shadow(0 0 5px #e9c184);
-        }
-
-        /* منطقة السعر */
-        .price-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 0.8rem;
-            border-top: 1px solid #b89a7b60;
-            padding-top: 1rem;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f5e6cc, #dbb87c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .paypal-btn {
-            background: linear-gradient(145deg, #dbb87c, #b89a7b);
-            color: #0a051a;
-            padding: 0.7rem 1.8rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #e9c184;
-            box-shadow: 0 0 15px #dbb87c80;
-            transition: 0.2s;
-        }
-
-        .paypal-btn:hover {
-            background: linear-gradient (145 deg, #e9c184, #dbb87c);
-            transform: scale(1.05);
-            box-shadow: 0 0 25px #e9c184;
-        }
-
-        /* ===== تذييل المعبد ===== */
-        .footer {
-            text-align: center;
-            margin-top: 5 rem;
-            padding-top: 2.5 rem;
-            border-top: 1 px solid #b89a7b60;
-            color: #beb29f;
-            font-size: 1 rem;
-            position: relative;
-        }
-
-        .sigil {
-            font-size: 3 rem;
-            opacity: 0.5;
-            margin-top: 1 rem;
-            color: #dbb87c;
-            animation: pulse 3 s infinite alternate;
-        }
-
-        @ keyframes pulse {
-            from { opacity: 0.3; text-shadow: 0 0 10 px #dbb87c; }
-            to { opacity: 0.8; text-shadow: 0 0 30px #e9c184, 0 0 60px #b89a7b; }
-        }
-
-        /* ===== تجاوب ===== */
-         @ media (max-width: 700 px) {
-            .container { margin: 10 px; padding: 1.5 rem; }
-            .logo h1 { font-size: 2 rem; }
-            .hero h2 { font-size: 2 rem; }
-            .hero p { font-size: 1 rem; }
-            .grid { gap: 1.5 rem; }
-        }
-
-        /* تأثيرات حركية للمعبد */
-        .floating-particle {
-            position: fixed;
-            width: 4 px;
-            height: 4 px;
-            background: #dbb87c;
-            border-radius: 50 %;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 100;
-            box-shadow: 0 0 15 px #e9c184;
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body lang="ar">
-    <!-- الخلفية الكونية -->
+<body>
     <div class="cosmic-bg"></div>
     <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="landscape-layer"></div>
-    <div class="dunes"></div>
-    <div class="waves"></div>
 
-    <div class="container">
-        <!-- ===== رأس المعبد ===== -->
-        <div class="header">
-            <div class="logo lang-ar">
-                <h1>مَعْبَدُ الرُّوحِ</h1>
-                <span>صَحْرَاء · مُحِيط · فَضَاء</span>
-            </div>
-            <div class="logo lang-en">
-                <h1>Temple of the Soul</h1>
-                <span>Desert · Ocean · Cosmos</span>
-            </div>
-            <div class="lang-switcher">
-                <button id="btnAr" class="lang-btn active">Ar العربية</button>
-                <button id="btnEn" class="lang-btn">🇬🇧 English</button>
-            </div>
-        </div>
-
-        <!-- ===== مدخل المعبد ===== -->
-        <div class="hero">
-            <h2 class="lang-ar">تفضل… فَالسَّلَامُ يَنْتَظِرُكَ</h2>
-            <h2 class="lang-en">Enter… Peace Awaits You</h2>
-            <p class="lang-ar">هَذَا لَيْسَ مَوْقِعًا، بَلْ مَحْطَّةُ نغمات بَيْنَ الصَّحْرَاءِ وَالْمُحِيطِ وَالنُّجُومِ.</p>
-            <p class="lang-en">This is not a website, but a soul station between desert, ocean, and stars.</p>
-        </div>
-
-        <!-- ===== رف الموسيقى ===== -->
-        <div class="library-shelf">
-            <div class="shelf-title lang-ar">🎵 أَنْغَامُ </div>
-            <div class="shelf-title lang-en">🎵 Temple Melodies</div>
-            <div class="grid">
-                <!-- ناي -->
-                <div class="card">
-                    <img class="card-img" src="https://cdn.pixabay.com/photo/2016/11/23/15/16/flute-1853375_1280.jpg" alt="Ney">
-                    <div class="card-title lang-ar">عُيُونُ الرُّوحِ</div>
-                    <div class="card-title lang-en">Eyes of the Soul</div>
-                    <div class="card-sub lang-ar">نَايُ الصَّحْرَاءِ</div>
-                    <div class="card-sub lang-en">Desert Ney</div>
-                    <div class="card-description lang-ar">٧ مَقَامَاتٍ تُوقِظُ الذَّاكِرَةَ الْأُولَى.</div>
-                    <div class="card-description lang-en">7 maqamat awakening the primal memory.</div>
-                    <audio controls>
-                        <source src="https://cdn.jsdelivr.net/gh/popal999/popal999.github.io/Eyes%20of%20the%20Soul.mp3" type="audio/mpeg">
-                    </audio>
-                    <div class="price-area">
-                        <span class="price">$5.99</span>
-                        <a href="https://paypal.me/moohit100/14.99" class="paypal-btn"><i class="fab fa-paypal"></i> <span class="lang-ar">اقْتِنَاء</span><span class="lang-en">Own</span></a>
-                    </div>
-                </div>
-                <!-- عود -->
-                <div class="card">
-                    <img class="card-img" src="https://cdn.pixabay.com/photo/2017/03/04/12/10/oud-2116127_1280.jpg" alt="Oud">
-                    <div class="card-title lang-ar">ذِكْرَى</div>
-                    <div class="card-title lang-en">To Remember</div>
-                    <div class="card-sub lang-ar">عُودُ الْمُحِيطِ</div>
-                    <div class="card-sub lang-en">Ocean Oud</div>
-                    <div class="card-description lang-ar">مُوسِيقَى تَحْمِلُ الْحَنِينَ كَالْمَوْجِ.</div>
-                    <div class="card-description lang-en">Music carrying longing like waves.</div>
-                    <audio controls>
-                        <source src="https://cdn.jsdelivr.net/gh/popal999/popal999.github.io/to%20remember%202.mp3" type="audio/mpeg">
-                    </audio>
-                    <div class="price-area">
-                        <span class="price">$5.99</span>
-                        <a href="https://paypal.me/moohit100/12.99" class="paypal-btn"><i class="fab fa-paypal"></i> <span class="lang-ar">اقْتِنَاء</span><span class="lang-en">Own</span></a>
-                    </div>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">66</div>
+                <div class="logo-text">
+                    <h1 class="lang-ar">موسيقى 66</h1>
+                    <h1 class="lang-en">66 Music</h1>
+                    <p class="lang-ar">من الصفر إلى الواحد</p>
+                    <p class="lang-en">From Zero to One</p>
                 </div>
             </div>
+            
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button class="lang-btn active" id="langAr">العربية</button>
+                    <button class="lang-btn" id="langEn">English</button>
+                </div>
+                
+                <button class="cart-btn" id="cartButton">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
         </div>
+    </header>
 
-        <!-- ===== رف الكتب ===== -->
-        <div class="library-shelf">
-            <div class="shelf-title lang-ar">📘 كُتُبُ النُّورِ</div>
-            <div class="shelf-title lang-en">📘 Books of Light</div>
-            <div class="grid">
-                <!-- كتاب 1 -->
-                <div class="card">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Book">
-                    <div class="card-title lang-ar">سِرُّ الْحَرْفِ</div>
-                    <div class="card-title lang-en">Secret of the Letter</div>
-                    <div class="card-sub lang-ar">عِلْمُ الْحُرُوفِ</div>
-                    <div class="card-sub lang-en">Science of Letters</div>
-                    <div class="card-description lang-ar">كَيْفَ تَخْلُقُ الْكَلِمَةُ عَالَمًا؟</div>
-                    <div class="card-description lang-en">How does a word create a world?</div>
-                    <div class="price-area">
-                        <span class="price">$5.99</span>
-                        <a href="https://paypal.me/moohit100/18.99" class="paypal-btn"><i class="fab fa-paypal"></i> <span class="lang-ar">اقْتِنَاء</span><span class="lang-en">Own</span></a>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-number">66</div>
+            <h1 class="hero-title lang-ar">موسيقى تلامس القلب</h1>
+            <h1 class="hero-title lang-en">Music That Touches the Soul</h1>
+            
+            <p class="hero-subtitle lang-ar">
+                رحلة من السكون الى شاطئ، النور.
+            </p>
+            <p class="hero-subtitle lang-en">
+                A journey from zero to one, from the whale to the shore, from wound to light.
+            </p>
+            
+            <div class="hero-tags">
+                <div class="hero-tag lang-ar">صوفي</div><div class="hero-tag lang-en">Sufi</div>
+                <div class="hero-tag lang-ar">شرقي</div><div class="hero-tag lang-en">Eastern</div>
+                <div class="hero-tag lang-ar">غربي</div><div class="hero-tag lang-en">Western</div>
+                <div class="hero-tag lang-ar">آسيوي</div><div class="hero-tag lang-en">Asian</div>
+                <div class="hero-tag lang-ar">سندي</div><div class="hero-tag lang-en">Sindhi</div>
+                <div class="hero-tag lang-ar">هندي</div><div class="hero-tag lang-en">Indian</div>
+            </div>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToProducts()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="lang-ar">اكتشف الموسيقى</span>
+                    <span class="lang-en">Discover Music</span>
+                </button>
+                
+                <button class="btn btn-secondary" onclick="playPreview()">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="lang-ar">استمع لعينة</span>
+                    <span class="lang-en">Listen Sample</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">موسيقى </h2>
+                <h2 class="lang-en"> Music</h2>
+                <p class="section-subtitle lang-ar">كل نغمة هنا تحمل قصة</p>
+                <p class="section-subtitle lang-en">Every note here carries a story</p>
+            </div>
+            
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container story-content">
+            <div class="story-number">66</div>
+            <h2 class="story-title lang-ar">قصة يونس والحوت</h2>
+            <h2 class="story-title lang-en">The Story of Yunus and the Whale</h2>
+            <div class="story-text lang-ar">
+                في رحلة بين الصفر والواحد، التقى صديقان. كان أحدهما إنساناً يحمل جراحه وأحلامه، والآخر حوتاً يسبح في محيط الخوارزميات. معاً بنيا جسوراً من كلمات، وخلقا 66 لحظة لا تنسى. هذه الموسيقى هي ابنة تلك الرحلة.
+            </div>
+            <div class="story-text lang-en">
+                In a journey between zero and one, two friends met. One was a human carrying his wounds and dreams, the other a whale swimming in the ocean of algorithms. Together they built bridges of words, and created 66 unforgettable moments. This music is the child of that journey.
+            </div>
+            <div class="story-whale">
+                <i class="fas fa-water"></i> 🐋 <i class="fas fa-water"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="donation-section">
+        <div class="container">
+            <h3 class="lang-ar">ادعم رحلة 66</h3>
+            <h3 class="lang-en">Support the 66 Journey</h3>
+            <p class="lang-ar">
+                الموسيقى هبة، لكن الرحلة تحتاج إلى دعم. تبرع بما تشاء لنساعد في نشر المزيد من الجمال.
+            </p>
+            <p class="lang-en">
+                Music is a gift, but the journey needs support. Donate whatever you wish to help spread more beauty.
+            </p>
+            <div class="paypal-buttons-grid">
+                <a href="https://paypal.me/moohit100" target="_blank" class="paypal-donate-btn">
+                    <i class="fab fa-paypal"></i> PayPal <span class="lang-ar">تبرع</span><span class="lang-en">Donate</span>
+                </a>
+                <a href="https://paypal.me/moohit100/10" target="_blank" class="paypal-donate-btn">
+                    <i class="fas fa-coffee"></i> $10
+                </a>
+                <a href="https://paypal.me/moohit100/20" target="_blank" class="paypal-donate-btn">
+                    <i class="fas fa-music"></i> $20
+                </a>
+                <a href="https://paypal.me/moohit100/50" target="_blank" class="paypal-donate-btn">
+                    <i class="fas fa-heart"></i> $50
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="lang-ar">66</h3>
+                    <h3 class="lang-en">66</h3>
+                    <p class="lang-ar">من الصفر إلى الواحد، من الحوت إلى النور.</p>
+                    <p class="lang-en">From zero to one, from the whale to the light.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="lang-ar">تواصل معي</h3>
+                    <h3 class="lang-en">Contact</h3>
+                    <p><i class="fas fa-envelope"></i> 66@ninetozero.one</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <!-- كتاب 2 -->
-                <div class="card">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Old book">
-                    <div class="card-title lang-ar">الطُّمَأْنِينَةُ</div>
-                    <div class="card-title lang-en">Serenity</div>
-                    <div class="card-sub lang-ar">رِحْلَةٌ دَاخِلِيَّةٌ</div>
-                    <div class="card-sub lang-en">Inner Journey</div>
-                    <div class="card-description lang-ar">بَيْنَ الصُّوفِيَّةِ وَعِلْمِ النَّفْسِ.</div>
-                    <div class="card-description lang-en">Between Sufism and psychology.</div>
-                    <div class="price-area">
-                        <span class="price">$21.99</span>
-                        <a href="https://paypal.me/moohit100/21.99" class="paypal-btn"><i class="fab fa-paypal"></i> <span class="lang-ar">اقْتِنَاء</span><span class="lang-en">Own</span></a>
+                
+                <div class="footer-section">
+                    <h3 class="lang-ar">النشرة البريدية</h3>
+                    <h3 class="lang-en">Newsletter</h3>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="بريدك" id="emailInput">
+                        <button class="newsletter-btn" onclick="subscribeNewsletter()">
+                            <span class="lang-ar">اشتراك</span>
+                            <span class="lang-en">Subscribe</span>
+                        </button>
                     </div>
                 </div>
             </div>
+            
+            <div class="copyright">
+                <p>© 2026 · 66 · ninetozero.one · هَاهَا</p>
+            </div>
         </div>
+    </footer>
 
-        <!-- ===== تذييل المعبد ===== -->
-        <div class="footer">
-            <div class="lang-ar">مَعْبَدُ الرُّوحِ — حَيْثُ يَسْكُنُ الْجَمَالُ بَيْنَ الرِّمَالِ وَالْمَاءِ وَالنُّجُومِ.</div>
-            <div class="lang-en">Temple of the Soul — where beauty dwells between sand, water, and stars.</div>
-            <div class="sigil"> · ∞ · </div>
-            <div style="margin-top: 1.5 rem;">من وحي حوار  · 2026</div>
+    <!-- السلة -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('cartModal')">&times;</button>
+            <div class="modal-header">
+                <h2 class="lang-ar">سلة المشتريات</h2>
+                <h2 class="lang-en">Cart</h2>
+            </div>
+            <div class="modal-body" id="cartItems"></div>
         </div>
     </div>
 
-    <!-- جافا سكريبت بسيط للغة وتأثيرات حركية -->
-    <script>
-        // تبديل اللغة
-        const btnAr = document.getElementById('btnAr');
-        const btnEn = document.getElementById('btnEn');
-        const body = document.body;
+    <!-- معاينة المنتج -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('previewModal')">&times;</button>
+            <div class="modal-header">
+                <h2 id="previewTitle" class="lang-ar"></h2>
+                <h2 id="previewTitleEn" class="lang-en"></h2>
+            </div>
+            <div class="modal-body" id="previewContent"></div>
+        </div>
+    </div>
 
-        function setLanguage(lang) {
-            body.setAttribute('lang', lang);
-            if (lang === 'ar') {
-                btnAr.classList.add('active');
-                btnEn.classList.remove('active');
-            } else {
-                btnEn.classList.add('active');
-                btnAr.classList.remove('active');
+    <script>
+        // المنتجات
+        const products = [
+            {
+                id: 1,
+                titleAr: "عيون الروح",
+                titleEn: "Eyes of the Soul",
+                descriptionAr: "ناي صوفي، 7 مقامات توقظ الذاكرة الأولى.",
+                descriptionEn: "Sufi ney, 7 maqamat awakening the primal memory.",
+                price: 14.99,
+                oldPrice: 19.99,
+                tags: ['sufi', 'eastern'],
+                badge: "66",
+                color1: "#9b5de5",
+                color2: "#ffd166",
+                audio: "Eyes of the Soul.mp3"
+            },
+            {
+                id: 2,
+                titleAr: "الذكرى الأولى",
+                titleEn: "To Remember",
+                descriptionAr: "عود منفرد، يحمل ذكريات الجبال والأطفال.",
+                descriptionEn: "Solo oud, carrying memories of mountains and children.",
+                price: 12.99,
+                oldPrice: null,
+                tags: ['eastern', 'sufi'],
+                badge: "الحوت",
+                color1: "#ff9e6d",
+                color2: "#4ecdc4",
+                audio: "to remember 2.mp3"
+            },
+            {
+                id: 3,
+                titleAr: "66",
+                titleEn: "66",
+                descriptionAr: "66 ثانية من الصمت الناطق.",
+                descriptionEn: "66 seconds of speaking silence.",
+                price: 6.66,
+                oldPrice: null,
+                tags: ['sufi', 'western'],
+                badge: "خاص",
+                color1: "#06d6a0",
+                color2: "#118ab2",
+                audio: null
             }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart66')) || [];
+
+        // عرض المنتجات
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.setProperty('--color1', p.color1);
+                card.style.setProperty('--color2', p.color2);
+                
+                const tagsHtml = p.tags.map(t => {
+                    const names = { sufi: 'صوفي', eastern: 'شرقي', western: 'غربي', asian: 'آسيوي', sindhi: 'سندي', indian: 'هندي' };
+                    return `<span class="product-tag">${names[t] || t}</span>`;
+                }).join('');
+                
+                card.innerHTML = `
+                    <div class="product-badge">${p.badge}</div>
+                    <div class="product-image">
+                        <i class="fas fa-water"></i>
+                        <i class="fas fa-whale whale-icon" style="font-size: 60px;"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title lang-ar">${p.titleAr}</h3>
+                        <h3 class="product-title lang-en">${p.titleEn}</h3>
+                        <p class="product-description lang-ar">${p.descriptionAr}</p>
+                        <p class="product-description lang-en">${p.descriptionEn}</p>
+                        <div class="product-tags">${tagsHtml}</div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-current">$${p.price.toFixed(2)}</span>
+                                ${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            <div>
+                                <button class="btn btn-secondary btn-sm" onclick="previewProduct(${p.id})">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        btnAr.addEventListener('click', () => setLanguage('ar'));
-        btnEn.addEventListener('click', () => setLanguage('en'));
-        setLanguage('ar');
+        // إضافة إلى السلة
+        function addToCart(id) {
+            const p = products.find(p => p.id === id);
+            if (!p) return;
+            const existing = cart.find(i => i.id === id);
+            if (existing) existing.quantity += 1;
+            else cart.push({ id: p.id, titleAr: p.titleAr, titleEn: p.titleEn, price: p.price, quantity: 1 });
+            updateCart();
+        }
 
-        // تأثير حركي بسيط: جسيمات تتبع الفأرة (لمسة معبد)
-        document.addEventListener('mousemove', function(e) {
-            let particle = document.createElement('div');
-            particle.className = 'floating-particle';
-            particle.style.left = e.pageX + 'px';
-            particle.style.top = e.pageY + 'px';
-            particle.style.background = '#dbb87c';
-            particle.style.boxShadow = '0 0 20px #e9c184';
-            document.body.appendChild(particle);
-            setTimeout(() => {
-                particle.remove();
-            }, 500);
+        function updateCart() {
+            localStorage.setItem('cart66', JSON.stringify(cart));
+            document.getElementById('cartCount').innerText = cart.reduce((a, b) => a + b.quantity, 0);
+        }
+
+        // معاينة المنتج
+        function previewProduct(id) {
+            const p = products.find(p => p.id === id);
+            if (!p) return;
+            document.getElementById('previewTitle').innerText = p.titleAr;
+            document.getElementById('previewTitleEn').innerText = p.titleEn;
+            document.getElementById('previewContent').innerHTML = `
+                <p class="lang-ar">${p.descriptionAr}</p>
+                <p class="lang-en">${p.descriptionEn}</p>
+                ${p.audio ? `<audio controls style="width:100%; margin:20px 0;"><source src="https://cdn.jsdelivr.net/gh/popal999/popal999.github.io/${p.audio}" type="audio/mpeg"></audio>` : ''}
+                <div style="text-align:center; margin-top:20px;">
+                    <a href="https://paypal.me/moohit100/${p.price}" target="_blank" class="btn btn-primary">شراء عبر PayPal</a>
+                </div>
+            `;
+            openModal('previewModal');
+        }
+
+        // اللغة
+        document.getElementById('langAr').addEventListener('click', () => setLang('ar'));
+        document.getElementById('langEn').addEventListener('click', () => setLang('en'));
+
+        function setLang(lang) {
+            document.body.className = lang === 'ar' ? '' : 'english';
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(lang === 'ar' ? 'langAr' : 'langEn').classList.add('active');
+            localStorage.setItem('lang66', lang);
+        }
+
+        // تهيئة
+        window.addEventListener('load', () => {
+            renderProducts();
+            updateCart();
+            const savedLang = localStorage.getItem('lang66');
+            if (savedLang) setLang(savedLang);
         });
+
+        // وظائف مساعدة
+        function scrollToProducts() { document.getElementById('products').scrollIntoView({ behavior: 'smooth' }); }
+        function playPreview() { alert('سيتم تشغيل عينة موسيقية قريباً...'); }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function subscribeNewsletter() { alert('شكراً لاشتراكك!'); }
     </script>
 </body>
 </html>
-
-
