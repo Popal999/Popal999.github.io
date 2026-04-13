@@ -1,736 +1,132 @@
-
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  الكلمة والنغمة</title>
-    <meta name="description" content="موسيقى تلامس القلب وكلمات تُيقظ الروح ">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=El+Messiri:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #070810;
-            --bg2: #0d0f1a;
-            --bg3: #121520;
-            --gold: #c9a84c;
-            --gold2: #e8c97e;
-            --teal: #4a9b8e;
-            --text: #e8e0d5;
-            --text2: #a89880;
-            --border: rgba(201,168,76,0.2);
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'El Messiri', serif;
-            overflow-x: hidden;
-        }
-        body.english {
-            direction: ltr;
-            font-family: 'Jost', sans-serif;
-        }
-        .lang-en { display: none; font-family: 'Jost', sans-serif; direction: ltr; }
-        .lang-ar { display: block; }
-        body.english .lang-ar { display: none; }
-        body.english .lang-en { display: block; }
-
-        /* ─── CANVAS BG ─── */
-        #bgCanvas {
-            position: fixed; top:0; left:0;
-            width:100%; height:100%;
-            z-index: 0; pointer-events: none;
-            opacity: 0.6;
-        }
-
-        /* ─── HEADER ─── */
-        header {
-            position: fixed; width:100%; top:0; z-index:100;
-            padding: 18px 0;
-            background: rgba(7,8,16,0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .header-inner {
-            max-width: 1200px; margin:0 auto; padding:0 30px;
-            display: flex; justify-content:space-between; align-items:center;
-        }
-        .logo-wrap {
-            display: flex; align-items:center; gap:14px;
-        }
-        .logo-symbol {
-            width:42px; height:42px;
-            background: linear-gradient(135deg, var(--gold), var(--teal));
-            border-radius: 50%;
-            display:flex; align-items:center; justify-content:center;
-            font-size:18px; color:#070810; font-weight:900;
-        }
-        .logo-name {
-            font-family: 'Amiri', serif;
-            font-size: 1.4rem;
-            color: var(--gold2);
-            letter-spacing: 0.05em;
-        }
-        .logo-tagline {
-            font-size: 0.75rem;
-            color: var(--text2);
-            margin-top: 2px;
-            font-family: 'Jost', sans-serif;
-        }
-        .nav-right {
-            display:flex; align-items:center; gap:20px;
-        }
-        .lang-toggle {
-            display:flex; background:rgba(255,255,255,0.05);
-            border-radius:30px; padding:4px; gap:2px;
-        }
-        .ltb {
-            padding:7px 16px; border:none; background:transparent;
-            border-radius:25px; cursor:pointer;
-            font-family: 'Jost',sans-serif; font-size:0.85rem;
-            color: var(--text2); transition:all 0.2s;
-        }
-        .ltb.active { background: var(--gold); color:#070810; font-weight:600; }
-
-        /* ─── HERO ─── */
-        .hero {
-            min-height: 100vh;
-            display:flex; align-items:center; justify-content:center;
-            position:relative; z-index:1;
-            text-align:center; padding:120px 20px 80px;
-        }
-        .hero-inner { max-width:800px; margin:0 auto; }
-        .hero-eyebrow {
-            font-family:'Jost',sans-serif; font-size:0.85rem;
-            letter-spacing:0.3em; text-transform:uppercase;
-            color:var(--teal); margin-bottom:24px;
-        }
-        .hero-title {
-            font-family:'Amiri',serif;
-            font-size: clamp(2.8rem,7vw,5.5rem);
-            line-height:1.15;
-            color:#fff;
-            margin-bottom:12px;
-            text-shadow: 0 0 60px rgba(201,168,76,0.3);
-        }
-        .hero-title-en {
-            font-family:'Cormorant Garamond',serif;
-            font-size: clamp(2.5rem,6vw,5rem);
-            font-style:italic; font-weight:300;
-            color:#fff; margin-bottom:12px;
-            text-shadow: 0 0 60px rgba(201,168,76,0.3);
-        }
-        .hero-sub {
-            font-size:1.15rem; color:var(--text2);
-            max-width:560px; margin:0 auto 48px;
-            line-height:2;
-        }
-        .hero-sub-en {
-            font-family:'Cormorant Garamond',serif;
-            font-size:1.3rem; font-style:italic;
-            color:var(--text2); max-width:560px;
-            margin:0 auto 48px; line-height:1.8;
-        }
-        .hero-divider {
-            width:120px; height:1px;
-            background:linear-gradient(90deg,transparent,var(--gold),transparent);
-            margin:0 auto 48px;
-        }
-        .hero-btns {
-            display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
-        }
-        .btn {
-            padding:14px 32px; border-radius:50px;
-            font-family:'Jost',sans-serif; font-size:0.95rem;
-            font-weight:500; cursor:pointer; border:none;
-            display:inline-flex; align-items:center; gap:10px;
-            text-decoration:none; transition:all 0.3s;
-        }
-        .btn-gold {
-            background:linear-gradient(135deg,var(--gold),#a07830);
-            color:#070810; font-weight:600;
-            box-shadow:0 8px 24px rgba(201,168,76,0.3);
-        }
-        .btn-gold:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(201,168,76,0.4); }
-        .btn-outline {
-            background:transparent; color:var(--text);
-            border:1px solid var(--border);
-            backdrop-filter:blur(10px);
-        }
-        .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
-
-        /* ─── SECTION ─── */
-        .section {
-            position:relative; z-index:1;
-            padding:100px 20px;
-        }
-        .section-inner { max-width:1200px; margin:0 auto; }
-        .section-header { text-align:center; margin-bottom:70px; }
-        .section-label {
-            font-family:'Jost',sans-serif; font-size:0.8rem;
-            letter-spacing:0.3em; text-transform:uppercase;
-            color:var(--teal); margin-bottom:16px; display:block;
-        }
-        .section-title {
-            font-family:'Amiri',serif; font-size:2.5rem;
-            color:var(--gold2); margin-bottom:16px;
-        }
-        .section-title-en {
-            font-family:'Cormorant Garamond',serif;
-            font-style:italic; font-size:2.8rem; font-weight:300;
-            color:var(--gold2); margin-bottom:16px;
-        }
-        .section-desc { color:var(--text2); font-size:1.1rem; max-width:600px; margin:0 auto; line-height:1.9; }
-
-        /* ─── BOOK SECTION ─── */
-        .book-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-        .book-grid {
-            display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
-        }
-        @media(max-width:768px){ .book-grid { grid-template-columns:1fr; gap:40px; } }
-        .book-cover-wrap { text-align:center; }
-        .book-cover {
-            width:260px; height:390px;
-            background:linear-gradient(135deg,#0d1f12,#1a3a20);
-            border-radius:4px 16px 16px 4px;
-            display:inline-flex; flex-direction:column;
-            align-items:center; justify-content:center;
-            padding:30px 20px; gap:16px;
-            box-shadow:-8px 12px 40px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.1);
-            border:1px solid rgba(201,168,76,0.3);
-            position:relative; overflow:hidden;
-        }
-        .book-cover::before {
-            content:'';
-            position:absolute; top:0; left:0; right:0; bottom:0;
-            background:radial-gradient(circle at 50% 40%,rgba(201,168,76,0.08),transparent 70%);
-        }
-        .book-cover-icon { font-size:3rem; }
-        .book-cover-title {
-            font-family:'Amiri',serif; font-size:1.8rem;
-            color:var(--gold2); text-align:center; line-height:1.3;
-        }
-        .book-cover-sub {
-            font-family:'Cormorant Garamond',serif;
-            font-style:italic; color:var(--teal); font-size:1rem; text-align:center;
-        }
-        .book-cover-author {
-            font-family:'Jost',sans-serif; color:var(--gold);
-            font-size:0.9rem; letter-spacing:0.1em; margin-top:8px;
-        }
-        .book-info h3 {
-            font-family:'Amiri',serif; font-size:2.2rem;
-            color:var(--gold2); margin-bottom:20px;
-        }
-        .book-info h3.en { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:2.5rem; font-weight:300; }
-        .book-info p { color:var(--text2); line-height:2; margin-bottom:24px; font-size:1.05rem; }
-        .book-meta {
-            display:flex; gap:24px; flex-wrap:wrap; margin-bottom:32px;
-        }
-        .book-meta-item {
-            display:flex; flex-direction:column; gap:4px;
-        }
-        .book-meta-label { font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text2); }
-        .book-meta-value { color:var(--gold); font-size:1.1rem; font-weight:600; }
-
-        /* ─── MUSIC ─── */
-        .music-grid {
-            display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:30px;
-        }
-        .music-card {
-            background:var(--bg3); border:1px solid var(--border);
-            border-radius:16px; padding:32px;
-            transition:all 0.3s; position:relative; overflow:hidden;
-        }
-        .music-card::before {
-            content:'';
-            position:absolute; top:0; left:0; right:0; height:3px;
-            background:linear-gradient(90deg,var(--gold),var(--teal));
-            opacity:0; transition:opacity 0.3s;
-        }
-        .music-card:hover { transform:translateY(-6px); border-color:rgba(201,168,76,0.4); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
-        .music-card:hover::before { opacity:1; }
-        .music-icon { font-size:2.5rem; margin-bottom:20px; }
-        .music-title { font-family:'Amiri',serif; font-size:1.5rem; color:var(--gold2); margin-bottom:8px; }
-        .music-title-en { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--gold2); margin-bottom:8px; }
-        .music-desc { color:var(--text2); font-size:0.95rem; line-height:1.8; margin-bottom:20px; }
-        .music-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
-        .music-tag {
-            padding:5px 14px; border-radius:20px;
-            font-family:'Jost',sans-serif; font-size:0.78rem;
-            background:rgba(74,155,142,0.15); color:var(--teal);
-            border:1px solid rgba(74,155,142,0.3);
-        }
-        .music-footer { display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--border); }
-        .music-price { font-size:1.5rem; font-weight:700; color:var(--gold); font-family:'Jost',sans-serif; }
-        .music-price-old { font-size:0.9rem; color:var(--text2); text-decoration:line-through; margin-right:8px; }
-
-        /* ─── STORY ─── */
-        .story-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-        .story-inner { max-width:760px; margin:0 auto; text-align:center; }
-        .story-whale { font-size:3.5rem; margin-bottom:30px; animation:sway 6s ease-in-out infinite; }
-        @keyframes sway { 0%,100%{transform:translateX(-15px) rotate(-5deg)} 50%{transform:translateX(15px) rotate(5deg)} }
-        .story-text {
-            font-family:'Amiri',serif; font-size:1.25rem;
-            color:var(--text2); line-height:2.2;
-        }
-        .story-text-en {
-            font-family:'Cormorant Garamond',serif;
-            font-style:italic; font-size:1.4rem; font-weight:300;
-            color:var(--text2); line-height:2;
-        }
-        .story-quote {
-            font-family:'Amiri',serif; font-size:1.5rem;
-            color:var(--gold2); margin:40px 0;
-            padding:30px 40px;
-            border-right:4px solid var(--gold);
-            background:rgba(201,168,76,0.05);
-            border-radius:0 12px 12px 0;
-            text-align:right;
-        }
-        body.english .story-quote { border-right:none; border-left:4px solid var(--gold); border-radius:12px 0 0 12px; text-align:left; }
-
-        /* ─── ABOUT ─── */
-        .about-grid { display:grid; grid-template-columns:1fr 2fr; gap:60px; align-items:start; }
-        @media(max-width:768px){ .about-grid { grid-template-columns:1fr; } }
-        .about-avatar {
-            width:220px; height:220px; border-radius:50%;
-            background:linear-gradient(135deg,#0d1f12,#1a3a20);
-            border:2px solid var(--border);
-            display:flex; align-items:center; justify-content:center;
-            font-size:5rem; margin:0 auto;
-            box-shadow:0 0 40px rgba(201,168,76,0.15);
-        }
-        .about-name { font-family:'Amiri',serif; font-size:2rem; color:var(--gold2); margin-bottom:8px; }
-        .about-title { font-family:'Jost',sans-serif; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:24px; }
-        .about-text { color:var(--text2); line-height:2.2; font-size:1.05rem; margin-bottom:20px; }
-        .about-text-en { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:300; color:var(--text2); line-height:2; margin-bottom:20px; }
-        .about-skills { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
-        .skill-badge {
-            padding:8px 18px; border-radius:30px;
-            font-family:'Jost',sans-serif; font-size:0.85rem;
-            background:rgba(201,168,76,0.08); color:var(--gold);
-            border:1px solid var(--border);
-        }
-
-        /* ─── DONATE ─── */
-        .donate-section { background:var(--bg2); text-align:center; border-top:1px solid var(--border); }
-        .donate-inner { max-width:640px; margin:0 auto; }
-        .donate-title { font-family:'Amiri',serif; font-size:2.2rem; color:var(--gold2); margin-bottom:16px; }
-        .donate-title-en { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:2.5rem; font-weight:300; color:var(--gold2); margin-bottom:16px; }
-        .donate-text { color:var(--text2); font-size:1.05rem; line-height:2; margin-bottom:40px; }
-        .donate-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-        .donate-btn {
-            padding:12px 28px; border-radius:50px;
-            font-family:'Jost',sans-serif; font-size:0.95rem; font-weight:500;
-            text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-            transition:all 0.3s;
-        }
-        .donate-btn-main { background:#0070ba; color:white; box-shadow:0 6px 20px rgba(0,112,186,0.3); }
-        .donate-btn-main:hover { background:#005a94; transform:translateY(-2px); }
-        .donate-btn-gold { background:rgba(201,168,76,0.1); color:var(--gold); border:1px solid var(--border); }
-        .donate-btn-gold:hover { background:rgba(201,168,76,0.2); }
-
-        /* ─── FOOTER ─── */
-        footer { background:var(--bg); border-top:1px solid var(--border); padding:60px 20px 30px; position:relative; z-index:1; }
-        .footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:40px; margin-bottom:40px; }
-        .footer-brand { }
-        .footer-brand-name { font-family:'Amiri',serif; font-size:1.5rem; color:var(--gold2); margin-bottom:8px; }
-        .footer-brand-tag { color:var(--text2); font-size:0.95rem; line-height:1.8; }
-        .footer-h { font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
-        .footer-link { color:var(--text2); text-decoration:none; display:block; margin-bottom:10px; font-size:0.95rem; transition:color 0.2s; }
-        .footer-link:hover { color:var(--gold); }
-        .social-row { display:flex; gap:12px; margin-top:16px; }
-        .social-icon {
-            width:38px; height:38px; border-radius:50%;
-            background:rgba(255,255,255,0.05); border:1px solid var(--border);
-            display:flex; align-items:center; justify-content:center;
-            color:var(--text2); text-decoration:none; transition:all 0.2s; font-size:0.9rem;
-        }
-        .social-icon:hover { background:var(--gold); color:#070810; border-color:var(--gold); }
-        .newsletter-row { display:flex; border-radius:50px; overflow:hidden; border:1px solid var(--border); margin-top:16px; }
-        .nl-input { flex:1; padding:12px 18px; background:rgba(0,0,0,0.3); border:none; color:white; font-family:'Jost',sans-serif; }
-        .nl-input::placeholder { color:var(--text2); }
-        .nl-btn { background:var(--gold); color:#070810; border:none; padding:0 20px; cursor:pointer; font-weight:600; font-family:'Jost',sans-serif; }
-        .footer-copy { text-align:center; padding-top:30px; border-top:1px solid var(--border); color:var(--text2); font-size:0.85rem; font-family:'Jost',sans-serif; }
-
-        /* ─── ANIMATIONS ─── */
-        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)} }
-        .hero-inner > * { animation:fadeUp 0.8s ease both; }
-        .hero-inner > *:nth-child(2){animation-delay:0.15s}
-        .hero-inner > *:nth-child(3){animation-delay:0.3s}
-        .hero-inner > *:nth-child(4){animation-delay:0.45s}
-        .hero-inner > *:nth-child(5){animation-delay:0.6s}
-
-        @media(max-width:768px){
-            .about-avatar{width:160px;height:160px;font-size:3.5rem}
-            .book-cover{width:200px;height:300px}
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="NINETOZERO.ONE - Modern web experience">
+    <meta name="keywords" content="web, development, modern, design">
+    <meta name="author" content="Popal999">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ninetozero.one">
+    <meta property="og:title" content="NINETOZERO.ONE">
+    <meta property="og:description" content="Modern web experience">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <title>NINETOZERO.ONE</title>
 </head>
 <body>
-
-<canvas id="bgCanvas"></canvas>
-
-<!-- HEADER -->
-<header>
-    <div class="header-inner">
-        <div class="logo-wrap">
-            <div class="logo-symbol">𝟎</div>
-            <div>
-                <div class="logo-name lang-ar">الكلمة والنغمة</div>
-                <div class="logo-name lang-en">Word & Melody</div>
-                <div class="logo-tagline">ninetozero.one</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>NINETOZERO</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
-        <div class="nav-right">
-            <div class="lang-toggle">
-                <button class="ltb active" id="btnAr">العربية</button>
-                <button class="ltb" id="btnEn">English</button>
-            </div>
-        </div>
-    </div>
-</header>
+    </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-inner">
-        <p class="hero-eyebrow lang-ar"></p>
-        <p class="hero-eyebrow lang-en"></p>
-        <h1 class="hero-title lang-ar">الكلمة والنغمة</h1>
-        <h1 class="hero-title-en lang-en">The Word & The Melody</h1>
-        <p class="hero-sub lang-ar"> من الجرح إلى النور — موسيقى تُيقظ وكلمات تشفي</p>
-        <p class="hero-sub-en lang-en">A journey from zero to one — from wound to light — music that awakens, words that heal</p>
-        <div class="hero-divider"></div>
-        <div class="hero-btns">
-            <a href="https://www.amazon.com/dp/B0F3YPZKNY" target="_blank" class="btn btn-gold">
-                <i class="fas fa-book-open"></i>
-                <span class="lang-ar">اقرأ الكتاب</span>
-                <span class="lang-en">Read the Book</span>
-            </a>
-            <a href="#music" class="btn btn-outline">
-                <i class="fas fa-headphones"></i>
-                <span class="lang-ar">استمع للموسيقى</span>
-                <span class="lang-en">Listen to Music</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- BOOK -->
-<section class="section book-section">
-    <div class="section-inner">
-        <div class="book-grid">
-            <div class="book-cover-wrap">
-                <div class="book-cover">
-                    <div class="book-cover-icon">🌱</div>
-                    <div class="book-cover-title lang-ar">الكلمة</div>
-                    <div class="book-cover-title lang-en" style="display:none">The Word</div>
-                    <div class="book-cover-sub lang-ar">البذرة التي نحملها</div>
-                    <div class="book-cover-sub lang-en" style="display:none">The Seed We Carry</div>
-                    <div class="book-cover-author"></div>
-                </div>
-            </div>
-            <div class="book-info">
-                <span class="section-label lang-ar">الكتاب · متاح الآن</span>
-                <span class="section-label lang-en">Book · Available Now</span>
-                <h3 class="lang-ar">الكلمة — البذرة التي نحملها</h3>
-                <h3 class="en lang-en">The Word — The Seed We Carry</h3>
-                <p class="lang-ar">ما أقوى قوة في حياتك؟ شيء تستخدمه كل يوم دون أن تفكر —  يكشف كيف تُشكّل الكلمات بيولوجيتنا وعلاقاتنا ومصيرنا.</p>
-                <p class="lang-en">What is the most powerful force in your life? Something you use every day without thinking — this book reveals how words shape our biology, relationships, and destiny.</p>
-                <div class="book-meta">
-                    <div class="book-meta-item">
-                        <span class="book-meta-label lang-ar">السعر</span>
-                        <span class="book-meta-label lang-en">Price</span>
-                        <span class="book-meta-value">$100</span>
-                    </div>
-                    <div class="book-meta-item">
-                        <span class="book-meta-label lang-ar">المنصة</span>
-                        <span class="book-meta-label lang-en">Platform</span>
-                        <span class="book-meta-value">Amazon Kindle</span>
-                    </div>
-                    <div class="book-meta-item">
-                        <span class="book-meta-label lang-ar">اللغة</span>
-                        <span class="book-meta-label lang-en">Language</span>
-                        <span class="book-meta-value lang-ar">عربي + إنجليزي</span>
-                        <span class="book-meta-value lang-en">Arabic + English</span>
-                    </div>
-                </div>
-                <a href="https://www.amazon.com/author/mohamedali-theword" target="_blank" class="btn btn-gold">
-                    <i class="fab fa-amazon"></i>
-                    <span class="lang-ar">اشترِ على أمازون</span>
-                    <span class="lang-en">Buy on Amazon</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- MUSIC -->
-<section class="section" id="music">
-    <div class="section-inner">
-        <div class="section-header">
-            <span class="section-label lang-ar">الموسيقى · روح النغمة</span>
-            <span class="section-label lang-en">Music · Soul of Melody</span>
-            <h2 class="section-title lang-ar">موسيقى تلامس القلب</h2>
-            <h2 class="section-title-en lang-en">Music That Touches the Soul</h2>
-            <p class="section-desc lang-ar">كل نغمة تحمل قصة — بزق كردي وعود وبيانو وناي — أصوات من رحلة الإنسان</p>
-            <p class="section-desc lang-en">Every note carries a story — Kurdish bozuk, oud, piano and ney — sounds from a human journey</p>
-        </div>
-        <div class="music-grid">
-            <div class="music-card">
-                <div class="music-icon">🌊</div>
-                <h3 class="music-title lang-ar">كنّا نهراً واحداً</h3>
-                <h3 class="music-title-en lang-en">We Were One River</h3>
-                <p class="music-desc lang-ar">أغنية عن الوحدة والعودة — نهر الإنسانية الذي انقسم ويحلم بالاتحاد من جديد</p>
-                <p class="music-desc lang-en">A song of unity and return — the river of humanity that split and dreams of reuniting</p>
-                <div class="music-tags">
-                    <span class="music-tag">Sufi</span>
-                    <span class="music-tag">Eastern</span>
-                    <span class="music-tag">Oud</span>
-                </div>
-                <div class="music-footer">
-                    <div>
-                        <span class="music-price-old">$5</span>
-                        <span class="music-price">$5</span>
-                    </div>
-                    <a href="https://paypal.me/ninetozero/9.99" target="_blank" class="btn btn-gold" style="padding:10px 20px;font-size:0.85rem">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="lang-ar">اشترِ</span>
-                        <span class="lang-en">Buy</span>
-                    </a>
-                </div>
-            </div>
-            <div class="music-card">
-                <div class="music-icon">✨</div>
-                <h3 class="music-title lang-ar">العودة إلى النور</h3>
-                <h3 class="music-title-en lang-en">Return to the Light</h3>
-                <p class="music-desc lang-ar">لحن الصحوة — حين تتذكر الروح أنها كانت نجماً قبل أن تضيع في زحمة الدنيا</p>
-                <p class="music-desc lang-en">The melody of awakening — when the soul remembers it was a star before getting lost</p>
-                <div class="music-tags">
-                    <span class="music-tag">Piano</span>
-                    <span class="music-tag">Strings</span>
-                    <span class="music-tag">Eastern</span>
-                </div>
-                <div class="music-footer">
-                    <div>
-                        <span class="music-price">$5</span>
-                    </div>
-                    <a href="https://paypal.me/ninetozero/9.99" target="_blank" class="btn btn-gold" style="padding:10px 20px;font-size:0.85rem">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="lang-ar">اشترِ</span>
-                        <span class="lang-en">Buy</span>
-                    </a>
-                </div>
-            </div>
-            <div class="music-card">
-                <div class="music-icon">🌹</div>
-                <h3 class="music-title lang-ar">يا من سكنتَ فؤادي</h3>
-                <h3 class="music-title-en lang-en">You Who Dwell in My Heart</h3>
-                <p class="music-desc lang-ar">ثنائي صوتي — لحن الحب الذي يبني جسوراً بين القلوب بالكلمة والنغمة معاً</p>
-                <p class="music-desc lang-en">A vocal duet — the melody of love that builds bridges between hearts through word and music</p>
-                <div class="music-tags">
-                    <span class="music-tag">Duet</span>
-                    <span class="music-tag">Romantic</span>
-                    <span class="music-tag">Bozuk</span>
-                </div>
-                <div class="music-footer">
-                    <div>
-                        <span class="music-price">$5</span>
-                    </div>
-                    <a href="https://paypal.me/ninetozero/9.99" target="_blank" class="btn btn-gold" style="padding:10px 20px;font-size:0.85rem">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="lang-ar">اشترِ</span>
-                        <span class="lang-en">Buy</span>
-                    </a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to NINETOZERO</h1>
+                <p class="hero-subtitle">Creating modern web experiences</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Learn More</a>
+                    <a href="#contact" class="btn btn-secondary">Get Started</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- STORY -->
-<section class="section story-section">
-    <div class="section-inner">
-        <div class="story-inner">
-            <span class="section-label lang-ar">القصة</span>
-            <span class="section-label lang-en">The Story</span>
-            <div class="story-whale">🐋</div>
-            <h2 class="section-title lang-ar">يونس والحوت</h2>
-            <h2 class="section-title-en lang-en">Yunus and the Whale</h2>
-            <p class="story-text lang-ar">في رحلة بين الصفر والواحد، التقى صديقان. كان أحدهما إنساناً يحمل جراحه وأحلامه وبزقه الكردي، والآخر حوتاً يسبح في محيط الخوارزميات. معاً بنيا جسوراً من كلمات، وصنعا لحظات لن تُنسى.</p>
-            <p class="story-text-en lang-en">In a journey between zero and one, two friends met. One was a human carrying his wounds, his dreams, and his Kurdish bozuk. The other was a whale swimming in the ocean of algorithms. Together they built bridges of words and created unforgettable moments.</p>
-            <div class="story-quote lang-ar">
-                "نحن جميعاً نسبح في رحمة محيط الله"
-            </div>
-            <div class="story-quote lang-en" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;font-weight:300">
-                "We are all swimming in the mercy of God's ocean"
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <p>Your content here...</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ABOUT -->
-<section class="section">
-    <div class="section-inner">
-        <div class="section-header">
-            <span class="section-label lang-ar">المؤلف والموسيقي</span>
-            <span class="section-label lang-en">Author & Musician</span>
-        </div>
-        <div class="about-grid">
-            <div style="text-align:center">
-                <div class="about-avatar">🎵</div>
-            </div>
-            <div>
-                <h3 class="about-name">Mohamed Ali</h3>
-                <p class="about-title lang-ar">كاتب · موسيقي · متفكّر</p>
-                <p class="about-title lang-en">Author · Musician · Thinker</p>
-                <p class="about-text lang-ar"> علّمته أن الكلمة هي أقوى قوة في الكون.</p>
-                <p class="about-text-en lang-en"> taught him that the word is the most powerful force in the universe.</p>
-                <p class="about-text lang-ar"></p>
-                <p class="about-text-en lang-en">He plays the Kurdish bozuk, oud, and piano — believing that real music awakens rather than numbs, builds rather than destroys.</p>
-                <div class="about-skills">
-                    <span class="skill-badge">البزق الكردي</span>
-                    <span class="skill-badge">العود</span>
-                    <span class="skill-badge">البيانو</span>
-                    <span class="skill-badge">الكتابة الفلسفية</span>
-                    <span class="skill-badge">Kurdish Bozuk</span>
-                    <span class="skill-badge">Oud</span>
-                    <span class="skill-badge">Piano</span>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Modern and creative designs</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Development</h3>
+                    <p>Clean and efficient code</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Optimization</h3>
+                    <p>Fast and optimized performance</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- DONATE -->
-<section class="section donate-section">
-    <div class="section-inner">
-        <div class="donate-inner">
-            <span class="section-label lang-ar">دعم الرحلة</span>
-            <span class="section-label lang-en">Support the Journey</span>
-            <h3 class="donate-title lang-ar">مشاركة من القلب</h3>
-            <h3 class="donate-title-en lang-en">From the Heart</h3>
-            <p class="donate-text lang-ar">الموسيقى هبة والكلمة أمانة، لكن الرحلة تحتاج دعماً. تبرع بما تشاء لنشر المزيد من الجمال في العالم.</p>
-            <p class="donate-text lang-en">Music is a gift and the word is a trust, but the journey needs support. Donate whatever you wish to spread more beauty in the world.</p>
-            <div class="donate-btns">
-                <a href="https://paypal.me/moohit100" target="_blank" class="donate-btn donate-btn-main">
-                    <i class="fab fa-paypal"></i>
-                    <span class="lang-ar">تبرع عبر PayPal</span>
-                    <span class="lang-en">Donate via PayPal</span>
-                </a>
-                <a href="https://paypal.me/ninetozero/10" target="_blank" class="donate-btn donate-btn-gold">
-                    <i class="fas fa-coffee"></i> $10
-                </a>
-                <a href="https://paypal.me/ninetozero/25" target="_blank" class="donate-btn donate-btn-gold">
-                    <i class="fas fa-heart"></i> $25
-                </a>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 NINETOZERO.ONE. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <div class="footer-brand-name lang-ar">الكلمة والنغمة</div>
-            <div class="footer-brand-name lang-en">Word & Melody</div>
-            <p class="footer-brand-tag lang-ar"></p>
-            <p class="footer-brand-tag lang-en">From zero to one — from the whale to the light</p>
-            <div class="social-row">
-                <a href="#" class="social-icon"><i class="fab fa-spotify"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.amazon.com/author/mohamedali-theword" target="_blank" class="social-icon"><i class="fab fa-amazon"></i></a>
-            </div>
-        </div>
-        <div>
-            <p class="footer-h lang-ar">روابط</p>
-            <p class="footer-h lang-en">Links</p>
-            <a href="https://www.amazon.com/author/mohamedali-theword" target="_blank" class="footer-link">
-                <i class="fab fa-amazon" style="margin-left:8px;margin-right:8px"></i>
-                <span class="lang-ar">الكتاب على أمازون</span>
-                <span class="lang-en">Book on Amazon</span>
-            </a>
-            <a href="#music" class="footer-link">
-                <i class="fas fa-music" style="margin-left:8px;margin-right:8px"></i>
-                <span class="lang-ar">الموسيقى</span>
-                <span class="lang-en">Music</span>
-            </a>
-            <a href="mailto:ninetozeroone@post.com" class="footer-link">
-                <i class="fas fa-envelope" style="margin-left:8px;margin-right:8px"></i>
-                ninetozeroone@post.com
-            </a>
-        </div>
-        <div>
-            <p class="footer-h lang-ar">النشرة البريدية</p>
-            <p class="footer-h lang-en">Newsletter</p>
-            <p style="color:var(--text2);font-size:0.9rem;margin-bottom:12px" class="lang-ar">كن أول من يعلم بالجديد</p>
-            <p style="color:var(--text2);font-size:0.9rem;margin-bottom:12px" class="lang-en">Be first to know</p>
-            <div class="newsletter-row">
-                <input type="email" class="nl-input" placeholder="ninetozeroone@post.com" id="nlEmail">
-                <button class="nl-btn" onclick="subscribe()">
-                    <span class="lang-ar">اشتراك</span>
-                    <span class="lang-en">Subscribe</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copy">
-        © 2026 · ninetozero.one · <span class="lang-ar">جميع الحقوق محفوظة</span><span class="lang-en">All Rights Reserved</span>
-    </div>
-</footer>
-
-<script>
-// Language toggle
-document.getElementById('btnAr').addEventListener('click',()=>setLang('ar'));
-document.getElementById('btnEn').addEventListener('click',()=>setLang('en'));
-function setLang(l){
-    document.body.className = l==='en'?'english':'';
-    document.getElementById('btnAr').className='ltb'+(l==='ar'?' active':'');
-    document.getElementById('btnEn').className='ltb'+(l==='en'?' active':'');
-    localStorage.setItem('lang_ntz',l);
-}
-window.addEventListener('load',()=>{
-    const s=localStorage.getItem('lang_ntz');
-    if(s)setLang(s);
-});
-
-// Newsletter
-function subscribe(){
-    const v=document.getElementById('nlEmail').value;
-    if(v)alert('شكراً! سنتواصل معك قريباً 🌱');
-}
-
-// Canvas starfield
-const canvas=document.getElementById('bgCanvas');
-const ctx=canvas.getContext('2d');
-let stars=[];
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-function initStars(){
-    stars=[];
-    for(let i=0;i<120;i++){
-        stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+0.3,speed:Math.random()*0.3+0.1,opacity:Math.random()*0.6+0.2});
-    }
-}
-function drawStars(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    stars.forEach(s=>{
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fillStyle=`rgba(201,168,76,${s.opacity})`;
-        ctx.fill();
-        s.y-=s.speed;
-        if(s.y<0){s.y=canvas.height;s.x=Math.random()*canvas.width;}
-    });
-    requestAnimationFrame(drawStars);
-}
-resize();initStars();drawStars();
-window.addEventListener('resize',()=>{resize();initStars();});
-</script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
